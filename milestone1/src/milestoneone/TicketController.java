@@ -3,6 +3,7 @@ package milestoneone;
 import java.io.File;
 import java.io.IOException;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
@@ -117,8 +118,8 @@ public class TicketController {
 						 * because it could happens that more commits
 						 * correspond to the same buggy ticket. I'm taking the last one.
 						 */ 
+						LocalDate commitDate = commit.getCommitterIdent().getWhen().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-						LocalDate commitDate = new LocalDate(commit.getCommitTime() * 1000L);						
 						listDate.add(commitDate.toString());
 
 					}
@@ -154,7 +155,7 @@ public class TicketController {
 			if(resolutionDate.equals("")) return;
 			
 			fixedVersionIndex = getFixedVersionIndex(resolutionDate);
-			injectedVersionIndex = getAffectedVersionByList(affectedVersionList, creationDate);
+			injectedVersionIndex = getAffectedVersionByList(affectedVersionList);
 			
 			//remove all tickets with invalid indexes
 			//use the proportion method with these tickets
@@ -446,6 +447,33 @@ public class TicketController {
 			return metricsForFile;
 			
 		}
+		
+		public void setVersionBuggy(int injectedVersionIndex, int fixedVersionIndex, float numberOfVersions, DiffEntry entry) {
+			
+			// ... for each version in the affected version range (list) check if the version index is included in the first half of the release ...
+			for (int version = injectedVersionIndex; version < fixedVersionIndex && version < numberOfVersions; version++) {
+
+				String versionString = null;
+				
+				if (!fileMapDataset.containsKey(version, entry.getNewPath())) {
+					
+					//take the string version
+					for (LocalDate k : versionListWithDateAndIndex.keySet()) {
+						
+						int index = Integer.parseInt(Iterables.get(versionListWithDateAndIndex.get(k), 1));
+						if(index == version) versionString = String.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 0));
+						
+					}
+						
+					insertEntry(versionString, entry.getNewPath());
+
+					//set the class "Buggy"
+					List<Integer> metricsForFile = (ArrayList<Integer>) fileMapDataset.get(versionString, entry.getNewPath());
+					metricsForFile.set(9, 1);
+					fileMapDataset.replace(versionString, entry.getNewPath(), metricsForFile);
+				}
+			}
+		}
 			
 		@SuppressWarnings("unchecked")
 		public void setBugginess(List<Integer> ticketAssociatedWithCommit, DiffEntry entry, float numberOfVersions) {
@@ -460,29 +488,8 @@ public class TicketController {
 					int injectedVersionIndex = ticketAssociatedWithCommit.get(j);
 					int fixedVersionIndex = ticketAssociatedWithCommit.get(j + 1);
 
-					// ... for each version in the affected version range (list) check if the version index is included in the first half of the release ...
-					for (int version = injectedVersionIndex; version < fixedVersionIndex && version < numberOfVersions; version++) {
+					setVersionBuggy(injectedVersionIndex, fixedVersionIndex, numberOfVersions, entry);
 
-						String versionString = null;
-						
-						if (!fileMapDataset.containsKey(version, entry.getNewPath())) {
-							
-							//take the string version
-							for (LocalDate k : versionListWithDateAndIndex.keySet()) {
-								
-								int index = Integer.parseInt(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-								if(index == version) versionString = String.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 0));
-								
-							}
-								
-							insertEntry(versionString, entry.getNewPath());
-
-							//set the class "Buggy"
-							List<Integer> metricsForFile = (ArrayList<Integer>) fileMapDataset.get(versionString, entry.getNewPath());
-							metricsForFile.set(9, 1);
-							fileMapDataset.replace(versionString, entry.getNewPath(), metricsForFile);
-						}
-					}
 				}
 			
 		}

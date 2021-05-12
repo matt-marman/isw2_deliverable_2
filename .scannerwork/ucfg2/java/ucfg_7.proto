@@ -1,16 +1,16 @@
 
-Gmilestoneone.TicketController#getFixedVersionIndex(Ljava/lang/String;)IÉ
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java◊ ◊(!"7*á
+Imilestoneone.TicketController#getOpeningVersionIndex(Ljava/lang/String;)IÉ
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java√ √(#"7*á
 2É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java› ›(±
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java… …(±
 Æ
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java› ›(
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java… …(
 kjava.time.LocalDate"__id*
 ""ø
 º
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java› ›(
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java… …(
 kjava.time.LocalDate"
 __arrayGet*
 ""*
@@ -18,46 +18,46 @@ __arrayGet*
 5
 1*Å
 4É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java· ·( 
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaÕ Õ("
 Ì
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java· ·(^
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaÕ Õ(`
 %2"@java.lang.Integer#valueOf(Ljava/lang/String;)Ljava/lang/Integer;*"
 java.lang.Integer*
 ""*
-2*‡
+2*ﬁ
 5É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaﬂ ﬂ(Ã…
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaÀ À( «
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaﬂ ﬂ( 
-%1boolean"@java.time.LocalDate#isAfter(Ljava/time/chrono/ChronoLocalDate;)Z*'
-%
-resolutionDatejava.time.LocalDate*
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaÀ À(
+%1boolean"@java.time.LocalDate#isAfter(Ljava/time/chrono/ChronoLocalDate;)Z*%
+#
+creationDatejava.time.LocalDate*
 
 kjava.time.LocalDate2+isAfter(Ljava/time/chrono/ChronoLocalDate;)*
 4
-1*ö
+1*ñ
 7É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaŸ Ÿ(≥
-∞
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java≈ ≈(±
+Æ
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java⁄ ⁄(C
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java∆ ∆(?
 %0java.time.LocalDate"Hjava.time.LocalDate#parse(Ljava/lang/CharSequence;)Ljava/time/LocalDate;*"
-java.time.LocalDate**
-(
-ticketResolutionDatejava.lang.String”
-–
+java.time.LocalDate*(
+&
+ticketCreationDatejava.lang.String—
+Œ
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java⁄ ⁄(D%
-resolutionDatejava.time.LocalDate"__id*
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java∆ ∆(@#
+creationDatejava.time.LocalDate"__id*
 
 %0java.time.LocalDate*
 2*ö
 1É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaÁ
- Á("é
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java”
+ ”("é
 É
-w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.javaÁ Á(
-"":(
-ticketResolutionDatejava.lang.StringB!
+w/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/TicketController.java” ”(
+"":&
+ticketCreationDatejava.lang.StringB!
 milestoneone.TicketController

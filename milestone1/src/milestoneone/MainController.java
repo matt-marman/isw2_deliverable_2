@@ -78,27 +78,28 @@ public class MainController {
 		      return sb.toString();
 		   }
 
+	   public static JSONArray jsonArray(String jsonText) {
+		   
+		   try {
+				return new JSONArray(jsonText);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		return null;
+	   }
+	   
 	   public static JSONArray readJsonArrayFromUrl(String url) {
 	      
 		   InputStream is = null;
 		try {
 			is = new URL(url).openStream();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 	      try (BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))){
 	         String jsonText = readAll(rd);
-	         try {
-				return new JSONArray(jsonText);
-			} catch (JSONException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 
 		} catch (IOException e1) {
-			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		} finally {
 	         try {
@@ -112,6 +113,16 @@ public class MainController {
 
 	   }
 
+	   public static JSONObject jsonObject(String jsonText) {
+		   
+		   try {
+				return new JSONObject(jsonText);
+			} catch (JSONException e) {
+				e.printStackTrace();
+			}
+		return mainNode;
+	   }
+	   
 	   public static JSONObject readJsonFromUrl(String url){
 	      InputStream is = null;
 		try {
@@ -123,11 +134,9 @@ public class MainController {
 		}
 	      try ( BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))){
 	         String jsonText = readAll(rd);
-	         try {
-				return new JSONObject(jsonText);
-			} catch (JSONException e) {
-				e.printStackTrace();
-			}
+	         return jsonObject(jsonText);
+	         
+	         
 	       } catch (IOException e) {
 			e.printStackTrace();
 		} finally {
@@ -300,8 +309,7 @@ public class MainController {
 
 					
 					//get JSONArray associated to the affected versions,
-					List<String> affectedVersionList = new ArrayList<>();
-					affectedVersionList = getAffectedVersion(singleJsonObject);
+					List<String> affectedVersionList = getAffectedVersion(singleJsonObject);
 
 					ticketList.add(Integer.valueOf(key.split("-")[1]));
 
@@ -361,9 +369,9 @@ public class MainController {
 				//I'm ignoring the 1.1.7 and 2.0.0-M3 version
 				try {
 					
-					if(versions.getJSONObject(i).has("releaseDate")) {
+					if(versions.getJSONObject(i).has(releaseDate)) {
 						
-						releaseDate = versions.getJSONObject(i).get("releaseDate").toString();
+						releaseDate = versions.getJSONObject(i).get(releaseDate).toString();
 						
 						if(!(projectName.equals("SYNCOPE") && (releaseName.equals("1.1.7") || releaseName.equals("2.0.0-M3") || releaseName.equals("2.0.8")
 								|| releaseName.equals("2.1.1") || releaseName.equals("2.1.2") || releaseName.equals("2.1.3")
@@ -424,13 +432,12 @@ public class MainController {
 	     * A Multimap is a general way to associate 
 	     * keys with arbitrarily many values.
 	     * In this case it stores data like
-	     * {2011-12-07 = [4.0.0, 1]} 
+	     * 2011-12-07 = [4.0.0, 1] 
 	     */
 	   
 	   public static void main(String[] args){
 		   
 		    Multimap<LocalDate, String> dataVersionIndexList;
-		    dataVersionIndexList = MultimapBuilder.treeKeys().linkedListValues().build();
 			
 			ticketList = new ArrayList<>();
 						
