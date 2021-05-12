@@ -77,7 +77,7 @@ public class TicketController {
 
 				// Get all commits
 				try {
-					return commits = git.log().all().call();
+					return git.log().all().call();
 				} catch (NoHeadException e) {
 					e.printStackTrace();
 				} catch (GitAPIException e) {
