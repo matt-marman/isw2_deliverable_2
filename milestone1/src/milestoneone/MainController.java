@@ -1,4 +1,4 @@
-package milestone1;
+package milestoneone;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -45,7 +45,6 @@ import org.eclipse.jgit.util.io.NullOutputStream;
 public class MainController {
 
 	   static String projectName = "BOOKKEEPER";
-	   //static String projectName = "SYNCOPE";
 	   
 	   static Collection<JSONObject> items;
 	   static JSONObject mainNode;
@@ -59,7 +58,7 @@ public class MainController {
 	   
 	   //index of the last version in the first half of release
 	   private static float indexHalfVersion;
-	   
+	   private static String releaseDate = "releaseDate";
 	   private static TicketController ticketController;
 	   
 	   // MultiKeyMap<FileVersion, FilePath, MetricsList> 
@@ -94,10 +93,13 @@ public class MainController {
 	         try {
 				return new JSONArray(jsonText);
 			} catch (JSONException e) {
+				// TODO Auto-generated catch block
 				e.printStackTrace();
 			}
-	       } catch (IOException e) {
-			e.printStackTrace();
+
+		} catch (IOException e1) {
+			// TODO Auto-generated catch block
+			e1.printStackTrace();
 		} finally {
 	         try {
 				is.close();
@@ -114,10 +116,10 @@ public class MainController {
 	      InputStream is = null;
 		try {
 			is = new URL(url).openStream();
-		} catch (MalformedURLException e) {
-			e.printStackTrace();
+			
 		} catch (IOException e) {
 			e.printStackTrace();
+		
 		}
 	      try ( BufferedReader rd = new BufferedReader(new InputStreamReader(is, StandardCharsets.UTF_8))){
 	         String jsonText = readAll(rd);
@@ -138,10 +140,43 @@ public class MainController {
 		return mainNode;
 	   }
 
+	   public static void iterateOnFilesChanged(List<DiffEntry> filesChanged, List<Integer> ticketInformationBugginess, 
+			   int appartainVersionIndex, DiffFormatter differenceBetweenCommits, List<Integer> ticketBugFix) {
+		   
+			ArrayList<Integer> fileMetrics = null;
+
+			// For each file changed in the commit			
+				for (DiffEntry singleFileChanged : filesChanged) {
+																						
+					if (singleFileChanged.getNewPath().endsWith(".java")) {
+						
+						// Put (if not present) an empty record in the dataset map for the pair (version, filePath)
+						String appartainVersion = versionArrayString.get(appartainVersionIndex - 1);
+						ticketController.insertEntry(appartainVersion, singleFileChanged.getNewPath());
+		
+						try {
+							fileMetrics = (ArrayList<Integer>) ticketController.calculateMetrics(singleFileChanged, appartainVersion, differenceBetweenCommits, filesChanged, ticketBugFix);
+						} catch (CorruptObjectException e) {
+							e.printStackTrace();
+						} catch (MissingObjectException e) {
+							e.printStackTrace();
+						} catch (IOException e) {
+							e.printStackTrace();
+						}
+						
+						// Replace the updated metrics
+						fileMapDataset.replace(appartainVersion, singleFileChanged.getNewPath(), fileMetrics);
+		
+						// Set this and other class contained in [IV, numberOfVersionsFV) buggy (if ther'are ticket(s) associated to the commit)
+						ticketController.setBugginess(ticketInformationBugginess, singleFileChanged, indexHalfVersion +1 );
+					}
+				}
+	   }
+
+	   
 	   @SuppressWarnings("unchecked")
 	   public static void createData(){
 
-			ArrayList<Integer> fileMetrics = null;
 			FileRepositoryBuilder builder = new FileRepositoryBuilder();
 						
 			String gitDirectory = projectName + "/.git";
@@ -203,33 +238,8 @@ public class MainController {
 								} catch (IOException e) {
 									e.printStackTrace();
 								}
-			
-								// For each file changed in the commit			
-								for (DiffEntry singleFileChanged : filesChanged) {
-																										
-									if (singleFileChanged.getNewPath().endsWith(".java")) {
-										
-										// Put (if not present) an empty record in the dataset map for the pair (version, filePath)
-										String appartainVersion = versionArrayString.get(appartainVersionIndex - 1);
-										ticketController.insertEntry(appartainVersion, singleFileChanged.getNewPath());
-
-										try {
-											fileMetrics = (ArrayList<Integer>) ticketController.calculateMetrics(singleFileChanged, appartainVersion, differenceBetweenCommits, filesChanged, ticketBugFix);
-										} catch (CorruptObjectException e) {
-											e.printStackTrace();
-										} catch (MissingObjectException e) {
-											e.printStackTrace();
-										} catch (IOException e) {
-											e.printStackTrace();
-										}
-										
-										// Replace the updated metrics
-										fileMapDataset.replace(appartainVersion, singleFileChanged.getNewPath(), fileMetrics);
-
-										// Set this and other class contained in [IV, numberOfVersionsFV) buggy (if ther'are ticket(s) associated to the commit)
-										ticketController.setBugginess(ticketInformationBugginess, singleFileChanged, indexHalfVersion +1 );
-									}
-								}
+								
+								iterateOnFilesChanged(filesChanged, ticketInformationBugginess, appartainVersionIndex, differenceBetweenCommits, ticketBugFix);
 								
 							}
 						}
@@ -238,6 +248,36 @@ public class MainController {
 			}
 
 		}
+	   
+	   public static List<String> getAffectedVersion(JSONObject singleJsonObject) {
+		 
+		   //get JSONArray associated to the affected versions,
+		   List<String> affectedVersionList = new ArrayList<>();
+			
+		   try {
+				
+			   //take the affected versions and t
+			   JSONArray affectedVersionArray = singleJsonObject.getJSONArray("versions");
+			   if (affectedVersionArray.length() > 0) {
+				
+				   for (int k = 0; k < affectedVersionArray.length(); k++) {
+	
+					   JSONObject singleAffectedVesion = affectedVersionArray.getJSONObject(k);
+					   if (singleAffectedVesion.has(releaseDate)) {
+							
+						   String affectedVerion = singleAffectedVesion.getString("name");
+						   affectedVersionList.add(affectedVerion);
+					   }
+				   }
+			   }
+										
+		   } catch (JSONException e) {
+			   e.printStackTrace();
+		   }
+		   
+		   return affectedVersionList;
+	   }
+		
 	  
 	   public static int iterateOnTicket(Integer i, Integer total, Integer j, JSONArray issues) {
 	   		
@@ -258,29 +298,10 @@ public class MainController {
 						e.printStackTrace();
 					}
 
+					
 					//get JSONArray associated to the affected versions,
 					List<String> affectedVersionList = new ArrayList<>();
-					
-					try {
-						
-						//take the affected versions and t
-						JSONArray affectedVersionArray = singleJsonObject.getJSONArray("versions");
-						if (affectedVersionArray.length() > 0) {
-						
-							for (int k = 0; k < affectedVersionArray.length(); k++) {
-
-								JSONObject singleAffectedVesion = affectedVersionArray.getJSONObject(k);
-								if (singleAffectedVesion.has("releaseDate")) {
-									
-									String affectedVerion = singleAffectedVesion.getString("name");
-									affectedVersionList.add(affectedVerion);
-								}
-							}
-						}
-												
-					} catch (JSONException e) {
-						e.printStackTrace();
-					}
+					affectedVersionList = getAffectedVersion(singleJsonObject);
 
 					ticketList.add(Integer.valueOf(key.split("-")[1]));
 
@@ -344,10 +365,10 @@ public class MainController {
 						
 						releaseDate = versions.getJSONObject(i).get("releaseDate").toString();
 						
-						if(!((projectName.equals("SYNCOPE") && (releaseName.equals("1.1.7") || releaseName.equals("2.0.0-M3") || releaseName.equals("2.0.8")
+						if(!(projectName.equals("SYNCOPE") && (releaseName.equals("1.1.7") || releaseName.equals("2.0.0-M3") || releaseName.equals("2.0.8")
 								|| releaseName.equals("2.1.1") || releaseName.equals("2.1.2") || releaseName.equals("2.1.3")
 								|| releaseName.equals("2.1.4") || releaseName.equals("2.1.6") || releaseName.equals("2.1.7")
-								|| releaseName.equals("2.1.8") || releaseName.equals("2.1.5"))))) {
+								|| releaseName.equals("2.1.8") || releaseName.equals("2.1.5")))) {
 							
 							versionArrayString.add(releaseName);
 							versionList.put(LocalDate.parse(releaseDate), releaseName);
@@ -379,7 +400,7 @@ public class MainController {
 	    * 
 	    */
 	   
-	   public static void filterFileName(Multimap<LocalDate, String> dataVersionIndexList) {
+	   public static void filterFileName() {
 		  
 		   try (Stream<File> fileStream = Files.walk(Paths.get(projectName)).filter(Files::isRegularFile).map(Path::toFile)){
 
@@ -398,18 +419,18 @@ public class MainController {
 				e.printStackTrace();
 			}
 		}
+
+	   /*
+	     * A Multimap is a general way to associate 
+	     * keys with arbitrarily many values.
+	     * In this case it stores data like
+	     * {2011-12-07 = [4.0.0, 1]} 
+	     */
 	   
 	   public static void main(String[] args){
-				
 		   
-		    /*
-		     * A Multimap is a general way to associate 
-		     * keys with arbitrarily many values.
-		     * In this case it stores data like
-		     * {2011-12-07 = [4.0.0, 1]} 
-		     */
-		   
-		    Multimap<LocalDate, String> dataVersionIndexList = MultimapBuilder.treeKeys().linkedListValues().build();
+		    Multimap<LocalDate, String> dataVersionIndexList;
+		    dataVersionIndexList = MultimapBuilder.treeKeys().linkedListValues().build();
 			
 			ticketList = new ArrayList<>();
 						
@@ -419,7 +440,7 @@ public class MainController {
 			
 			indexHalfVersion = (dataVersionIndexList.size() / 4);
 			
-			filterFileName(dataVersionIndexList);
+			filterFileName();
 			
 	  		items = new ArrayList<>();
 	  		mainNode = new JSONObject();
@@ -464,7 +485,7 @@ public class MainController {
 	  		
 	  		createData();
 	  			  		
-	  		new CSVController(projectName, indexHalfVersion, fileMapDataset);
+	  		new CSVController(projectName, fileMapDataset);
 
 			}
 	   

@@ -1,8 +1,7 @@
-package milestone1;
+package milestoneone;
 
 import java.io.File;
 import java.io.IOException;
-import java.sql.Date;
 import java.time.LocalDate;
 import java.util.Map;
 import java.util.regex.Matcher;
@@ -47,7 +46,7 @@ public class TicketController {
 		// Map<ticketID, (IV, FV)>
 		private  Map<Integer, List<Integer>> ticketWithBuggyIndex;
 
-		private int METRICS = 10;
+		private int metrics = 10;
 		
 		@SuppressWarnings("rawtypes")
 		public TicketController(Multimap<LocalDate, String> versionListWithDate, MultiKeyMap fileMapDataset) {
@@ -66,13 +65,13 @@ public class TicketController {
 
 			//create an array with all metrics equal to 0
 			initialArrayMetrics = new ArrayList<>();
-			for (int k = 0; k < METRICS; k++) initialArrayMetrics.add(0);
+			for (int k = 0; k < metrics; k++) initialArrayMetrics.add(0);
 			fileMapDataset.put(appartainVersion, nameFile, initialArrayMetrics); 
 			
 		}
 		
 		//return the date of ticket, not from jira, but from commit that contains the ID in the comment
-		public String getResolutionDateForTicketFromCommit(String projectName, int ID) {
+		public String getResolutionDateForTicketFromCommit(String projectName, int id) {
 			
 			List<String> listDate = new ArrayList<>();
 			
@@ -108,7 +107,7 @@ public class TicketController {
 					
 					String message = commit.getFullMessage();
 					// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
-					pattern = Pattern.compile("\\b"+ projectName + "-" + ID + "\\b", Pattern.CASE_INSENSITIVE);
+					pattern = Pattern.compile("\\b"+ projectName + "-" + id + "\\b", Pattern.CASE_INSENSITIVE);
 					matcher = pattern.matcher(message);
 
 					// Check if commit message contains the issues ID and the issues is labeled like "not checked"
@@ -119,7 +118,7 @@ public class TicketController {
 						 * correspond to the same buggy ticket. I'm taking the last one.
 						 */ 
 
-						Date commitDate = new Date(commit.getCommitTime() * 1000L);						
+						LocalDate commitDate = new LocalDate(commit.getCommitTime() * 1000L);						
 						listDate.add(commitDate.toString());
 
 					}
@@ -204,7 +203,6 @@ public class TicketController {
 				if(creationDate.isAfter(k)) {
 										
 					openingVersionIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-					continue;
 					
 				}else break;
 
@@ -224,7 +222,6 @@ public class TicketController {
 				if(resolutionDate.isAfter(k)) {
 					
 					fixedVersionIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-					continue;
 					
 				}else break;
 	
@@ -233,7 +230,7 @@ public class TicketController {
 			return fixedVersionIndex;
 		}
 		
-		public int getAffectedVersionByList(List<String> versionList, String creationDate) {
+		public int getAffectedVersionByList(List<String> versionList) {
 
 			int injectedVersionIndex = 0;
 			//if the ticket has not, at least, an affected version return 0
@@ -309,9 +306,8 @@ public class TicketController {
 				sumProportion += currentProportion;
 			}
 				
-			int proportion = (int) (sumProportion/(double)ticketWithProportion.keySet().size());
+			return (int) (sumProportion/(double)ticketWithProportion.keySet().size());
 			
-			return proportion;
 			
 		}
 		
@@ -398,9 +394,9 @@ public class TicketController {
 			@SuppressWarnings("unchecked")
 			ArrayList<Integer> metricsForFile = (ArrayList<Integer>) fileMapDataset.get(version, entry.getNewPath());
 
-			int LOC_touched = 0;
-			int LOC_added = 0;
-			int ChgSetSize = filesChanged.size();
+			int loctouched = 0;
+			int locadded = 0;
+			int chgsetsize = filesChanged.size();
 			
 			try {
 				
@@ -410,12 +406,12 @@ public class TicketController {
 
 					if (type == Edit.Type.INSERT) {
 								
-						LOC_added += edit.getEndB() - edit.getBeginB();
-						LOC_touched += edit.getEndB() - edit.getBeginB();
+						locadded += edit.getEndB() - edit.getBeginB();
+						loctouched += edit.getEndB() - edit.getBeginB();
 						
 					} 
 					
-					else if ((type == Edit.Type.DELETE) || (type == Edit.Type.REPLACE)) LOC_touched += edit.getEndA() - edit.getBeginA();
+					else if ((type == Edit.Type.DELETE) || (type == Edit.Type.REPLACE)) loctouched += edit.getEndA() - edit.getBeginA();
 					
 				}
 				
@@ -427,9 +423,9 @@ public class TicketController {
 				e.printStackTrace();
 			}
 				
-			metricsForFile.set(0, metricsForFile.get(0) + LOC_touched);
+			metricsForFile.set(0, metricsForFile.get(0) + loctouched);
 			metricsForFile.set(1, metricsForFile.get(1) + 1);	
-			metricsForFile.set(3, LOC_added);
+			metricsForFile.set(3, locadded);
 				
 			// Check if the commit is associated to some bug ticket
 			if (ticketAssociated.isEmpty()) metricsForFile.set(2, metricsForFile.get(2) + 0);
@@ -439,13 +435,13 @@ public class TicketController {
 				metricsForFile.set(9, 1);
 			}
 			
-			metricsForFile.set(3, metricsForFile.get(3) + LOC_added);
+			metricsForFile.set(3, metricsForFile.get(3) + locadded);
 			
-			if (LOC_added > metricsForFile.get(4)) metricsForFile.set(4,  LOC_added);
+			if (locadded > metricsForFile.get(4)) metricsForFile.set(4,  locadded);
 				
-			metricsForFile.set(5, metricsForFile.get(5) + ChgSetSize);
+			metricsForFile.set(5, metricsForFile.get(5) + chgsetsize);
 			
-			if (ChgSetSize > metricsForFile.get(6)) metricsForFile.set(6,  ChgSetSize);
+			if (chgsetsize > metricsForFile.get(6)) metricsForFile.set(6,  chgsetsize);
 			
 			return metricsForFile;
 			
@@ -456,10 +452,8 @@ public class TicketController {
 
 			ChangeType changeType = entry.getChangeType();
 
-			if (!ticketAssociatedWithCommit.isEmpty()) {
+			if (!ticketAssociatedWithCommit.isEmpty() && ((changeType == DiffEntry.ChangeType.MODIFY) || (changeType == DiffEntry.ChangeType.DELETE))) {
 				
-				if((changeType == DiffEntry.ChangeType.MODIFY) || (changeType == DiffEntry.ChangeType.DELETE)) {
-
 				//ticketAssociatedWithCommit = [IV, FV, ID, ..., IV, FV, ID]
 				for (int j = 0; j < ticketAssociatedWithCommit.size(); j= j+3) {
 					
@@ -476,7 +470,7 @@ public class TicketController {
 							//take the string version
 							for (LocalDate k : versionListWithDateAndIndex.keySet()) {
 								
-								int index = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
+								int index = Integer.parseInt(Iterables.get(versionListWithDateAndIndex.get(k), 1));
 								if(index == version) versionString = String.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 0));
 								
 							}
@@ -490,7 +484,7 @@ public class TicketController {
 						}
 					}
 				}
-			}
+			
 		}
 		}
 
