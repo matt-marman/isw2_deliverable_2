@@ -181,10 +181,9 @@ public class MainController {
 					}
 				}
 	   }
-
 	   
 	   @SuppressWarnings("unchecked")
-	   public static void createData(){
+	   public static void createData(TicketController ticketController){
 
 			FileRepositoryBuilder builder = new FileRepositoryBuilder();
 						
@@ -200,18 +199,7 @@ public class MainController {
 			// Try to open the Git directory
 			try (Git git = new Git(directory)) {
 
-				Iterable<RevCommit> commits = null;
-
-				// Get all commits
-				try {
-					commits = git.log().all().call();
-				} catch (NoHeadException e) {
-					e.printStackTrace();
-				} catch (GitAPIException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				Iterable<RevCommit> commits = ticketController.getCommits(git);
 		   		
 				for (RevCommit commit : commits) {
 					
@@ -490,7 +478,7 @@ public class MainController {
 
 	  		ticketController.getBuggyVersionProportionTicket(proportion);
 	  		
-	  		createData();
+	  		createData(ticketController);
 	  			  		
 	  		new CSVController(projectName, fileMapDataset);
 

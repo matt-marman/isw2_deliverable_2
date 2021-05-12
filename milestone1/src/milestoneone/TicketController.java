@@ -71,6 +71,23 @@ public class TicketController {
 			
 		}
 		
+		public static Iterable<RevCommit> getCommits(Git git) {
+			   
+			   Iterable<RevCommit> commits = null;
+
+				// Get all commits
+				try {
+					return commits = git.log().all().call();
+				} catch (NoHeadException e) {
+					e.printStackTrace();
+				} catch (GitAPIException e) {
+					e.printStackTrace();
+				} catch (IOException e) {
+					e.printStackTrace();
+				}
+				return commits;
+		   }
+		
 		//return the date of ticket, not from jira, but from commit that contains the ID in the comment
 		public String getResolutionDateForTicketFromCommit(String projectName, int id) {
 			
@@ -91,18 +108,7 @@ public class TicketController {
 			
 			try (Git git = new Git(repository)) {
 
-				Iterable<RevCommit> commits = null;
-
-				// Get all the commits
-				try {
-					commits = git.log().all().call();
-				} catch (NoHeadException e) {
-					e.printStackTrace();
-				} catch (GitAPIException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
-				}
+				Iterable<RevCommit> commits = getCommits(git);
 				
 				for (RevCommit commit : commits) {
 					
