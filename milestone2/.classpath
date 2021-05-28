@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<classpath>
+	<classpathentry kind="src" path="src"/>
+	<classpathentry kind="con" path="org.eclipse.jdt.launching.JRE_CONTAINER">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mattia/Desktop/ingegneria_software_2/Falessi/weka-3-9-5/weka-src.jar">
+		<attributes>
+			<attribute name="module" value="true"/>
+		</attributes>
+	</classpathentry>
+	<classpathentry kind="lib" path="/home/mattia/Desktop/ingegneria_software_2/Falessi/weka-3-9-5/weka.jar"/>
+	<classpathentry kind="lib" path="/home/mattia/Desktop/opencsv-3.8.jar"/>
+	<classpathentry kind="output" path="bin"/>
+</classpath>
