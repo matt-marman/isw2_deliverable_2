@@ -1,4 +1,4 @@
-@relation bookkeeperReleaseFive-weka.filters.unsupervised.attribute.Remove-R2
+@relation BOOKKEEPER5-weka.filters.unsupervised.attribute.Remove-R2
 
 @attribute 'Version Number' {4.2.1}
 @attribute LOC_Touched numeric

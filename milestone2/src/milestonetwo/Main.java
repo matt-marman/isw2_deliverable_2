@@ -60,84 +60,96 @@ import com.opencsv.CSVWriter;
 
 public class Main{
 	
-	//0 = Bookkeeper project
-	//1 = Syncope project
-	public static int projectSelection = 1;
+	//false = Bookkeeper project
+	//true = Syncope project
+	public static boolean projectSelection = false;
 	
-	public static int numberRelease = 7;
-	public static String firstRelease = "4.0.0";
-	public static int numberClassifires = 3;
 	public static String pathFile = "/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/";
 	public static FileWriter CSVResult;
-	public static int numberVersionSyncope; 
 	public static FileWriter csv;
 	
-	public static void main(String args[]) throws Exception{
-					
-		ArrayList<String> releaseFileArffList = new ArrayList<String>();
+	public static String extensionArff = ".arff";
+	public static String extensionCSV = ".csv";
+	public static String fileCSV = "";
+	public static String fileARFF = "";
+	public static String baseFilePath = "";
+	public static String firstRelease = "";
+	public static String projectName = "";
+	
+	public static int numberFeature;
+	public static int numberRelease;
+	public static ArrayList<String> fileArffList;
+	public static ArrayList<String> fileCSVList;
 
-		String[] CSVFile = new String[] {"bookkeeperReleaseOne.csv", "bookkeeperReleaseTwo.csv", "bookkeeperReleaseThree.csv", 
-				"bookkeeperReleaseFour.csv", "bookkeeperReleaseFive.csv", "bookkeeperReleaseSix.csv", "bookkeeperReleaseSeven.csv"};
+
+	public static void main(String args[]) throws Exception{
 		
-		String[] ArffFile = new String[] {"bookkeeperReleaseOne.arff", "bookkeeperReleaseTwo.arff", "bookkeeperReleaseThree.arff", 
-				"bookkeeperReleaseFour.arff", "bookkeeperReleaseFive.arff", "bookkeeperReleaseSix.arff", "bookkeeperReleaseSeven.arff"};
-		
-		String fileCSV = "";
-		String fileARFF = "";
-		
-		//find all .csv file 
-		for(int i = 0; i < CSVFile.length; i++) {
+		//set attributes for Syncope project
+		if(projectSelection) {
 			
-			fileCSV = pathFile + CSVFile[i];
-			fileARFF = pathFile + ArffFile[i];
-			releaseFileArffList.add(fileARFF);
+			fileCSV = pathFile + "syncopeFile/SYNCOPE.csv";
+			fileARFF = pathFile + "syncopeFile/SYNCOPE.arff";
+			baseFilePath = pathFile + "syncopeFile/SYNCOPE";
+			firstRelease = "1.0.0-incubating";
+			projectName = "SYNCOPE";
 			
-			File fileCheck = new File(fileARFF);
+		}else {
+			
+			//else set bookkeeper attributes
+			fileCSV = pathFile + "bookkeeperFile/BOOKKEEPER.csv";
+			fileARFF = pathFile + "bookkeeperFile/BOOKKEEPER.arff";
+			baseFilePath = pathFile + "bookkeeperFile/BOOKKEEPER";
+			firstRelease = "4.0.0";
+			projectName = "BOOKKEEPER";
+		}
+					
+		fileArffList = new ArrayList<String>();
+		fileCSVList = new ArrayList<String>();
+			
+		File fileCheck = new File(fileARFF);
 				
-				if(!fileCheck.exists()) {
+			if(!fileCheck.exists()) {
 					
-					String[] params = {fileCSV, fileARFF};
-					csvConverter(params);
+				String[] params = {fileCSV, fileARFF};
+				csvConverter(params);
 					
-				}		
+			}
+			
+		DataSource source = new DataSource(fileARFF);
+		numberFeature = source.getDataSet().numAttributes();
+		Attribute versions = source.getDataSet().attribute(0);
+		numberRelease = versions.numValues();
+		
+		int version = 1;
+		//convert each .csv file generated		
+		for(int k = 0; k < numberRelease; k++) {
+			
+			String currentCSVFile = baseFilePath;
+			currentCSVFile += String.valueOf(version);
+			currentCSVFile += extensionCSV;
+			fileCSVList.add(currentCSVFile);
+			
+			String currentArffFile = baseFilePath;
+			currentArffFile += String.valueOf(version);
+			currentArffFile += extensionArff;
+			fileArffList.add(currentArffFile);
+			
+			version++;
+		}
+		
+		splitCSV(fileCSV);	
+
+		
+		for(int k = 0; k < numberRelease; k++) {
+			
+			String[] params = {fileCSVList.get(k), fileArffList.get(k)};
+			csvConverter(params);
 			
 		}
-				
-		fileCSV = pathFile + "BOOKKEEPER.csv";
-		fileARFF = pathFile + "BOOKKEEPER.arff";
-		
-		File fileCheck = new File(fileARFF);
-			
-			if(!fileCheck.exists()) {
-				
-				String[] params = {fileCSV, fileARFF};
-				csvConverter(params);
-				
-			}
-			
-		fileCSV = pathFile + "syncopeFile/SYNCOPE.csv";
-		fileARFF = pathFile + "syncopeFile/SYNCOPE.arff";
-			
-		File fileCheckSyncope = new File(fileARFF);
-				
-			if(!fileCheckSyncope.exists()) {
-					
-				String[] params = {fileCSV, fileARFF};
-				csvConverter(params);
-					
-			}
-				
-		numberVersionSyncope = 7;
-		splitCSV(pathFile + "syncopeFile/SYNCOPE.csv");	
-		return;
-		
-		/*
-		DataSource source = new DataSource(fileARFF);
-		Attribute versions = source.getDataSet().attribute(0);
 		
 		//use walk forward
-		walkForward(releaseFileArffList, versions);
-		*/
+		walkForward(fileArffList, versions, firstRelease);
+			
 	}
 	
 	/*
@@ -147,39 +159,38 @@ public class Main{
 	 * 
 	 */
 	
+	//*BUG FIND* in the last split, the instance is not complete!
+	//it has need to remove 
 	public static void splitCSV(String nameCSVProject) throws IOException {
-	
 		
 		CSVReader reader = null;  
 		try{  
+						
+			reader = new CSVReader(new FileReader(nameCSVProject));  
 			
-			reader = new CSVReader(new FileReader(nameCSVProject));    
 			String [] nextLine;  
 			int currentRow = 1;
 			
-			String extension = ".csv";
-			String currentCSVFile = pathFile + "syncopeFile/SYNCOPE";
-			
 			String attributeList = "";
-			String currentVersion = "1.0.0-incubating";
-			
+
 			int version = 1;
 			
-			currentCSVFile = pathFile + "syncopeFile/SYNCOPE";
-			currentCSVFile += String.valueOf(version);
-			currentCSVFile += extension;
-			FileWriter csv = new FileWriter(currentCSVFile);
+			File fileCheck = new File(fileCSVList.get(version - 1));
+			if(fileCheck.exists()) return;
 
+			FileWriter csv = new FileWriter(fileCSVList.get(version - 1));
+			String currentVersion = firstRelease;
+						
 			//read one line at a time  
 			while ((nextLine = reader.readNext()) != null)  {  
-				
+								
 				for(String token : nextLine) {  
 			
-					if(currentRow >= 13) {
+					if(currentRow >= numberFeature + 2) {
 
 						if(token.equals(currentVersion)) {
 							
-							if(currentRow == 13) csv.append(attributeList + "\n");
+							if(currentRow == numberFeature + 2) csv.append(attributeList + "\n");
 							currentRow++;
 							
 						}else {
@@ -187,11 +198,7 @@ public class Main{
 							version++;
 							csv.close();
 
-							currentCSVFile = pathFile + "syncopeFile/SYNCOPE";
-							currentCSVFile += String.valueOf(version);
-							currentCSVFile += extension;
-							
-							csv = new FileWriter(currentCSVFile);
+							csv = new FileWriter(fileCSVList.get(version - 1));
 							csv.append(attributeList + "\n");
 
 							currentVersion = token;
@@ -206,7 +213,7 @@ public class Main{
 						
 						//create the first row with the feature
 						attributeList += token;
-						if(currentRow != 12) attributeList += ",";
+						if(currentRow != numberFeature + 1) attributeList += ",";
 						currentRow++;
 					}
 
@@ -234,15 +241,15 @@ public class Main{
 			if(c != 0) StringToAppend += ",";
 			StringToAppend += token;
 			c++;
-		
+
 		}
-				
+						
 		//add to file
 		csv.append(StringToAppend + "\n");
-							
+					
 	}
 	
-	public static void walkForward(ArrayList<String> releaseFileArffList, Attribute versions) throws Exception {
+	public static void walkForward(ArrayList<String> releaseFileArffList, Attribute versions, String firstRelease) throws Exception {
 		
 		//create array with all release
 		ArrayList<String> releaseList = new ArrayList<String>();
@@ -253,8 +260,8 @@ public class Main{
 			releaseList.add(version);
 		}
 		
-		CSVResult = new FileWriter(pathFile + "BOOKKEEPER_RESULT.csv");
-		CSVResult.append("Dataset,#TrainingRelease,Classifier,Precision,Recall,AUC,Kappa\n");
+		CSVResult = new FileWriter(baseFilePath + "_RESULT" + extensionCSV);
+		CSVResult.append("Dataset,#TrainingRelease,%Training,%DefectiveTraining,%DefectiveTesting,Classifier,Precision,Recall,AUC,Kappa\n");
 		
 		Instances training = null;
 		DataSource sourceTraining = null;
@@ -280,11 +287,9 @@ public class Main{
 				
 			}else {
 				
-				//first iteration, it does not have the testing set
-				//just skip
+				//first iteration, only one set for training and another one for testing
 				sourceTraining = new DataSource(releaseFileArffList.get(j));
 				training = sourceTraining.getDataSet();	
-				continue;
 			}
 				
 			//create testing set
@@ -296,6 +301,10 @@ public class Main{
 			training.setClassIndex(numAttr - 1);
 			testing.setClassIndex(numAttr - 1);
 			
+			//calculate %Defective in training and testing set
+			int [] compositionDefectiveTraining = calculateNumDefective(training);
+			int [] compositionDefectiveTesting= calculateNumDefective(testing);	
+
 			//use RandomForest, NaiveBayes, Ibk as classifiers
 			NaiveBayes naiveBayes = new NaiveBayes();
 			IBk ibk = new IBk();
@@ -313,10 +322,15 @@ public class Main{
 			Evaluation evalRandomForest = new Evaluation(testing);	
 			evalRandomForest.evaluateModel(randomForest, testing); 
 			
+			//%Training = training / total data
+			float trainingInstance = training.numInstances();
+			float totalInstance = trainingInstance + testing.numInstances();
+			float percentageTraining = (trainingInstance / totalInstance) * 100;
+			
 			//let's calculate the metrics for each classifier
-			calculateMetric(evalNaiveBayes, j, "NaiveBayes");
-			calculateMetric(evalIbk, j, "IBk");
-			calculateMetric(evalRandomForest, j, "RandomForest");
+			calculateMetric(evalNaiveBayes, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting);
+			calculateMetric(evalIbk, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting);
+			calculateMetric(evalRandomForest, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting);
 			
 			CSVResult.flush();
 							
@@ -324,19 +338,54 @@ public class Main{
 		
 	}
 	
+	public static int[] calculateNumDefective(Instances set) {
+		
+		int numberDefective = 0;
+		int numberNotDefective = 0;
+		int[] total = {numberDefective, numberNotDefective};
+		int numberInstances = 0;
+		numberInstances = set.numInstances();
+		for (int k = 1; k < numberInstances; k++) {
+			
+			Instance currentInstances = set.instance(k);
+			
+			if(currentInstances.stringValue(10).equals("Yes")) numberDefective++;
+			else numberNotDefective++;
+			
+		}
+		
+		total[0] = numberDefective;
+		total[1] = numberNotDefective;
+	
+		return total;
+	}
+	
 	/*
 	 * Precision, Recall, AUC, Kappa. 
 	 */
-	public static void calculateMetric(Evaluation eval, int numberRelease, String classifierName) throws IOException {
+	public static void calculateMetric(Evaluation eval, int numberRelease, String classifierName, 
+										float percentageTraining, int [] compositionDefectiveTraining, int [] compositionDefectiveTesting) throws IOException {
+		
+		float totalInstancesTraining = compositionDefectiveTraining[0] + compositionDefectiveTraining[1];
+		float percentageDefectiveTraining = compositionDefectiveTraining[0] / totalInstancesTraining * 100;
+		
+		float totalInstancesTesting = compositionDefectiveTesting[0] + compositionDefectiveTesting[1];
+		float percentageDefectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting * 100;
 		
 		System.out.println("\n" + classifierName);
 		System.out.println("Precision = " + eval.precision(0));
 		System.out.println("Recall = " + eval.recall(0));
 		System.out.println("AUC = " + eval.areaUnderROC(1));
 		System.out.println("kappa = " + eval.kappa());
+		System.out.println("%Training = " + percentageTraining);
+		System.out.println("%DefectiveTraining = " + percentageDefectiveTraining);
+		System.out.println("%DefectiveTesting = " + percentageDefectiveTesting);
 		
 		//write the result .csv file
-		CSVResult.append("BOOKKEEPER" + "," + numberRelease + "," + classifierName + "," + eval.precision(0) + "," + eval.recall(0) +  "," + eval.areaUnderROC(1) + "," + eval.kappa() + "\n");
+		CSVResult.append(projectName + "," + numberRelease + "," + percentageTraining + "," +
+						percentageDefectiveTraining + "," + percentageDefectiveTesting + "," +
+						classifierName + "," + eval.precision(0) + "," + eval.recall(0) +  "," + 
+						eval.areaUnderROC(1) + "," + eval.kappa() + "\n");
 	}
 	
 	/*
