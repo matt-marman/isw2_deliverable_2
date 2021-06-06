@@ -20,7 +20,7 @@ public class ProjectEntity {
 	public static void setFileARFF(String fileARFF) {
 		ProjectEntity.fileARFF = fileARFF;
 	}
-	public static String getBaseFilePath() {
+	public String getBaseFilePath() {
 		return baseFilePath;
 	}
 	public static void setBaseFilePath(String baseFilePath) {

@@ -13,5 +13,6 @@
 	</classpathentry>
 	<classpathentry kind="lib" path="/home/mattia/Desktop/ingegneria_software_2/Falessi/weka-3-9-5/weka.jar"/>
 	<classpathentry kind="lib" path="/home/mattia/Desktop/opencsv-3.8.jar"/>
+	<classpathentry kind="lib" path="/home/mattia/Desktop/ingegneria_software_2/Falessi/weka-3-9-5/SMOTE-1.0.3.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

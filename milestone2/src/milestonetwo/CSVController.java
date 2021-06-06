@@ -25,7 +25,8 @@ public class CSVController {
 	
 	//*BUG FIND* in the last split, the instance is not complete!
 	//it has need to remove 
-	public static void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, String firstRelease, int numberFeature) throws IOException {
+	public static void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, 
+							String firstRelease, int numberFeature, MetricEntity metricEntity) throws IOException {
 		
 		CSVReader reader = null;  
 		try{  
@@ -39,17 +40,16 @@ public class CSVController {
 
 			int version = 1;
 			
-			File fileCheck = new File(fileCSVList.get(version - 1));
-			if(fileCheck.exists()) return;
+			if(metricEntity.getBalancing() != "No Sampling") numberFeature --;
 
 			FileWriter csv = new FileWriter(fileCSVList.get(version - 1));
 			String currentVersion = firstRelease;
 						
 			//read one line at a time  
 			while ((nextLine = reader.readNext()) != null)  {  
-								
+											
 				for(String token : nextLine) {  
-			
+					
 					if(currentRow >= numberFeature + 2) {
 
 						if(token.equals(currentVersion)) {
@@ -85,6 +85,9 @@ public class CSVController {
 			
 			}  
 			
+			csv.close();
+
+			
 		}  
 		
 		catch (Exception e)   
@@ -119,7 +122,7 @@ public class CSVController {
 	   * - ARFF output file
 	   */
 
-	public static void csvConverter(String[] args) throws Exception {
+	public static void csvConverter(String[] args, MetricEntity metricEntity) throws Exception {
 	    
 		if (args.length != 2) {
 		      System.out.println("\nUsage: CSV2Arff <input.csv> <output.arff>\n");
@@ -133,8 +136,17 @@ public class CSVController {
 	    
 	    //remove name path
 	    //index = 1, corresponds to path name
-	    int[] indices = {1};
-	    
+    	Remove removeFilter = new Remove();
+
+	    if(metricEntity.getBalancing() == "No Sampling") {
+	    	
+	    	int[] indices = {1};
+			removeFilter.setAttributeIndicesArray(indices);
+		    removeFilter.setInvertSelection(false);
+		    removeFilter.setInputFormat(data);
+		    data = Filter.useFilter(data, removeFilter);	    
+
+	    }
 	    /*
 	     * This assumes that indices contains 
 	     * the indices of attributes that you want to keep. 
@@ -143,14 +155,7 @@ public class CSVController {
 	     * the setInvertSelection method.
 	     *  
 	     */
-	   
-	    Remove removeFilter = new Remove();
-		removeFilter.setAttributeIndicesArray(indices);
-	    removeFilter.setInvertSelection(false);
-	    removeFilter.setInputFormat(data);
-	    
-	    data = Filter.useFilter(data, removeFilter);	    
-	    
+	   	    
 	    // save ARFF
 	    ArffSaver saver = new ArffSaver();
 	    saver.setInstances(data);

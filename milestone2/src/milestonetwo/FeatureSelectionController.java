@@ -12,12 +12,13 @@ import weka.core.converters.ConverterUtils.DataSource;
 
 public class FeatureSelectionController {
 	
-	public String applyFeatureSelection(String fileARFF, int selection) throws Exception {
+	public String applyFeatureSelection(String fileARFF, int selection, String newFileARFF) throws Exception {
 		
-		//switch = 0, return unfiltered .arff file
+		//selection = 0, return unfiltered .arff file
 		//else return the filtered .arff file
-		
 		if(selection == 0) return fileARFF;
+		
+		newFileARFF += "new.arff";
 		
 		//load dataset
 		DataSource source = new DataSource(fileARFF);
@@ -33,22 +34,27 @@ public class FeatureSelectionController {
 		//set the algorithm to search backward
 		//search.setSearchBackwards(true);
 				
+		//keep 'Version number'!!!!
+		
+		//...
+		
 		//set the filter to use the evaluator and search algorithm
 		filter.setEvaluator(eval);
 		filter.setSearch(search);
+
 		//specify the dataset
 		filter.setInputFormat(dataset);
+		
 		//apply
 		Instances newData = Filter.useFilter(dataset, filter);
 		//save
 		ArffSaver saver = new ArffSaver();
 		saver.setInstances(newData);
 		
-		//saver.setFile(new File(fileARFF));
-		saver.setFile(new File("/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/test.arff"));
+		saver.setFile(new File(newFileARFF));
 		saver.writeBatch();
 		
-		return "";
+		return newFileARFF;
 			
 	}
 	
