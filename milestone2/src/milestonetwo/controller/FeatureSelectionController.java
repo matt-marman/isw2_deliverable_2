@@ -8,21 +8,24 @@ import weka.filters.Filter;
 import weka.filters.supervised.attribute.AttributeSelection;
 import weka.core.converters.ArffSaver;
 import java.io.File;
+
+import milestonetwo.entity.MetricEntity;
 import weka.core.converters.ConverterUtils.DataSource;
 
 public class FeatureSelectionController {
 	
-	public String applyFeatureSelection(String fileARFF, int selection, String newFileARFF) throws Exception {
-		
+	public Instances [] applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) throws Exception {
+				
 		//selection = 0, return unfiltered .arff file
 		//else return the filtered .arff file
-		if(selection == 0) return fileARFF;
+		if(selection == 0) {
+			
+			metricEntity.setFeatureSelection("No Selection");
+			Instances [] param = {training, testing};
+			return param;
+		}
 		
-		newFileARFF += "new.arff";
-		
-		//load dataset
-		DataSource source = new DataSource(fileARFF);
-		Instances dataset = source.getDataSet();
+		metricEntity.setFeatureSelection("Best First");
 		
 		//create AttributeSelection object
 		AttributeSelection filter = new AttributeSelection();
@@ -31,34 +34,23 @@ public class FeatureSelectionController {
 		CfsSubsetEval eval = new CfsSubsetEval();
 		BestFirst search = new BestFirst();
 			
-		//set the algorithm to search backward
-		//search.setSearchBackwards(true);
-				
-		//keep 'Version number'!!!!
-		
-		//...
-		
 		//set the filter to use the evaluator and search algorithm
 		filter.setEvaluator(eval);
 		filter.setSearch(search);
-
-		//specify the dataset
-		filter.setInputFormat(dataset);
+		filter.setInputFormat(training);
 		
 		//apply
-		Instances newData = Filter.useFilter(dataset, filter);
-		//return newData;
-		System.out.print(newData.toString());
+		Instances trainingFeatureSelection = Filter.useFilter(training, filter);
+		Instances testingFeatureSelection = Filter.useFilter(testing, filter);
 		
-		//save
-		ArffSaver saver = new ArffSaver();
-		saver.setInstances(newData);
+		int numAttr = trainingFeatureSelection.numAttributes();
 		
-		saver.setFile(new File(newFileARFF));
-		saver.writeBatch();
+		trainingFeatureSelection.setClassIndex(numAttr - 1);
+		testingFeatureSelection.setClassIndex(numAttr - 1);
 		
-		return newFileARFF;
-			
+		Instances [] param2 = {trainingFeatureSelection, testingFeatureSelection};
+		return param2;
+					
 	}
 	
 }

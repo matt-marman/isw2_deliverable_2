@@ -16,7 +16,7 @@ public class MetricController {
 	 */
 	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, int numberRelease, String classifierName, 
 										float percentageTraining, int [] compositionDefectiveTraining, int [] compositionDefectiveTesting,
-										MetricEntity metricEntity, String featureSelection,
+										MetricEntity metricEntity,
 										FileWriter CSVResult) throws IOException {
 		
 		double TP = eval.numTruePositives(0);
@@ -51,7 +51,7 @@ public class MetricController {
 		System.out.println("%DefectiveTesting = " + percentageDefectiveTesting);
 		
 		System.out.println("Balancing = " + metricEntity.getBalancing());
-		System.out.println("Feature Selection = " + featureSelection);
+		System.out.println("Feature Selection = " + metricEntity.getFeatureSelection());
 		System.out.println("Sensitivity = " + metricEntity.getSensitivity());
 		
 		System.out.println("TP = " + TP);
@@ -60,12 +60,21 @@ public class MetricController {
 		System.out.println("FN = " + FN);
 		
 		//write the result .csv file
-		CSVResult.append(projectEntity.getProjectName() + "," + numberRelease + "," + percentageTraining + "," +
-						percentageDefectiveTraining + "," + percentageDefectiveTesting + "," +
-						classifierName + "," + metricEntity.getBalancing() + "," + featureSelection + ","  + metricEntity.getSensitivity() + "," +
-						TP + "," + FP + "," + TN + ","  + FN + "," +
-						eval.precision(0) + "," + eval.recall(0) +  "," + 
-						eval.areaUnderROC(1) + "," + eval.kappa() + "\n");
+		CSVResult.append(projectEntity.getProjectName() + "," 
+						+ numberRelease + "," 
+						+ percentageTraining + "," 
+						+ percentageDefectiveTraining + "," 
+						+ percentageDefectiveTesting + "," 
+						+ classifierName + "," 
+						+ metricEntity.getBalancing() + "," 
+						+ metricEntity.getFeatureSelection() + ","  
+						+ metricEntity.getSensitivity() + "," 
+						+ TP + "," + FP + "," + TN + ","  + FN + "," 
+						+ eval.precision(0) + "," 
+						+ eval.recall(0) +  "," 
+						+ eval.areaUnderROC(0) + "," 
+						+ eval.kappa() + 
+						"\n");
 	
 		CSVResult.flush();
 	}
