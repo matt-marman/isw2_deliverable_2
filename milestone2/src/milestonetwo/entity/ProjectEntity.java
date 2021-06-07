@@ -1,4 +1,4 @@
-package milestonetwo;
+package milestonetwo.entity;
 
 public class ProjectEntity {
 
@@ -8,34 +8,34 @@ public class ProjectEntity {
 	private static String firstRelease = "";
 	private static String projectName = "";
 
-	public static String getFileCSV() {
+	public String getFileCSV() {
 		return fileCSV;
 	}
-	public static void setFileCSV(String fileCSV) {
+	public void setFileCSV(String fileCSV) {
 		ProjectEntity.fileCSV = fileCSV;
 	}
-	public static String getFileARFF() {
+	public String getFileARFF() {
 		return fileARFF;
 	}
-	public static void setFileARFF(String fileARFF) {
+	public void setFileARFF(String fileARFF) {
 		ProjectEntity.fileARFF = fileARFF;
 	}
 	public String getBaseFilePath() {
 		return baseFilePath;
 	}
-	public static void setBaseFilePath(String baseFilePath) {
+	public void setBaseFilePath(String baseFilePath) {
 		ProjectEntity.baseFilePath = baseFilePath;
 	}
-	public static String getFirstRelease() {
+	public String getFirstRelease() {
 		return firstRelease;
 	}
-	public static void setFirstRelease(String firstRelease) {
+	public void setFirstRelease(String firstRelease) {
 		ProjectEntity.firstRelease = firstRelease;
 	}
 	public String getProjectName() {
 		return projectName;
 	}
-	public static void setProjectName(String projectName) {
+	public void setProjectName(String projectName) {
 		ProjectEntity.projectName = projectName;
 	}
 	

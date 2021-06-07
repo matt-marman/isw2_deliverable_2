@@ -1,13 +1,74 @@
-package milestonetwo;
+package milestonetwo.controller;
 
 import java.io.FileWriter;
 import java.io.IOException;
 
+import milestonetwo.entity.MetricEntity;
+import milestonetwo.entity.ProjectEntity;
 import weka.classifiers.Evaluation;
 import weka.core.Instance;
 import weka.core.Instances;
 
 public class MetricController {
+	
+	/*
+	 * Precision, Recall, AUC, Kappa. 
+	 */
+	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, int numberRelease, String classifierName, 
+										float percentageTraining, int [] compositionDefectiveTraining, int [] compositionDefectiveTesting,
+										MetricEntity metricEntity, String featureSelection,
+										FileWriter CSVResult) throws IOException {
+		
+		double TP = eval.numTruePositives(0);
+		double TN = eval.numTrueNegatives(0);
+		double FP = eval.numFalsePositives(0);
+		double FN = eval.numFalseNegatives(0);
+		
+		float totalInstancesTraining = compositionDefectiveTraining[0] + compositionDefectiveTraining[1];
+		float DefectiveTraining = compositionDefectiveTraining[0] / totalInstancesTraining;
+		float percentageDefectiveTraining = DefectiveTraining * 100;
+		
+		float totalInstancesTesting = compositionDefectiveTesting[0] + compositionDefectiveTesting[1];
+		float DefectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting;
+		float percentageDefectiveTesting = DefectiveTesting * 100;
+		
+		if(numberRelease == 6 && metricEntity.getBalancing() == "No Balancing") {
+			
+			metricEntity.setPercentageMajorityClass(((compositionDefectiveTraining[0] + compositionDefectiveTesting[0])/
+											totalInstancesTraining + totalInstancesTesting) * 100);
+			
+			
+		}
+		
+		
+		System.out.println("\n" + classifierName);
+		System.out.println("Precision = " + eval.precision(0));
+		System.out.println("Recall = " + eval.recall(0));
+		System.out.println("AUC = " + eval.areaUnderROC(0));
+		System.out.println("kappa = " + eval.kappa());
+		System.out.println("%Training = " + percentageTraining);
+		System.out.println("%DefectiveTraining = " + percentageDefectiveTraining);
+		System.out.println("%DefectiveTesting = " + percentageDefectiveTesting);
+		
+		System.out.println("Balancing = " + metricEntity.getBalancing());
+		System.out.println("Feature Selection = " + featureSelection);
+		System.out.println("Sensitivity = " + metricEntity.getSensitivity());
+		
+		System.out.println("TP = " + TP);
+		System.out.println("FP = " + FP);
+		System.out.println("TN = " + TN);
+		System.out.println("FN = " + FN);
+		
+		//write the result .csv file
+		CSVResult.append(projectEntity.getProjectName() + "," + numberRelease + "," + percentageTraining + "," +
+						percentageDefectiveTraining + "," + percentageDefectiveTesting + "," +
+						classifierName + "," + metricEntity.getBalancing() + "," + featureSelection + ","  + metricEntity.getSensitivity() + "," +
+						TP + "," + FP + "," + TN + ","  + FN + "," +
+						eval.precision(0) + "," + eval.recall(0) +  "," + 
+						eval.areaUnderROC(1) + "," + eval.kappa() + "\n");
+	
+		CSVResult.flush();
+	}
 	
 	public int[] calculateNumDefective(Instances set, MetricEntity metricEntity) {
 		
@@ -36,61 +97,6 @@ public class MetricController {
 		total[1] = numberNotDefective;
 	
 		return total;
-	}
-	
-	/*
-	 * Precision, Recall, AUC, Kappa. 
-	 */
-	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, int numberRelease, String classifierName, 
-										float percentageTraining, int [] compositionDefectiveTraining, int [] compositionDefectiveTesting,
-										MetricEntity metricEntity, String featureSelection, String sensitivity, int TP, int FP, int TN, int FN,
-										FileWriter CSVResult) throws IOException {
-		
-		float totalInstancesTraining = compositionDefectiveTraining[0] + compositionDefectiveTraining[1];
-		float DefectiveTraining = compositionDefectiveTraining[0] / totalInstancesTraining;
-		float percentageDefectiveTraining = DefectiveTraining * 100;
-		
-		float totalInstancesTesting = compositionDefectiveTesting[0] + compositionDefectiveTesting[1];
-		float DefectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting;
-		float percentageDefectiveTesting = DefectiveTesting * 100;
-		
-		if(numberRelease == 6 && metricEntity.getBalancing() == "No Balancing") {
-			
-			metricEntity.setPercentageMajorityClass(((compositionDefectiveTraining[0] + compositionDefectiveTesting[0])/
-											totalInstancesTraining + totalInstancesTesting) * 100);
-			
-			
-		}
-		
-		/*
-		
-		System.out.println("\n" + classifierName);
-		System.out.println("Precision = " + eval.precision(0));
-		System.out.println("Recall = " + eval.recall(0));
-		System.out.println("AUC = " + eval.areaUnderROC(1));
-		System.out.println("kappa = " + eval.kappa());
-		System.out.println("%Training = " + percentageTraining);
-		System.out.println("%DefectiveTraining = " + percentageDefectiveTraining);
-		System.out.println("%DefectiveTesting = " + percentageDefectiveTesting);
-		
-		System.out.println("Balancing = " + metricEntity.getBalancing());
-		System.out.println("Feature Selection = " + featureSelection);
-		System.out.println("Sensitivity = " + sensitivity);
-		
-		System.out.println("TP = " + TP);
-		System.out.println("FP = " + FP);
-		System.out.println("TN = " + TN);
-		System.out.println("FN = " + FN);
-		*/
-		//write the result .csv file
-		CSVResult.append(projectEntity.getProjectName() + "," + numberRelease + "," + percentageTraining + "," +
-						percentageDefectiveTraining + "," + percentageDefectiveTesting + "," +
-						classifierName + "," + metricEntity.getBalancing() + "," + featureSelection + ","  + sensitivity + "," +
-						TP + "," + FP + "," + TN + ","  + FN + "," +
-						eval.precision(0) + "," + eval.recall(0) +  "," + 
-						eval.areaUnderROC(1) + "," + eval.kappa() + "\n");
-	
-		CSVResult.flush();
 	}
 	
 	

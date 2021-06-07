@@ -1,4 +1,4 @@
-package milestonetwo;
+package milestonetwo.controller;
 
 import weka.core.Attribute;
 import weka.core.Instance;
@@ -18,31 +18,18 @@ import weka.core.Instance;
 //import required classes
 import weka.core.Instances;
 
-import java.io.BufferedOutputStream;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileOutputStream;
-import java.io.FileReader;
 import java.io.FileWriter;
-import java.io.IOException;
-import java.io.RandomAccessFile;
 import java.util.ArrayList;
-import java.util.List;
 
+import milestonetwo.entity.MetricEntity;
+import milestonetwo.entity.ProjectEntity;
 import weka.classifiers.Evaluation;
-import weka.classifiers.meta.FilteredClassifier;
 import weka.classifiers.trees.RandomForest;
 import weka.classifiers.bayes.NaiveBayes;
-import weka.filters.Filter;
-import weka.filters.supervised.instance.Resample;
-import weka.filters.unsupervised.attribute.Remove;
-import weka.core.converters.ArffSaver;
-import weka.core.converters.CSVLoader;
 import weka.core.converters.ConverterUtils.DataSource;
-import weka.classifiers.evaluation.*;
 import weka.classifiers.lazy.IBk;
-import com.opencsv.CSVReader;
-import com.opencsv.CSVWriter;  
+ 
 /*
  * Obiettivo:
  * Comparare l’accuratezza (Precision/Recall/AUC/Kappa),
@@ -50,7 +37,7 @@ import com.opencsv.CSVWriter;
  * sui progetti selezionati precedentemente
  * (Deliverable 2 - Milestone 1),
  * utilizzando la tecnica di validazione «WalkForward»
- * 
+ * MetricController
  * Per rispondere alla domanda sopra si consiglia di
 	creare, e poi analizzare, un file avente le seguenti
 	colonne: dataset, #TrainingRelease, Classifier,
@@ -63,16 +50,7 @@ public class MainController{
 	//false = Bookkeeper project
 	//true = Syncope project
 	public static boolean projectSelection = false;
-	//false = no selection
-	//true = best first as selection
-	public static boolean featureSelection = false;
-	//false = no selection
-	//true = best first as selection
-	public static boolean balancing = false;
-	//false = no selection
-	//true = best first as selection
-	public static boolean costSensitive = false;
-		
+	
 	public static String pathFile = "/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/";
 	public static FileWriter CSVResult;
 	public static FileWriter csv;
@@ -88,7 +66,8 @@ public class MainController{
 	public static void main(String args[]) throws Exception{
 		
 		ProjectEntity projectEntity = new ProjectEntity(); 
-		//set attributes for Syncope project
+		
+		//set attributes for project
 		if(projectSelection) {
 			
 			projectEntity.setBaseFilePath(pathFile + "syncopeFile/SYNCOPE");
@@ -111,13 +90,13 @@ public class MainController{
 		MetricEntity metricEntity = new MetricEntity(); 
 		metricEntity.setBalancing("No Sampling");
 		
-		//check if file PROJECT.arff exists
+		String[] params = null;
 		File fileCheck = new File(projectEntity.getFileARFF());			
 		if(!fileCheck.exists()) {
 					
 			//in case it is created from PROJECT.csv 
-			String[] params = {projectEntity.getFileCSV(), projectEntity.getFileARFF()};
-
+			params[0] = projectEntity.getFileCSV();
+			params[1] = projectEntity.getFileARFF();
 			CSVController.csvConverter(params, metricEntity);
 					
 		}
@@ -134,77 +113,60 @@ public class MainController{
 		//use feature selection
 		for (int featureSelectionIndex = 0; featureSelectionIndex < 1; featureSelectionIndex++) {
 			
-			
-			//*****featureSelectionIndex < 2
 			FeatureSelectionController featureSelectionController = new FeatureSelectionController();
 			String arffFileFeature = featureSelectionController.applyFeatureSelection(projectEntity.getFileARFF(), featureSelectionIndex, 
 									"/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/bookkeeperFile/BOOKKEPER");
 									//projectEntity.getBaseFilePath()
 			
-			for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
+			
+			for (int balancingSelectionIndex = 0; balancingSelectionIndex < 1; balancingSelectionIndex++) {
 				
 				BalancingController balancingController = new BalancingController();
 				//it returns an .arff file and .csv file
 				String[] arffFileBalancing = balancingController.applyBalancing(arffFileFeature, balancingSelectionIndex, 
 											projectEntity.getBaseFilePath(), metricEntity);
 				
-				//if(true) return;
 				
-				for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 1; sensitiveSelectionIndex++) {
-	
-					
-					projectEntity.setFileARFF(arffFileBalancing[0]);
-					projectEntity.setFileCSV(arffFileBalancing[1]);
-										
-					//check if file PROJECT.arff exists
-					//File fileCheck = new File(projectEntity.getFileARFF());			
-					//if(fileCheck.exists()) {
+				projectEntity.setFileARFF(arffFileBalancing[0]);
+				projectEntity.setFileCSV(arffFileBalancing[1]);
+				
+				String[] params2 = {projectEntity.getFileCSV(), projectEntity.getFileARFF()};
+				CSVController.csvConverter(params2, metricEntity);
 								
-						//in case it is created from PROJECT.csv 
-						String[] params2 = {projectEntity.getFileCSV(), projectEntity.getFileARFF()};
-	
-						CSVController.csvConverter(params2, metricEntity);
-								
-					//}
+				DataSource source = new DataSource(projectEntity.getFileARFF());
+				numberFeature = source.getDataSet().numAttributes();
+				Attribute versions = source.getDataSet().attribute(0);
+				numberRelease = versions.numValues();
+
+				//convert each .csv file generated		
+				for(int version = 0; version < numberRelease; version++) {
 						
-					DataSource source = new DataSource(projectEntity.getFileARFF());
-					numberFeature = source.getDataSet().numAttributes();
-					Attribute versions = source.getDataSet().attribute(0);
-					numberRelease = versions.numValues();
-					
-					int version = 1;
-					//convert each .csv file generated		
-					for(int i = 0; i < numberRelease; i++) {
+					String currentCSVFile = projectEntity.getBaseFilePath();
+					currentCSVFile += String.valueOf(version + 1);
+					currentCSVFile += extensionCSV;
+					fileCSVList.add(currentCSVFile);
 						
-						String currentCSVFile = projectEntity.getBaseFilePath();
-						currentCSVFile += String.valueOf(version);
-						currentCSVFile += extensionCSV;
-						fileCSVList.add(currentCSVFile);
+					String currentArffFile = projectEntity.getBaseFilePath();;
+					currentArffFile += String.valueOf(version + 1);
+					currentArffFile += extensionArff;
+					fileArffList.add(currentArffFile);
 						
-						String currentArffFile = projectEntity.getBaseFilePath();;
-						currentArffFile += String.valueOf(version);
-						currentArffFile += extensionArff;
-						fileArffList.add(currentArffFile);
-						
-						version++;
-					}
-						
-					CSVController.splitCSV(projectEntity.getFileCSV(), fileCSVList, projectEntity.getFirstRelease(), numberFeature, metricEntity);	
-					
-					for(int j = 0; j < numberRelease; j++) {
-						
-						String[] paramsCSVController = {fileCSVList.get(j), fileArffList.get(j)};
-						CSVController.csvConverter(paramsCSVController, metricEntity);
-						
-					}
-					
-					//use walk forward
-					walkForward(fileArffList, versions, projectEntity, metricEntity);
-					
 				}
-				
+						
+				CSVController.splitCSV(projectEntity.getFileCSV(), fileCSVList, projectEntity.getFirstRelease(), numberFeature, metricEntity);	
+					
+				for(int j = 0; j < numberRelease; j++) {
+						
+					String[] paramsCSVController = {fileCSVList.get(j), fileArffList.get(j)};
+					CSVController.csvConverter(paramsCSVController, metricEntity);
+						
+				}
+					
+				//use walk forward
+				walkForward(fileArffList, versions, projectEntity, metricEntity);
+									
 			}
-	
+				
 		}
 			
 	}
@@ -224,81 +186,78 @@ public class MainController{
 		Instances training = null;
 		DataSource sourceTraining = null;
 		
-		for(int j = 0; j < numberRelease - 1; j++) {
-			
-			//merge instances
-			if(j != 0) {
-				
-				DataSource newSourceTraining = new DataSource(releaseFileArffList.get(j));
-				Instances newTraining = newSourceTraining.getDataSet();	
-				
-				String releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
-				
-				//change the version number
-				//for merge the two set
-				newTraining.renameAttributeValue(
-						newTraining.attribute("Version Number"),
-						releaseNewTraining,
-						projectEntity.getFirstRelease());
-						
-				training = mergeInstances(training, newTraining);
-				
-			}else {
-				
-				//first iteration, only one set for training and another one for testing
-				sourceTraining = new DataSource(releaseFileArffList.get(j));
-				training = sourceTraining.getDataSet();	
-			}
-				
-			//create testing set
-			
-			DataSource sourceTesting = new DataSource(releaseFileArffList.get(j + 1));
-			Instances testing = sourceTesting.getDataSet();
-			
-			int numAttr = training.numAttributes();
-			
-			training.setClassIndex(numAttr - 1);
-			testing.setClassIndex(numAttr - 1);
-			
-			MetricController metricController = new MetricController();
-			//calculate %Defective in training and testing set
-			int [] compositionDefectiveTraining = metricController.calculateNumDefective(training, metricEntity);
-			int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing, metricEntity);	
-
-			//use RandomForest, NaiveBayes, Ibk as classifiers
-			NaiveBayes naiveBayes = new NaiveBayes();
-			IBk ibk = new IBk();
-			RandomForest randomForest = new RandomForest();
-
-			naiveBayes.buildClassifier(training);
-			Evaluation evalNaiveBayes = new Evaluation(testing);	
-			evalNaiveBayes.evaluateModel(naiveBayes, testing); 
-
-			ibk.buildClassifier(training);
-			Evaluation evalIbk = new Evaluation(testing);	
-			evalIbk.evaluateModel(ibk, testing); 
-					
-			
-			randomForest.buildClassifier(training);
-			//PROBLEMA CON SMOTE
-			Evaluation evalRandomForest = new Evaluation(testing);	
-			evalRandomForest.evaluateModel(randomForest, testing); 
-			
-			//%Training = training / total data
-			float trainingInstance = training.numInstances();
-			float totalInstance = trainingInstance + testing.numInstances();
-			float percentageTraining = (trainingInstance / totalInstance) * 100;
-			
-			//let's calculate the metrics for each classifier
-			metricController.calculateMetric(evalNaiveBayes, projectEntity, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-					metricEntity, "Feature Selection", "Sensitivity", 0, 0, 0, 0, CSVResult);
-			metricController.calculateMetric(evalIbk, projectEntity, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-					metricEntity, "Feature Selection", "Sensitivity", 0, 0, 0, 0, CSVResult);
-			metricController.calculateMetric(evalRandomForest, projectEntity, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-					metricEntity, "Feature Selection", "Sensitivity", 0, 0, 0, 0, CSVResult);
-								
-		}		
 		
+		//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
+		for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 2; sensitiveSelectionIndex++) {
+
+			SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
+		
+			for(int j = 0; j < numberRelease - 1; j++) {
+				
+				//merge instances
+				if(j != 0) {
+					DataSource newSourceTraining = new DataSource(releaseFileArffList.get(j));
+					Instances newTraining = newSourceTraining.getDataSet();	
+					
+					String releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
+					
+					//change the version number
+					//for merge the two set
+					newTraining.renameAttributeValue(
+							newTraining.attribute("Version Number"),
+							releaseNewTraining,
+							projectEntity.getFirstRelease());
+							
+					training = mergeInstances(training, newTraining);
+					
+				}else {
+					
+					//first iteration, only one set for training and another one for testing
+					sourceTraining = new DataSource(releaseFileArffList.get(j));
+					training = sourceTraining.getDataSet();	
+				}
+					
+				//create testing set
+				
+				DataSource sourceTesting = new DataSource(releaseFileArffList.get(j + 1));
+				Instances testing = sourceTesting.getDataSet();
+				
+				int numAttr = training.numAttributes();
+				
+				training.setClassIndex(numAttr - 1);
+				testing.setClassIndex(numAttr - 1);
+								
+				MetricController metricController = new MetricController();
+				//calculate %Defective in training and testing set
+				int [] compositionDefectiveTraining = metricController.calculateNumDefective(training, metricEntity);
+				int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing, metricEntity);	
+	
+				//use RandomForest, NaiveBayes, Ibk as classifiers
+				NaiveBayes naiveBayes = new NaiveBayes();
+				IBk ibk = new IBk();
+				RandomForest randomForest = new RandomForest();
+	
+				Evaluation evalNaiveBayes = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, naiveBayes, training, testing, metricEntity);
+				Evaluation evalIbk = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, ibk, training, testing, metricEntity);	
+				Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, training, testing, metricEntity);
+					
+				//%Training = training / total data
+				float trainingInstance = training.numInstances();
+				float totalInstance = trainingInstance + testing.numInstances();
+				float percentageTraining = (trainingInstance / totalInstance) * 100;
+				
+				//let's calculate the metrics for each classifier
+				metricController.calculateMetric(evalNaiveBayes, projectEntity, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
+						metricEntity, "Feature Selection", CSVResult);
+				metricController.calculateMetric(evalIbk, projectEntity, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
+						metricEntity, "Feature Selection", CSVResult);
+				metricController.calculateMetric(evalRandomForest, projectEntity, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
+						metricEntity, "Feature Selection", CSVResult);
+									
+			}	
+			
+		}
+			
 	}
 	
 	/*

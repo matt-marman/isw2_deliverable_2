@@ -1,13 +1,17 @@
-package milestonetwo;
+package milestonetwo.controller;
 
 import java.io.File;
 import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
+import java.nio.charset.StandardCharsets;
+import java.nio.file.Files;
 import java.util.ArrayList;
+import java.util.List;
 
 import com.opencsv.CSVReader;
 
+import milestonetwo.entity.MetricEntity;
 import weka.core.Instances;
 import weka.core.converters.ArffSaver;
 import weka.core.converters.CSVLoader;
@@ -23,9 +27,7 @@ public class CSVController {
 	 * 
 	 */
 	
-	//*BUG FIND* in the last split, the instance is not complete!
-	//it has need to remove 
-	public static void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, 
+	public void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, 
 							String firstRelease, int numberFeature, MetricEntity metricEntity) throws IOException {
 		
 		CSVReader reader = null;  
@@ -162,5 +164,16 @@ public class CSVController {
 	    saver.setFile(new File(args[1]));
 	    saver.setDestination(new File(args[1]));
 	    saver.writeBatch();
+	    
+	    
+	    List<String> lines = Files.readAllLines(new File(args[1]).toPath(), StandardCharsets.UTF_8);
+	    for (String line : lines) {
+	    	if (line.contains("@attribute Bugginess {No,Yes}")) {
+	    		lines.set(lines.indexOf(line), "@attribute bugginess {Yes,No}");
+	    	}
+	    }
+	    
+	    
+	    Files.write(new File(args[1]).toPath(), lines, StandardCharsets.UTF_8);
 	  }
 }

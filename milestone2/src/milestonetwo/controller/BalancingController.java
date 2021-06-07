@@ -1,11 +1,9 @@
-package milestonetwo;
+package milestonetwo.controller;
 
-import java.io.BufferedReader;
 import java.io.File;
-import java.io.FileNotFoundException;
-import java.io.FileReader;
 import java.io.IOException;
 
+import milestonetwo.entity.MetricEntity;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Instances;
 import weka.core.converters.ArffLoader;
@@ -16,6 +14,7 @@ import weka.filters.Filter;
 import weka.filters.supervised.instance.Resample;
 import weka.filters.supervised.instance.SMOTE;
 import weka.filters.supervised.instance.SpreadSubsample;
+
 public class BalancingController {
 	
 	public String[] applyBalancing(String arffFile, int balancingSelectionIndex, String newArffFile, MetricEntity metricEntity) throws Exception {
@@ -89,19 +88,18 @@ public class BalancingController {
 
 	public static String[] applySmote(String newArffFile, String arffFile, MetricEntity metricEntity) throws Exception {
 		
-	   /* String[] params = {newArffFile + "Smote.arff", newArffFile + "Smote.csv"};
-
-		if(true) return params;
-		*/
 		metricEntity.setBalancing("Smote");
 
 		DataSource source = new DataSource(arffFile);
 		Instances data = source.getDataSet();
 		data.setClassIndex(data.numAttributes() - 1);
 				
-		SMOTE smote = new SMOTE();  //create object of SMOTE
+		//create object of SMOTE
+		SMOTE smote = new SMOTE(); 
 		smote.setInputFormat(data);
-		Instances dataSmote = Filter.useFilter(data, smote); //Apply SMOTE on Dataset
+		
+		//Apply SMOTE on Dataset
+		Instances dataSmote = Filter.useFilter(data, smote); 
 		
 		return createFile(data, dataSmote, newArffFile, "Smote.arff", "Smote.csv");		
 	}
@@ -121,15 +119,13 @@ public class BalancingController {
 
 	    // save CSV
 	    CSVSaver saver = new CSVSaver();
-	    saver.setInstances(data);//set the dataset we want to convert
-	    //and save as CSV
+	    saver.setInstances(data);
 	    saver.setFile(new File(baseFile + extensionCSV));
 	    saver.writeBatch();
 	    	    
-	    
-	    //let's sort the .csv file
+	    // sort the .csv file
 	    //because balancing adds new istances at the end of file .csv
-	    SortCSV sortCSV = new SortCSV(baseFile + extensionCSV);
+	    new SortCSV(baseFile + extensionCSV);
 	    	    
 	    String[] params = {baseFile + extensionArff, baseFile + extensionCSV};
 	    

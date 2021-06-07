@@ -1,4 +1,4 @@
-package milestonetwo;
+package milestonetwo.controller;
 
 import weka.attributeSelection.BestFirst;
 import weka.attributeSelection.CfsSubsetEval;
@@ -47,6 +47,9 @@ public class FeatureSelectionController {
 		
 		//apply
 		Instances newData = Filter.useFilter(dataset, filter);
+		//return newData;
+		System.out.print(newData.toString());
+		
 		//save
 		ArffSaver saver = new ArffSaver();
 		saver.setInstances(newData);
