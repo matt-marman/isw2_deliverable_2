@@ -7,12 +7,32 @@ import weka.classifiers.Evaluation;
 import weka.classifiers.meta.CostSensitiveClassifier;
 import weka.core.Instances;
 
+/**
+ * This class applies:
+ * 
+ * No cost sensitive
+ * Sensitive Threshold (CFN = 10 * CFP)
+ * Sensitive Learning (CFN = 10 * CFP)
+ * 
+ * @author Mattia Di Battista
+ *
+ */
 public class SensitiveSelectionController {
 
 	private MetricEntity metricEntity;
 	private Classifier classifier;
 	private Instances trainingSet;
 	private Instances testingSet;
+	
+	/**
+	 * @param sensitiveSelectionIndex
+	 * @param classifier
+	 * @param trainingSet
+	 * @param testingSet
+	 * @param metricEntity
+	 * @return
+	 * @throws Exception
+	 */
 	
 	public Evaluation applySensitiveSelection(int sensitiveSelectionIndex, Classifier classifier, 
 												Instances trainingSet, Instances testingSet, 
@@ -33,7 +53,6 @@ public class SensitiveSelectionController {
 		
 	}
 	
-	//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
 	private Evaluation applyNoSensitive() throws Exception {
 		
 		this.metricEntity.setSensitivity("No Cost Sensitive");
@@ -99,6 +118,10 @@ public class SensitiveSelectionController {
 		return costMatrix;
 	}
 	
+	/**
+	 * @param costMatrix
+	 * @return
+	 */
 	private CostSensitiveClassifier applyCostSensitive(CostMatrix costMatrix) {
 		
 		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();

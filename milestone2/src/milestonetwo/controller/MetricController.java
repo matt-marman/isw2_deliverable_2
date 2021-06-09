@@ -11,8 +11,24 @@ import weka.core.Instances;
 
 public class MetricController {
 	
-	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, int numberRelease, String classifierName, 
-										float percentageTraining, int [] compositionDefectiveTraining, 
+	/**
+	 * @param eval
+	 * @param projectEntity
+	 * @param numberRelease
+	 * @param classifierName
+	 * @param percentageTraining
+	 * @param compositionDefectiveTraining
+	 * @param compositionDefectiveTesting
+	 * @param metricEntity
+	 * @param CSVResult
+	 * @throws IOException
+	 */
+	
+	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, 
+										int numberRelease, 
+										String classifierName, 
+										float percentageTraining, 
+										int [] compositionDefectiveTraining, 
 										int [] compositionDefectiveTesting,
 										MetricEntity metricEntity,
 										FileWriter CSVResult) throws IOException {
@@ -30,6 +46,7 @@ public class MetricController {
 		float DefectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting;
 		float percentageDefectiveTesting = DefectiveTesting * 100;
 		
+		/*
 		if(numberRelease == 6 && metricEntity.getBalancing() == "No Balancing") {
 			
 			metricEntity.setPercentageMajorityClass(((compositionDefectiveTraining[0] + compositionDefectiveTesting[0])/
@@ -37,7 +54,7 @@ public class MetricController {
 			
 			
 		}
-		
+		*/
 		
 		System.out.println("\n" + classifierName);
 		System.out.println("Precision = " + eval.precision(0));
@@ -76,6 +93,12 @@ public class MetricController {
 	
 		CSVResult.flush();
 	}
+	
+	/**
+	 * @param set
+	 * @param metricEntity
+	 * @return
+	 */
 	
 	public int[] calculateNumDefective(Instances set, MetricEntity metricEntity) {
 		

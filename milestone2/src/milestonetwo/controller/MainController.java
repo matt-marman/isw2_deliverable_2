@@ -3,22 +3,8 @@ package milestonetwo.controller;
 import weka.core.Attribute;
 import weka.core.Instance;
 
-/*
- *  How to use WEKA API in Java 
- *  Copyright (C) 2014 
- *  @author Dr Noureddin M. Sadawi (noureddin.sadawi@gmail.com)
- *  
- *  This program is free software: you can redistribute it and/or modify
- *  it as you wish ... 
- *  I ask you only, as a professional courtesy, to cite my name, web page 
- *  and my YouTube Channel!
- *  
- */
-
-//import required classes
 import weka.core.Instances;
 
-import java.io.File;
 import java.io.FileWriter;
 import java.util.ArrayList;
 
@@ -30,25 +16,30 @@ import weka.classifiers.bayes.NaiveBayes;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.classifiers.lazy.IBk;
  
-/*
- * Obiettivo:
- * Comparare l’accuratezza (Precision/Recall/AUC/Kappa),
- * Di tre classificatori (RandomForest / NaiveBayes / Ibk),
- * sui progetti selezionati precedentemente
- * (Deliverable 2 - Milestone 1),
- * utilizzando la tecnica di validazione «WalkForward»
- * MetricController
- * Per rispondere alla domanda sopra si consiglia di
-	creare, e poi analizzare, un file avente le seguenti
-	colonne: dataset, #TrainingRelease, Classifier,
-	Precision, Recall, AUC, Kappa.
+/**
+ * The aim of this project is to provide a .csv file 
+ * that contains all combinations for:
  * 
+ * No selection / best first as feature selection
+ * No sampling / oversampling / undersampling / SMOTE as balancing
+ * No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
+ * RandomForest / NaiveBayes / Ibk as classifier
+ * 
+ * The projects taken are Bookkeeper and Syncope.
+ * 
+ * @author Mattia Di Battista
+ * 
+ * My acknowledge to @author Dr Noureddin M. Sadawi (noureddin.sadawi@gmail.com)
+ *
  */
 
 public class MainController{
 	
-	//false = Bookkeeper project
-	//true = Syncope project
+	/**
+	 * false = Bookkeeper project
+	 * true = Syncope project
+	 */
+	
 	private static boolean projectSelection = false;
 	
 	private static String pathFile = "/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/";
@@ -78,7 +69,6 @@ public class MainController{
 						
 		}else {
 			
-			//else set bookkeeper attributes
 			projectEntity.setBaseFilePath(pathFile + "bookkeeperFile/BOOKKEEPER");
 			projectEntity.setFileARFF(pathFile + "bookkeeperFile/BOOKKEEPER.arff");
 			projectEntity.setFileCSV(pathFile + "bookkeeperFile/BOOKKEEPER.csv");
@@ -131,7 +121,16 @@ public class MainController{
 		walkForward(fileArffList, versions, projectEntity, metricEntity);
 				
 	}
-			
+		
+	
+	/**
+	 * @param releaseFileArffList
+	 * @param versions
+	 * @param projectEntity
+	 * @param metricEntity
+	 * @throws Exception
+	 */
+	
 	private static void walkForward(ArrayList<String> releaseFileArffList, Attribute versions, 
 									ProjectEntity projectEntity, MetricEntity metricEntity) throws Exception {
 		
@@ -146,9 +145,7 @@ public class MainController{
 		
 		Instances training = null;
 		DataSource sourceTraining = null;
-					
-		//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
-			
+								
 		for(int j = 0; j < numberRelease - 1; j++) {
 				
 			//merge instances
@@ -175,8 +172,7 @@ public class MainController{
 				training = sourceTraining.getDataSet();	
 			}
 					
-			//create testing set
-				
+			//create testing set	
 			DataSource sourceTesting = new DataSource(releaseFileArffList.get(j + 1));
 			Instances testing = sourceTesting.getDataSet();
 				
@@ -186,12 +182,6 @@ public class MainController{
 			training.setClassIndex(numAttr - 1);
 			testing.setClassIndex(numAttr - 1);
 				
-				
-			MetricController metricController = new MetricController();
-			//calculate %Defective in training and testing set
-			int [] compositionDefectiveTraining = metricController.calculateNumDefective(training, metricEntity);
-			int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing, metricEntity);	
-	
 			//use RandomForest, NaiveBayes, Ibk as classifiers
 			NaiveBayes naiveBayes = new NaiveBayes();
 			IBk ibk = new IBk();
@@ -207,6 +197,12 @@ public class MainController{
 				float trainingInstance = trainingSetBalancing.numInstances();
 				float totalInstance = trainingInstance + testing.numInstances();
 				float percentageTraining = (trainingInstance / totalInstance) * 100;
+				
+				MetricController metricController = new MetricController();	
+				
+				//calculate %Defective in training and testing set
+				int [] compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing, metricEntity);
+				int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing, metricEntity);
 						
 				//use feature selection
 				for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
@@ -217,7 +213,7 @@ public class MainController{
 					Instances trainingFeatureSelection = set[0];	
 					Instances testingFeatureSelection = set[1];
 
-					//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
+					//use sensitive cost classifier
 					for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
 
 						SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
@@ -241,22 +237,28 @@ public class MainController{
 			
 	}
 	
-	/*
-	 	Please note that the following conditions should hold (there are not checked in the function):
-
-		- Datasets must have the same attributes structure (number of attributes, type of attributes)
-		- Class index has to be the same
-		- Nominal values have to exactly correspond
-
+	/**
+	 * 
+	 * Please note that the following conditions should hold (there are not checked in the function):
+	 * 
+	 * Datasets must have the same attributes structure (number of attributes, type of attributes)
+	 * Class index has to be the same
+	 * Nominal values have to exactly correspond
+	 *
+	 * @param data1
+	 * @param data2
+	 * @return
+	 * @throws Exception
 	 */
+	
 	private static Instances mergeInstances(Instances data1, Instances data2)
-		    throws Exception
-		{
+		    throws Exception{
+		
 		    // Check where are the string attributes
 		    int asize = data1.numAttributes();
 		    boolean strings_pos[] = new boolean[asize];
-		    for(int i=0; i<asize; i++)
-		    {
+		    for(int i=0; i<asize; i++){
+		    	
 		        Attribute att = data1.attribute(i);
 		        strings_pos[i] = ((att.type() == Attribute.STRING) ||
 		                          (att.type() == Attribute.NOMINAL));

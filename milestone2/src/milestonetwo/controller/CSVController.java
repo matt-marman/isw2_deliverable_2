@@ -19,12 +19,11 @@ import weka.filters.Filter;
 import weka.filters.unsupervised.attribute.Remove;
 
 public class CSVController {
-	
-	/*
-	 * - take a CSV file
-	 * - read the first row for each instance
-	 * - copy the current instance in other file
-	 * 
+		
+	/**
+	 * @param baseFilePath
+	 * @return
+	 * @throws IOException
 	 */
 	
 	public FileWriter initializeCSVResult(String baseFilePath) throws IOException {
@@ -49,8 +48,20 @@ public class CSVController {
 		return CSVResult;
 	}
 		
+	/**
+	 * Step of this function:
+	 * 
+	 * Take a CSV file
+	 * read the first row for each instance
+	 * copy the current instance in other file
+	 * 
+	 * @param nameCSVProject
+	 * @param fileCSVList
+	 * @param firstRelease
+	 * @param numberFeature
+	 * @throws IOException
+	 */
 	
-
 	public void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, 
 							String firstRelease, int numberFeature) throws IOException {
 		
@@ -122,6 +133,13 @@ public class CSVController {
 		}  
 	}
 	
+	/**
+	 * @param nextLine
+	 * @param attributeList
+	 * @param csv
+	 * @throws IOException
+	 */
+	
 	public static void addRowToCSV(String [] nextLine, String attributeList, FileWriter csv) throws IOException {
 		
 		String StringToAppend = "";
@@ -140,11 +158,11 @@ public class CSVController {
 	}
 
 	/**
-	   * takes 2 arguments:
-	   * - CSV input file
-	   * - ARFF output file
-	   */
-
+	 * @param args -> CSV input file and ARFF output file
+	 * @param metricEntity
+	 * @throws Exception
+	 */
+	
 	public void csvConverter(String[] args, MetricEntity metricEntity) throws Exception {
 	    
 	    // load CSV

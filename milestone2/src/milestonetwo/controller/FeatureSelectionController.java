@@ -8,11 +8,29 @@ import weka.filters.supervised.attribute.AttributeSelection;
 
 import milestonetwo.entity.MetricEntity;
 
+/**
+ * This class applies:
+ * 
+ * No selection 
+ * Best first
+ * 
+ * @author Mattia Di Battista
+ *
+ */
 public class FeatureSelectionController {
 	
 	private MetricEntity metricEntity;
 	private Instances training;
 	private Instances testing;
+	
+	/**
+	 * @param selection
+	 * @param training
+	 * @param testing
+	 * @param metricEntity
+	 * @return
+	 * @throws Exception
+	 */
 	
 	public Instances [] applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) throws Exception {
 				

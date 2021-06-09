@@ -8,10 +8,29 @@ import weka.filters.supervised.instance.Resample;
 import weka.filters.supervised.instance.SMOTE;
 import weka.filters.supervised.instance.SpreadSubsample;
 
+/**
+ * This class applies:
+ * 
+ * No sampling
+ * Oversampling
+ * Udersampling
+ * SMOTE
+ * 
+ * @author Mattia Di Battista
+ *
+ */
 public class BalancingController {
 	
 	private static MetricEntity metricEntity;
 	private static Instances training;
+	
+	/**
+	 * @param training
+	 * @param balancingSelectionIndex
+	 * @param metricEntity
+	 * @return
+	 * @throws Exception
+	 */
 	
 	@SuppressWarnings("static-access")
 	public Instances applyBalancing(Instances training, int balancingSelectionIndex, MetricEntity metricEntity) throws Exception {
