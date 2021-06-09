@@ -27,8 +27,32 @@ public class CSVController {
 	 * 
 	 */
 	
+	public FileWriter initializeCSVResult(String baseFilePath) throws IOException {
+		
+		FileWriter CSVResult = new FileWriter(baseFilePath + "_RESULT.csv");	
+		
+		CSVResult.append("Dataset," + 
+						"#TrainingRelease," + 
+						"%Training," + 
+						"%DefectiveTraining," +
+						"%DefectiveTesting," +
+						"Classifier," + 
+						"Balancing," + 
+						"Feature Selection," + 
+						"Sensitivity," + 
+						"TP,FP,TN,FN," + 
+						"Precision," + 
+						"Recall," + 
+						"AUC," + 
+						"Kappa\n");
+		
+		return CSVResult;
+	}
+		
+	
+
 	public void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, 
-							String firstRelease, int numberFeature, MetricEntity metricEntity) throws IOException {
+							String firstRelease, int numberFeature) throws IOException {
 		
 		CSVReader reader = null;  
 		
@@ -43,8 +67,6 @@ public class CSVController {
 
 			int version = 1;
 			
-			//if(metricEntity.getBalancing() != "No Sampling") numberFeature --;
-
 			FileWriter csv = new FileWriter(fileCSVList.get(version - 1));
 			String currentVersion = firstRelease;
 						
@@ -88,9 +110,7 @@ public class CSVController {
 			
 			}  
 			
-			csv.close();
-
-			
+			csv.close();		
 		}  
 		
 		catch (Exception e)   
@@ -125,7 +145,7 @@ public class CSVController {
 	   * - ARFF output file
 	   */
 
-	public static void csvConverter(String[] args, MetricEntity metricEntity) throws Exception {
+	public void csvConverter(String[] args, MetricEntity metricEntity) throws Exception {
 	    
 	    // load CSV
 	    CSVLoader loader = new CSVLoader();
@@ -135,17 +155,12 @@ public class CSVController {
 	    //remove name path
 	    //index = 1, corresponds to path name
     	Remove removeFilter = new Remove();
-
-    	
-	    //if(metricEntity.getBalancing() == "No Sampling") {
 	    	
-	    	int[] indices = {1};
-			removeFilter.setAttributeIndicesArray(indices);
-		    removeFilter.setInvertSelection(false);
-		    removeFilter.setInputFormat(data);
-		    data = Filter.useFilter(data, removeFilter);	    
-
-	    //}
+    	int[] indices = {1};
+		removeFilter.setAttributeIndicesArray(indices);
+	    removeFilter.setInvertSelection(false);
+	    removeFilter.setInputFormat(data);
+	    data = Filter.useFilter(data, removeFilter);	    
 	    
 	    /*
 	     * This assumes that indices contains 
