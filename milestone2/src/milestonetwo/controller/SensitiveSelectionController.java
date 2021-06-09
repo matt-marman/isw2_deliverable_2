@@ -9,24 +9,33 @@ import weka.core.Instances;
 
 public class SensitiveSelectionController {
 
+	private MetricEntity metricEntity;
+	private Classifier classifier;
+	private Instances trainingSet;
+	private Instances testingSet;
+	
 	public Evaluation applySensitiveSelection(int sensitiveSelectionIndex, Classifier classifier, 
 												Instances trainingSet, Instances testingSet, MetricEntity metricEntity) throws Exception {
 		
+		this.metricEntity = metricEntity;
+		this.classifier = classifier;
+		this.testingSet = testingSet;
+		this.trainingSet = trainingSet;
 		
-		if(sensitiveSelectionIndex == 0) return applyNoSensitive(classifier, trainingSet, testingSet, metricEntity);
+		if(sensitiveSelectionIndex == 0) return applyNoSensitive();
 		
-		if(sensitiveSelectionIndex == 2) return null;
+		if(sensitiveSelectionIndex == 1) return applySensitiveThreshold();
 		
-		if(sensitiveSelectionIndex == 1) return applySensitiveLearning(classifier, trainingSet, testingSet, metricEntity);
+		if(sensitiveSelectionIndex == 2) return applySensitiveLearning();
 		
 		return null;
 		
 	}
 	
 	//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
-	public Evaluation applyNoSensitive(Classifier classifier, Instances trainingSet, Instances testingSet, MetricEntity metricEntity) throws Exception {
+	public Evaluation applyNoSensitive() throws Exception {
 		
-		metricEntity.setSensitivity("No Cost Sensitive");
+		this.metricEntity.setSensitivity("No Cost Sensitive");
 		
 		classifier.buildClassifier(trainingSet);
 		Evaluation evaluation = new Evaluation(testingSet);	
@@ -36,19 +45,47 @@ public class SensitiveSelectionController {
 	}
 	
 	
-	public void applySensitiveThreshold(Classifier classifier, Instances trainingSet, Instances testingSet, MetricEntity metricEntity) {
+	public Evaluation applySensitiveThreshold() throws Exception {
 		
 		metricEntity.setSensitivity("Sensitive Threshold");
+
+		CostMatrix costMatrix = this.calculateMatrix();
 		
+		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();
+		costSensitiveClassifier.setClassifier(classifier);
+		costSensitiveClassifier.setCostMatrix(costMatrix);
+		costSensitiveClassifier.setMinimizeExpectedCost(true);
+		costSensitiveClassifier.buildClassifier(trainingSet);
 		
+		Evaluation evaluation = new Evaluation(testingSet, costMatrix);		
+		evaluation.evaluateModel(costSensitiveClassifier, testingSet);
 		
-		return;
+		return evaluation;
+		
 	}
 	
 	
-	public Evaluation applySensitiveLearning(Classifier classifier, Instances trainingSet, Instances testingSet, MetricEntity metricEntity) throws Exception {
+	public Evaluation applySensitiveLearning() throws Exception {
 				
 		metricEntity.setSensitivity("Sensitive Learning");
+		
+		CostMatrix costMatrix = this.calculateMatrix();
+				
+		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();
+		costSensitiveClassifier.setClassifier(classifier);
+		costSensitiveClassifier.setCostMatrix(costMatrix);
+		
+		costSensitiveClassifier.setMinimizeExpectedCost(false);
+		
+		costSensitiveClassifier.buildClassifier(trainingSet);
+		
+		Evaluation evaluation = new Evaluation(testingSet, costMatrix);		
+		evaluation.evaluateModel(costSensitiveClassifier, testingSet);
+		
+		return evaluation;
+	}
+	
+	private CostMatrix calculateMatrix() {
 		
 		CostMatrix costMatrix = new CostMatrix(2);
 		
@@ -59,16 +96,7 @@ public class SensitiveSelectionController {
 		costMatrix.setCell(0, 1, CFN);
 		costMatrix.setCell(1, 0, CFP);
 		costMatrix.setCell(1, 1, 0.0);
-				
-		CostSensitiveClassifier costSensitiveClassifier = new CostSensitiveClassifier();
-		costSensitiveClassifier.setClassifier(classifier);
-		costSensitiveClassifier.setCostMatrix(costMatrix);
 		
-		costSensitiveClassifier.buildClassifier(trainingSet);
-		
-		Evaluation evaluation = new Evaluation(testingSet, costMatrix);		
-		evaluation.evaluateModel(costSensitiveClassifier, testingSet);
-		
-		return evaluation;
+		return costMatrix;
 	}
 }

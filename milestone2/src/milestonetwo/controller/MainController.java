@@ -110,7 +110,7 @@ public class MainController{
 		fileCSVList = new ArrayList<String>();
 		CSVController CSVController = new CSVController();
 					
-		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 1; balancingSelectionIndex++) {
+		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
 				
 			BalancingController balancingController = new BalancingController();
 			//it returns an .arff file and .csv file
@@ -178,7 +178,7 @@ public class MainController{
 		DataSource sourceTraining = null;
 					
 		//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
-		for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 2; sensitiveSelectionIndex++) {
+		for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
 
 			SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
 		
@@ -237,7 +237,7 @@ public class MainController{
 					
 					Instances trainingFeatureSelection = set[0];				
 					testing = set[1];
-					
+
 					Evaluation evalNaiveBayes = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, naiveBayes, trainingFeatureSelection, testing, metricEntity);
 					Evaluation evalIbk = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, ibk, trainingFeatureSelection, testing, metricEntity);	
 					Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, trainingFeatureSelection, testing, metricEntity);

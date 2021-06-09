@@ -14,18 +14,35 @@ import weka.core.converters.ConverterUtils.DataSource;
 
 public class FeatureSelectionController {
 	
+	private MetricEntity metricEntity;
+	private Instances training;
+	private Instances testing;
+	
 	public Instances [] applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) throws Exception {
 				
-		//selection = 0, return unfiltered .arff file
-		//else return the filtered .arff file
-		if(selection == 0) {
-			
-			metricEntity.setFeatureSelection("No Selection");
-			Instances [] param = {training, testing};
-			return param;
-		}
+		this.metricEntity = metricEntity;
+		this.training = training;
+		this.testing = testing;
+
+		if(selection == 0) return applyNoSelection();
+		if(selection == 1) return applyBestFirst();
 		
-		metricEntity.setFeatureSelection("Best First");
+		return null;
+					
+	}
+	
+	public Instances [] applyNoSelection(){
+		
+		this.metricEntity.setFeatureSelection("No Selection");
+		
+		Instances [] param = {this.training, this.testing};
+		return param;
+		
+	}
+	
+	public Instances [] applyBestFirst() throws Exception{
+		
+		this.metricEntity.setFeatureSelection("Best First");
 		
 		//create AttributeSelection object
 		AttributeSelection filter = new AttributeSelection();
@@ -37,20 +54,20 @@ public class FeatureSelectionController {
 		//set the filter to use the evaluator and search algorithm
 		filter.setEvaluator(eval);
 		filter.setSearch(search);
-		filter.setInputFormat(training);
+		filter.setInputFormat(this.training);
 		
 		//apply
-		Instances trainingFeatureSelection = Filter.useFilter(training, filter);
-		Instances testingFeatureSelection = Filter.useFilter(testing, filter);
+		Instances trainingFeatureSelection = Filter.useFilter(this.training, filter);
+		Instances testingFeatureSelection = Filter.useFilter(this.testing, filter);
 		
 		int numAttr = trainingFeatureSelection.numAttributes();
 		
 		trainingFeatureSelection.setClassIndex(numAttr - 1);
 		testingFeatureSelection.setClassIndex(numAttr - 1);
-		
+				
 		Instances [] param2 = {trainingFeatureSelection, testingFeatureSelection};
 		return param2;
-					
+		
 	}
 	
 }
