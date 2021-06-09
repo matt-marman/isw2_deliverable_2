@@ -44,15 +44,12 @@ public class MainController{
 	
 	private static String pathFile = "/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/";
 	
-	private static FileWriter CSVResult;
+	private static FileWriter csvResult;
 	
 	private static String extensionArff = ".arff";
 	private static String extensionCSV = ".csv";
 	
-	private static int numberFeature;
 	private static int numberRelease;
-	private static ArrayList<String> fileArffList;
-	private static ArrayList<String> fileCSVList;
 
 	public static void main(String[] args) throws Exception{
 		
@@ -77,18 +74,18 @@ public class MainController{
 	
 		}
 		
-		CSVController CSVController = new CSVController();
+		CSVController csvController = new CSVController();
 		
 		//create CSVResult.csv. It is populating with all data
-		CSVResult = CSVController.initializeCSVResult(projectEntity.getBaseFilePath());
+		csvResult = csvController.initializeCSVResult(projectEntity.getBaseFilePath());
 		
 		MetricEntity metricEntity = new MetricEntity(); 
 		
-		fileArffList = new ArrayList<String>();
-		fileCSVList = new ArrayList<String>();
+		ArrayList<String> fileArffList = new ArrayList<>();
+		ArrayList<String> fileCSVList = new ArrayList<>();
 		
 		DataSource source = new DataSource(projectEntity.getFileARFF());
-		numberFeature = source.getDataSet().numAttributes();
+		int numberFeature = source.getDataSet().numAttributes();
 		Attribute versions = source.getDataSet().attribute(0);
 		numberRelease = versions.numValues();
 
@@ -100,7 +97,7 @@ public class MainController{
 			currentCSVFile += extensionCSV;
 			fileCSVList.add(currentCSVFile);
 						
-			String currentArffFile = projectEntity.getBaseFilePath();;
+			String currentArffFile = projectEntity.getBaseFilePath();
 			currentArffFile += String.valueOf(version + 1);
 			currentArffFile += extensionArff;
 			fileArffList.add(currentArffFile);
@@ -108,12 +105,12 @@ public class MainController{
 		}
 			
 				
-		CSVController.splitCSV(projectEntity.getFileCSV(), fileCSVList, projectEntity.getFirstRelease(), numberFeature);	
+		csvController.splitCSV(projectEntity.getFileCSV(), fileCSVList, projectEntity.getFirstRelease(), numberFeature);	
 
 		for(int j = 0; j < numberRelease; j++) {
 					
 			String[] paramsCSVController = {fileCSVList.get(j), fileArffList.get(j)};
-			CSVController.csvConverter(paramsCSVController, metricEntity);
+			csvController.csvConverter(paramsCSVController);
 					
 		}
 					
@@ -132,10 +129,10 @@ public class MainController{
 	 */
 	
 	private static void walkForward(ArrayList<String> releaseFileArffList, Attribute versions, 
-									ProjectEntity projectEntity, MetricEntity metricEntity) throws Exception {
+									ProjectEntity projectEntity, MetricEntity metricEntity) {
 		
 		//create array with all release
-		ArrayList<String> releaseList = new ArrayList<String>();
+		ArrayList<String> releaseList = new ArrayList<>();
 
 		for(int j = 0; j < numberRelease; j++) {
 			
@@ -151,10 +148,25 @@ public class MainController{
 			//merge instances
 			if(j != 0) {
 					
-				DataSource newSourceTraining = new DataSource(releaseFileArffList.get(j));
-				Instances newTraining = newSourceTraining.getDataSet();	
+				DataSource newSourceTraining = null;
+				try {
+					newSourceTraining = new DataSource(releaseFileArffList.get(j));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				Instances newTraining = null;
+				try {
+					newTraining = newSourceTraining.getDataSet();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
 					
-				String releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
+				String releaseNewTraining = null;
+				try {
+					releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
 					
 				//change the version number
 				//for merge the two set
@@ -168,13 +180,31 @@ public class MainController{
 			}else {
 					
 				//first iteration, only one set for training and another one for testing
-				sourceTraining = new DataSource(releaseFileArffList.get(j));
-				training = sourceTraining.getDataSet();	
+				try {
+					sourceTraining = new DataSource(releaseFileArffList.get(j));
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+				try {
+					training = sourceTraining.getDataSet();
+				} catch (Exception e) {
+					e.printStackTrace();
+				}	
 			}
 					
 			//create testing set	
-			DataSource sourceTesting = new DataSource(releaseFileArffList.get(j + 1));
-			Instances testing = sourceTesting.getDataSet();
+			DataSource sourceTesting = null;
+			try {
+				sourceTesting = new DataSource(releaseFileArffList.get(j + 1));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			Instances testing = null;
+			try {
+				testing = sourceTesting.getDataSet();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 				
 				
 			int numAttr = training.numAttributes();
@@ -201,14 +231,19 @@ public class MainController{
 				MetricController metricController = new MetricController();	
 				
 				//calculate %Defective in training and testing set
-				int [] compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing, metricEntity);
-				int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing, metricEntity);
+				int [] compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing);
+				int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing);
 						
 				//use feature selection
 				for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
 						
 					FeatureSelectionController featureSelectionController = new FeatureSelectionController();
-					Instances [] set = featureSelectionController.applyFeatureSelection(featureSelectionIndex, trainingSetBalancing, testing, metricEntity);
+					Instances[] set = null;
+					try {
+						set = featureSelectionController.applyFeatureSelection(featureSelectionIndex, trainingSetBalancing, testing, metricEntity);
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
 						
 					Instances trainingFeatureSelection = set[0];	
 					Instances testingFeatureSelection = set[1];
@@ -224,11 +259,11 @@ public class MainController{
 							
 						//let's calculate the metrics for each classifier
 						metricController.calculateMetric(evalNaiveBayes, projectEntity, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-								metricEntity, CSVResult);
+								metricEntity, csvResult);
 						metricController.calculateMetric(evalIbk, projectEntity, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-								metricEntity, CSVResult);
+								metricEntity, csvResult);
 						metricController.calculateMetric(evalRandomForest, projectEntity, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-								metricEntity, CSVResult);
+								metricEntity, csvResult);
 					}
 				}
 			}
@@ -251,16 +286,15 @@ public class MainController{
 	 * @throws Exception
 	 */
 	
-	private static Instances mergeInstances(Instances data1, Instances data2)
-		    throws Exception{
+	private static Instances mergeInstances(Instances data1, Instances data2){
 		
 		    // Check where are the string attributes
 		    int asize = data1.numAttributes();
-		    boolean strings_pos[] = new boolean[asize];
+		    boolean[] stringsPos = new boolean[asize];
 		    for(int i=0; i<asize; i++){
 		    	
 		        Attribute att = data1.attribute(i);
-		        strings_pos[i] = ((att.type() == Attribute.STRING) ||
+		        stringsPos[i] = ((att.type() == Attribute.STRING) ||
 		                          (att.type() == Attribute.NOMINAL));
 		    }
 
@@ -269,7 +303,12 @@ public class MainController{
 		    dest.setRelationName(data1.relationName() + "+" + data2.relationName());
 
 		    DataSource source = new DataSource(data2);
-		    Instances instances = source.getStructure();
+		    Instances instances = null;
+			try {
+				instances = source.getStructure();
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
 		    Instance instance = null;
 		    while (source.hasMoreElements(instances)) {
 		        instance = source.nextElement(instances);
@@ -277,7 +316,7 @@ public class MainController{
 
 		        // Copy string attributes
 		        for(int i=0; i<asize; i++) {
-		            if(strings_pos[i]) {
+		            if(stringsPos[i]) {
 		                dest.instance(dest.numInstances()-1)
 		                    .setValue(i,instance.stringValue(i));
 		            }

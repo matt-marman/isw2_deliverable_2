@@ -28,9 +28,9 @@ public class CSVController {
 	
 	public FileWriter initializeCSVResult(String baseFilePath) throws IOException {
 		
-		FileWriter CSVResult = new FileWriter(baseFilePath + "_RESULT.csv");	
+		FileWriter csvResult = new FileWriter(baseFilePath + "_RESULT.csv");	
 		
-		CSVResult.append("Dataset," + 
+		csvResult.append("Dataset," + 
 						"#TrainingRelease," + 
 						"%Training," + 
 						"%DefectiveTraining," +
@@ -45,7 +45,7 @@ public class CSVController {
 						"AUC," + 
 						"Kappa\n");
 		
-		return CSVResult;
+		return csvResult;
 	}
 		
 	/**
@@ -62,7 +62,7 @@ public class CSVController {
 	 * @throws IOException
 	 */
 	
-	public void splitCSV(String nameCSVProject, ArrayList<String> fileCSVList, 
+	public void splitCSV(String nameCSVProject, List<String> fileCSVList, 
 							String firstRelease, int numberFeature) throws IOException {
 		
 		CSVReader reader = null;  
@@ -74,7 +74,7 @@ public class CSVController {
 			String [] nextLine;  
 			int currentRow = 1;
 			
-			String attributeList = "";
+			StringBuilder attributeList = new StringBuilder();
 
 			int version = 1;
 			
@@ -106,14 +106,14 @@ public class CSVController {
 						}
 						
 						//add the row to a new file		
-						addRowToCSV(nextLine, attributeList, csv);
+						addRowToCSV(nextLine, csv);
 						break;
 					
 					}else {
 						
 						//create the first row with the feature
-						attributeList += token;
-						if(currentRow != numberFeature + 1) attributeList += ",";
+						attributeList.append(token);
+						if(currentRow != numberFeature + 1) attributeList.append(",");
 						currentRow++;
 					}
 
@@ -135,40 +135,48 @@ public class CSVController {
 	
 	/**
 	 * @param nextLine
-	 * @param attributeList
 	 * @param csv
 	 * @throws IOException
 	 */
 	
-	public static void addRowToCSV(String [] nextLine, String attributeList, FileWriter csv) throws IOException {
+	public static void addRowToCSV(String [] nextLine, FileWriter csv) throws IOException {
 		
-		String StringToAppend = "";
+		StringBuilder stringToAppend = new StringBuilder();
+
 		int c = 0;
 		for(String token : nextLine) {
 			
-			if(c != 0) StringToAppend += ",";
-			StringToAppend += token;
+			if(c != 0) stringToAppend.append(",");
+			stringToAppend.append(token);
 			c++;
 
 		}
 						
 		//add to file
-		csv.append(StringToAppend + "\n");
+		csv.append(stringToAppend + "\n");
 					
 	}
 
 	/**
 	 * @param args -> CSV input file and ARFF output file
-	 * @param metricEntity
 	 * @throws Exception
 	 */
 	
-	public void csvConverter(String[] args, MetricEntity metricEntity) throws Exception {
+	public void csvConverter(String[] args){
 	    
 	    // load CSV
 	    CSVLoader loader = new CSVLoader();
-	    loader.setSource(new File(args[0]));
-	    Instances data = loader.getDataSet();
+	    try {
+			loader.setSource(new File(args[0]));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    Instances data = null;
+		try {
+			data = loader.getDataSet();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	    
 	    //remove name path
 	    //index = 1, corresponds to path name
@@ -177,8 +185,16 @@ public class CSVController {
     	int[] indices = {1};
 		removeFilter.setAttributeIndicesArray(indices);
 	    removeFilter.setInvertSelection(false);
-	    removeFilter.setInputFormat(data);
-	    data = Filter.useFilter(data, removeFilter);	    
+	    try {
+			removeFilter.setInputFormat(data);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+	    try {
+			data = Filter.useFilter(data, removeFilter);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	    
 	    
 	    /*
 	     * This assumes that indices contains 
@@ -192,12 +208,29 @@ public class CSVController {
 	    // save ARFF
 	    ArffSaver saver = new ArffSaver();
 	    saver.setInstances(data);
-	    saver.setFile(new File(args[1]));
-	    saver.setDestination(new File(args[1]));
-	    saver.writeBatch();
+	    try {
+			saver.setFile(new File(args[1]));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    try {
+			saver.setDestination(new File(args[1]));
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+	    try {
+			saver.writeBatch();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	    
 	    
-	    List<String> lines = Files.readAllLines(new File(args[1]).toPath(), StandardCharsets.UTF_8);
+	    List<String> lines = null;
+		try {
+			lines = Files.readAllLines(new File(args[1]).toPath(), StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	    for (String line : lines) {
 	    	if (line.contains("@attribute Bugginess {No,Yes}")) {
 	    		lines.set(lines.indexOf(line), "@attribute bugginess {Yes,No}");
@@ -205,6 +238,10 @@ public class CSVController {
 	    }
 	    
 	    
-	    Files.write(new File(args[1]).toPath(), lines, StandardCharsets.UTF_8);
+	    try {
+			Files.write(new File(args[1]).toPath(), lines, StandardCharsets.UTF_8);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	  }
 }

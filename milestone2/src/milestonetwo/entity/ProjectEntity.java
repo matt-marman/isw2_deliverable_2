@@ -11,31 +11,31 @@ public class ProjectEntity {
 	public String getFileCSV() {
 		return fileCSV;
 	}
-	public void setFileCSV(String fileCSV) {
+	public static void setFileCSV(String fileCSV) {
 		ProjectEntity.fileCSV = fileCSV;
 	}
 	public String getFileARFF() {
 		return fileARFF;
 	}
-	public void setFileARFF(String fileARFF) {
+	public static void setFileARFF(String fileARFF) {
 		ProjectEntity.fileARFF = fileARFF;
 	}
 	public String getBaseFilePath() {
 		return baseFilePath;
 	}
-	public void setBaseFilePath(String baseFilePath) {
+	public static void setBaseFilePath(String baseFilePath) {
 		ProjectEntity.baseFilePath = baseFilePath;
 	}
 	public String getFirstRelease() {
 		return firstRelease;
 	}
-	public void setFirstRelease(String firstRelease) {
+	public static void setFirstRelease(String firstRelease) {
 		ProjectEntity.firstRelease = firstRelease;
 	}
 	public String getProjectName() {
 		return projectName;
 	}
-	public void setProjectName(String projectName) {
+	public static void setProjectName(String projectName) {
 		ProjectEntity.projectName = projectName;
 	}
 	

@@ -32,7 +32,7 @@ public class FeatureSelectionController {
 	 * @throws Exception
 	 */
 	
-	public Instances [] applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) throws Exception {
+	public Instances [] applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) {
 				
 		this.metricEntity = metricEntity;
 		this.training = training;
@@ -41,7 +41,7 @@ public class FeatureSelectionController {
 		if(selection == 0) return applyNoSelection();
 		if(selection == 1) return applyBestFirst();
 		
-		return null;
+		return new Instances [2];
 					
 	}
 	
@@ -49,12 +49,14 @@ public class FeatureSelectionController {
 		
 		this.metricEntity.setFeatureSelection("No Selection");
 		
-		Instances [] newSet = {this.training, this.testing};
+		Instances [] newSet = null; 
+		newSet[0] = this.training;
+		newSet[1] = this.testing;
 		return newSet;
 		
 	}
 	
-	private Instances [] applyBestFirst() throws Exception{
+	private Instances [] applyBestFirst(){
 		
 		this.metricEntity.setFeatureSelection("Best First");
 		
@@ -68,17 +70,33 @@ public class FeatureSelectionController {
 		//set the filter to use the evaluator and search algorithm
 		filter.setEvaluator(eval);
 		filter.setSearch(search);
-		filter.setInputFormat(this.training);
+		try {
+			filter.setInputFormat(this.training);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
-		Instances trainingFeatureSelection = Filter.useFilter(this.training, filter);
-		Instances testingFeatureSelection = Filter.useFilter(this.testing, filter);
+		Instances trainingFeatureSelection = null;
+		try {
+			trainingFeatureSelection = Filter.useFilter(this.training, filter);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Instances testingFeatureSelection = null;
+		try {
+			testingFeatureSelection = Filter.useFilter(this.testing, filter);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		int numAttr = trainingFeatureSelection.numAttributes();
 		
 		trainingFeatureSelection.setClassIndex(numAttr - 1);
 		testingFeatureSelection.setClassIndex(numAttr - 1);
 				
-		Instances [] newSet = {trainingFeatureSelection, testingFeatureSelection};
+		Instances [] newSet = null;
+		newSet[0] = trainingFeatureSelection;
+		newSet[1] = testingFeatureSelection;
 		return newSet;
 		
 	}

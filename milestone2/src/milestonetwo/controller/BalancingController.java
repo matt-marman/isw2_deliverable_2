@@ -33,7 +33,7 @@ public class BalancingController {
 	 */
 	
 	@SuppressWarnings("static-access")
-	public Instances applyBalancing(Instances training, int balancingSelectionIndex, MetricEntity metricEntity) throws Exception {
+	public Instances applyBalancing(Instances training, int balancingSelectionIndex, MetricEntity metricEntity) {
 				
 		this.metricEntity = metricEntity;
 		this.training = training;
@@ -50,31 +50,43 @@ public class BalancingController {
 	
 	}
 	
-	private static Instances applyNoSampling() throws Exception {
+	private static Instances applyNoSampling() {
 		
 		metricEntity.setBalancing("No Sampling");	    
 		return training;
 	}
 		
-	private static Instances applyUndersampling() throws Exception {
+	private static Instances applyUndersampling() {
 		
 		metricEntity.setBalancing("Undersampling");
 				
 		SpreadSubsample  underSampling = new SpreadSubsample();
-		underSampling.setInputFormat(training);
+		try {
+			underSampling.setInputFormat(training);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		String[] opts = new String[]{ "-M", "1.0"};
-		underSampling.setOptions(opts);
+		try {
+			underSampling.setOptions(opts);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		FilteredClassifier filteredClassifier = new FilteredClassifier();
 		filteredClassifier.setFilter(underSampling);
 		
-		Instances trainingUndersampling = Filter.useFilter(training, underSampling);
-		return trainingUndersampling;
-		
+		Instances trainingUndersampling = null;
+		try {
+			return Filter.useFilter(training, underSampling);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return trainingUndersampling;		
 	}
 
-	private static Instances applyOversampling() throws Exception {
+	private static Instances applyOversampling(){
 		
 		metricEntity.setBalancing("Oversampling");
 			
@@ -82,28 +94,50 @@ public class BalancingController {
 		String[] optsOverSampling = new String[]{"-B", "1.0", "-Z", String.valueOf(2 * percentageMajorityClass  * 100)};
 		
 		Resample  overSampling = new Resample();
-		overSampling.setOptions(optsOverSampling);
-		overSampling.setInputFormat(training);
+		try {
+			overSampling.setOptions(optsOverSampling);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		try {
+			overSampling.setInputFormat(training);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		FilteredClassifier filteredClassifier = new FilteredClassifier();
 		filteredClassifier.setFilter(overSampling);
 			
-		Instances trainingOverSampling = Filter.useFilter(training, overSampling);
+		Instances trainingOverSampling = null;
+		try {
+			return Filter.useFilter(training, overSampling);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		return trainingOverSampling;
 	}
 
-	private static Instances applySmote() throws Exception {
+	private static Instances applySmote() {
 		
 		metricEntity.setBalancing("Smote");
 						
 		SMOTE smote = new SMOTE(); 
-		smote.setInputFormat(training);
+		try {
+			smote.setInputFormat(training);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		FilteredClassifier filteredClassifier = new FilteredClassifier();
 		filteredClassifier.setFilter(smote);
 		
-		Instances trainingSmote = Filter.useFilter(training, smote); 
-		return trainingSmote;
+		Instances trainingSmote = null;
+		try {
+			return Filter.useFilter(training, smote);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		return trainingSmote; 
 	}
 	
 

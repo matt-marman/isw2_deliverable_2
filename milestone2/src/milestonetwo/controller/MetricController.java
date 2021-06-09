@@ -9,6 +9,9 @@ import weka.classifiers.Evaluation;
 import weka.core.Instance;
 import weka.core.Instances;
 
+import java.util.logging.Logger;
+import java.util.logging.Level;
+
 public class MetricController {
 	
 	/**
@@ -31,20 +34,20 @@ public class MetricController {
 										int [] compositionDefectiveTraining, 
 										int [] compositionDefectiveTesting,
 										MetricEntity metricEntity,
-										FileWriter CSVResult) throws IOException {
+										FileWriter csvResult) {
 		
-		double TP = eval.numTruePositives(0);
-		double TN = eval.numTrueNegatives(0);
-		double FP = eval.numFalsePositives(0);
-		double FN = eval.numFalseNegatives(0);
+		double tp = eval.numTruePositives(0);
+		double tn = eval.numTrueNegatives(0);
+		double fp = eval.numFalsePositives(0);
+		double fn = eval.numFalseNegatives(0);
 		
 		float totalInstancesTraining = compositionDefectiveTraining[0] + compositionDefectiveTraining[1];
-		float DefectiveTraining = compositionDefectiveTraining[0] / totalInstancesTraining;
-		float percentageDefectiveTraining = DefectiveTraining * 100;
+		float defectiveTraining = compositionDefectiveTraining[0] / totalInstancesTraining;
+		float percentageDefectiveTraining = defectiveTraining * 100;
 		
 		float totalInstancesTesting = compositionDefectiveTesting[0] + compositionDefectiveTesting[1];
-		float DefectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting;
-		float percentageDefectiveTesting = DefectiveTesting * 100;
+		float defectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting;
+		float percentageDefectiveTesting = defectiveTesting * 100;
 		
 		/*
 		if(numberRelease == 6 && metricEntity.getBalancing() == "No Balancing") {
@@ -55,52 +58,41 @@ public class MetricController {
 			
 		}
 		*/
-		
-		System.out.println("\n" + classifierName);
-		System.out.println("Precision = " + eval.precision(0));
-		System.out.println("Recall = " + eval.recall(0));
-		System.out.println("AUC = " + eval.areaUnderROC(0));
-		System.out.println("kappa = " + eval.kappa());
-		System.out.println("%Training = " + percentageTraining);
-		System.out.println("%DefectiveTraining = " + percentageDefectiveTraining);
-		System.out.println("%DefectiveTesting = " + percentageDefectiveTesting);
-		
-		System.out.println("Balancing = " + metricEntity.getBalancing());
-		System.out.println("Feature Selection = " + metricEntity.getFeatureSelection());
-		System.out.println("Sensitivity = " + metricEntity.getSensitivity());
-		
-		System.out.println("TP = " + TP);
-		System.out.println("FP = " + FP);
-		System.out.println("TN = " + TN);
-		System.out.println("FN = " + FN);
-		
+			
 		//write the result .csv file
-		CSVResult.append(projectEntity.getProjectName() + "," 
-						+ numberRelease + "," 
-						+ percentageTraining + "," 
-						+ percentageDefectiveTraining + "," 
-						+ percentageDefectiveTesting + "," 
-						+ classifierName + "," 
-						+ metricEntity.getBalancing() + "," 
-						+ metricEntity.getFeatureSelection() + ","  
-						+ metricEntity.getSensitivity() + "," 
-						+ TP + "," + FP + "," + TN + ","  + FN + "," 
-						+ eval.precision(0) + "," 
-						+ eval.recall(0) +  "," 
-						+ eval.areaUnderROC(0) + "," 
-						+ eval.kappa() + 
-						"\n");
+		try {
+			csvResult.append(projectEntity.getProjectName() + "," 
+							+ numberRelease + "," 
+							+ percentageTraining + "," 
+							+ percentageDefectiveTraining + "," 
+							+ percentageDefectiveTesting + "," 
+							+ classifierName + "," 
+							+ metricEntity.getBalancing() + "," 
+							+ metricEntity.getFeatureSelection() + ","  
+							+ metricEntity.getSensitivity() + "," 
+							+ tp + "," + fp + "," + tn + ","  + fn + "," 
+							+ eval.precision(0) + "," 
+							+ eval.recall(0) +  "," 
+							+ eval.areaUnderROC(0) + "," 
+							+ eval.kappa() + 
+							"\n");
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	
-		CSVResult.flush();
+		try {
+			csvResult.flush();
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
 	}
 	
 	/**
 	 * @param set
-	 * @param metricEntity
 	 * @return
 	 */
 	
-	public int[] calculateNumDefective(Instances set, MetricEntity metricEntity) {
+	public int[] calculateNumDefective(Instances set) {
 		
 		int numberDefective = 0;
 		int numberNotDefective = 0;

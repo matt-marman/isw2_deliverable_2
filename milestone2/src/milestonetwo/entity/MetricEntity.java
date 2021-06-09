@@ -10,25 +10,25 @@ public class MetricEntity {
 	public String getBalancing() {
 		return balancing;
 	}
-	public void setBalancing(String balancing) {
+	public static void setBalancing(String balancing) {
 		MetricEntity.balancing = balancing;
 	}
 	public String getFeatureSelection() {
 		return featureSelection;
 	}
-	public void setFeatureSelection(String featureSelection) {
+	public static void setFeatureSelection(String featureSelection) {
 		MetricEntity.featureSelection = featureSelection;
 	}
 	public String getSensitivity() {
 		return sensitivity;
 	}
-	public void setSensitivity(String sensitivity) {
+	public static void setSensitivity(String sensitivity) {
 		MetricEntity.sensitivity = sensitivity;
 	}
 	public float getPercentageMajorityClass() {
 		return percentageMajorityClass;
 	}
-	public void setPercentageMajorityClass(float percentageMajorityClass) {
+	public static void setPercentageMajorityClass(float percentageMajorityClass) {
 		MetricEntity.percentageMajorityClass = percentageMajorityClass;
 	}
 	

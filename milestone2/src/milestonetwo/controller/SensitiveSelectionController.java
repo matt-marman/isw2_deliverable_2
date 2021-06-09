@@ -36,7 +36,7 @@ public class SensitiveSelectionController {
 	
 	public Evaluation applySensitiveSelection(int sensitiveSelectionIndex, Classifier classifier, 
 												Instances trainingSet, Instances testingSet, 
-												MetricEntity metricEntity) throws Exception {
+												MetricEntity metricEntity) {
 		
 		this.metricEntity = metricEntity;
 		this.classifier = classifier;
@@ -53,19 +53,32 @@ public class SensitiveSelectionController {
 		
 	}
 	
-	private Evaluation applyNoSensitive() throws Exception {
+	private Evaluation applyNoSensitive() {
 		
 		this.metricEntity.setSensitivity("No Cost Sensitive");
 
-		classifier.buildClassifier(trainingSet);
-		Evaluation evaluation = new Evaluation(testingSet);	
-		evaluation.evaluateModel(classifier, testingSet); 		
+		try {
+			classifier.buildClassifier(trainingSet);
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+		Evaluation evaluation = null;
+		try {
+			evaluation = new Evaluation(testingSet);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}	
+		try {
+			evaluation.evaluateModel(classifier, testingSet);
+		} catch (Exception e) {
+			e.printStackTrace();
+		} 		
 		
 		return evaluation;
 	}
 	
 	
-	private Evaluation applySensitiveThreshold() throws Exception {
+	private Evaluation applySensitiveThreshold() {
 		
 		metricEntity.setSensitivity("Sensitive Threshold");
 
@@ -75,17 +88,12 @@ public class SensitiveSelectionController {
 
 		costSensitiveClassifier.setMinimizeExpectedCost(true);
 		
-		costSensitiveClassifier.buildClassifier(trainingSet);
-		
-		Evaluation evaluation = new Evaluation(testingSet, costMatrix);		
-		evaluation.evaluateModel(costSensitiveClassifier, testingSet);
-		
-		return evaluation;
+		return applyEvaluation(costSensitiveClassifier, costMatrix);
 		
 	}
 	
 	
-	private Evaluation applySensitiveLearning() throws Exception {
+	private Evaluation applySensitiveLearning() {
 				
 		metricEntity.setSensitivity("Sensitive Learning");
 		
@@ -95,24 +103,45 @@ public class SensitiveSelectionController {
 		
 		costSensitiveClassifier.setMinimizeExpectedCost(false);
 		
-		costSensitiveClassifier.buildClassifier(trainingSet);
+		return applyEvaluation(costSensitiveClassifier, costMatrix);
+	}
+	
+	private Evaluation applyEvaluation(CostSensitiveClassifier costSensitiveClassifier, CostMatrix costMatrix) {
 		
-		Evaluation evaluation = new Evaluation(testingSet, costMatrix);		
-		evaluation.evaluateModel(costSensitiveClassifier, testingSet);
+		try {
+			costSensitiveClassifier.buildClassifier(trainingSet);
+		} catch (Exception e2) {
+			e2.printStackTrace();
+		}
+		
+		Evaluation evaluation = null;
+		try {
+			evaluation = new Evaluation(testingSet, costMatrix);
+		} catch (Exception e1) {
+			e1.printStackTrace();
+		}		
+		try {
+			evaluation.evaluateModel(costSensitiveClassifier, testingSet);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
 		
 		return evaluation;
+		
+		
 	}
+	
 	
 	private CostMatrix calculateMatrix() {
 		
 		CostMatrix costMatrix = new CostMatrix(2);
 		
-		double CFP = 1;
-		double CFN = 10 * CFP;
+		double cfp = 1;
+		double cfn = 10 * cfp;
 		
 		costMatrix.setCell(0, 0, 0.0);
-		costMatrix.setCell(0, 1, CFN);
-		costMatrix.setCell(1, 0, CFP);
+		costMatrix.setCell(0, 1, cfn);
+		costMatrix.setCell(1, 0, cfp);
 		costMatrix.setCell(1, 1, 0.0);
 		
 		return costMatrix;
