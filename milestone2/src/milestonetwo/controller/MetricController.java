@@ -11,11 +11,9 @@ import weka.core.Instances;
 
 public class MetricController {
 	
-	/*
-	 * Precision, Recall, AUC, Kappa. 
-	 */
 	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, int numberRelease, String classifierName, 
-										float percentageTraining, int [] compositionDefectiveTraining, int [] compositionDefectiveTesting,
+										float percentageTraining, int [] compositionDefectiveTraining, 
+										int [] compositionDefectiveTesting,
 										MetricEntity metricEntity,
 										FileWriter CSVResult) throws IOException {
 		
@@ -88,7 +86,6 @@ public class MetricController {
 		numberInstances = set.numInstances();
 		
 		int indexBugginess = 10;
-		//if(metricEntity.getBalancing() != "No Sampling") indexBugginess--;
 		
 		for (int k = 1; k < numberInstances; k++) {
 			

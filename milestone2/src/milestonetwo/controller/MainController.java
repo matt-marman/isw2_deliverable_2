@@ -88,19 +88,7 @@ public class MainController{
 		}
 		
 		MetricEntity metricEntity = new MetricEntity(); 
-		metricEntity.setBalancing("No Sampling");
-		
-		String[] params = null;
-		File fileCheck = new File(projectEntity.getFileARFF());			
-		if(!fileCheck.exists()) {
-					
-			//in case it is created from PROJECT.csv 
-			params[0] = projectEntity.getFileCSV();
-			params[1] = projectEntity.getFileARFF();
-			CSVController.csvConverter(params, metricEntity);
-					
-		}
-		
+				
 		//create file where it is writing results
 		CSVResult = new FileWriter(projectEntity.getBaseFilePath() + "_RESULT" + extensionCSV);	
 		CSVResult.append("Dataset,#TrainingRelease,%Training,%DefectiveTraining,%DefectiveTesting,"
@@ -109,59 +97,43 @@ public class MainController{
 		fileArffList = new ArrayList<String>();
 		fileCSVList = new ArrayList<String>();
 		CSVController CSVController = new CSVController();
-					
-		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
-				
-			BalancingController balancingController = new BalancingController();
-			//it returns an .arff file and .csv file
-			String[] arffFileBalancing = balancingController.applyBalancing(projectEntity.getFileARFF(), balancingSelectionIndex, 
-											projectEntity.getBaseFilePath(), metricEntity);
-				
-				
-			projectEntity.setFileARFF(arffFileBalancing[0]);
-			projectEntity.setFileCSV(arffFileBalancing[1]);
-				
-			String[] params2 = {projectEntity.getFileCSV(), projectEntity.getFileARFF()};
-			CSVController.csvConverter(params2, metricEntity);
-								
-			DataSource source = new DataSource(projectEntity.getFileARFF());
-			numberFeature = source.getDataSet().numAttributes();
-			Attribute versions = source.getDataSet().attribute(0);
-			numberRelease = versions.numValues();
+		
+		DataSource source = new DataSource(projectEntity.getFileARFF());
+		numberFeature = source.getDataSet().numAttributes();
+		Attribute versions = source.getDataSet().attribute(0);
+		numberRelease = versions.numValues();
 
-			//convert each .csv file generated		
-			for(int version = 0; version < numberRelease; version++) {
+		//convert each .csv file generated		
+		for(int version = 0; version < numberRelease; version++) {
 						
-				String currentCSVFile = projectEntity.getBaseFilePath();
-				currentCSVFile += String.valueOf(version + 1);
-				currentCSVFile += extensionCSV;
-				fileCSVList.add(currentCSVFile);
+			String currentCSVFile = projectEntity.getBaseFilePath();
+			currentCSVFile += String.valueOf(version + 1);
+			currentCSVFile += extensionCSV;
+			fileCSVList.add(currentCSVFile);
 						
-				String currentArffFile = projectEntity.getBaseFilePath();;
-				currentArffFile += String.valueOf(version + 1);
-				currentArffFile += extensionArff;
-				fileArffList.add(currentArffFile);
-					
-			}
-						
-			CSVController.splitCSV(projectEntity.getFileCSV(), fileCSVList, projectEntity.getFirstRelease(), numberFeature, metricEntity);	
-					
-			for(int j = 0; j < numberRelease; j++) {
-					
-				String[] paramsCSVController = {fileCSVList.get(j), fileArffList.get(j)};
-				CSVController.csvConverter(paramsCSVController, metricEntity);
-					
-			}
-					
-			//use walk forward
-			walkForward(fileArffList, versions, projectEntity, metricEntity);
-								
+			String currentArffFile = projectEntity.getBaseFilePath();;
+			currentArffFile += String.valueOf(version + 1);
+			currentArffFile += extensionArff;
+			fileArffList.add(currentArffFile);
+				
 		}
+			
+				
+		CSVController.splitCSV(projectEntity.getFileCSV(), fileCSVList, projectEntity.getFirstRelease(), numberFeature, metricEntity);	
+
+		for(int j = 0; j < numberRelease; j++) {
+					
+			String[] paramsCSVController = {fileCSVList.get(j), fileArffList.get(j)};
+			CSVController.csvConverter(paramsCSVController, metricEntity);
+					
+		}
+					
+		if(true) return;
+		//use walk forward
+		walkForward(fileArffList, versions, projectEntity, metricEntity);
 				
 	}
 			
-	
-		
 	public static void walkForward(ArrayList<String> releaseFileArffList, Attribute versions, 
 									ProjectEntity projectEntity, MetricEntity metricEntity) throws Exception {
 		
@@ -178,14 +150,15 @@ public class MainController{
 		DataSource sourceTraining = null;
 					
 		//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
-		for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
+		//for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
 
-			SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
+			//SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
 		
 			for(int j = 0; j < numberRelease - 1; j++) {
 				
 				//merge instances
 				if(j != 0) {
+					
 					DataSource newSourceTraining = new DataSource(releaseFileArffList.get(j));
 					Instances newTraining = newSourceTraining.getDataSet();	
 					
@@ -229,36 +202,50 @@ public class MainController{
 				IBk ibk = new IBk();
 				RandomForest randomForest = new RandomForest();
 				
-				//use feature selection
-				for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
+				//use balancing
+				for (int balancingSelectionIndex = 1; balancingSelectionIndex < 4; balancingSelectionIndex++) {
 					
-					FeatureSelectionController featureSelectionController = new FeatureSelectionController();
-					Instances [] set = featureSelectionController.applyFeatureSelection(featureSelectionIndex, training, testing, metricEntity);
-					
-					Instances trainingFeatureSelection = set[0];				
-					testing = set[1];
-
-					Evaluation evalNaiveBayes = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, naiveBayes, trainingFeatureSelection, testing, metricEntity);
-					Evaluation evalIbk = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, ibk, trainingFeatureSelection, testing, metricEntity);	
-					Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, trainingFeatureSelection, testing, metricEntity);
+					BalancingController balancingController = new BalancingController();
+					Instances trainingSetBalancing = balancingController.applyBalancing(training, balancingSelectionIndex, metricEntity);
 						
-					//%Training = training / total data
-					float trainingInstance = training.numInstances();
-					float totalInstance = trainingInstance + testing.numInstances();
-					float percentageTraining = (trainingInstance / totalInstance) * 100;
-					
-					//let's calculate the metrics for each classifier
-					metricController.calculateMetric(evalNaiveBayes, projectEntity, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-							metricEntity, CSVResult);
-					metricController.calculateMetric(evalIbk, projectEntity, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-							metricEntity, CSVResult);
-					metricController.calculateMetric(evalRandomForest, projectEntity, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-							metricEntity, CSVResult);
+					//use feature selection
+					for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
+						
+						FeatureSelectionController featureSelectionController = new FeatureSelectionController();
+						Instances [] set = featureSelectionController.applyFeatureSelection(featureSelectionIndex, trainingSetBalancing, testing, metricEntity);
+						
+						Instances trainingFeatureSelection = set[0];	
+						Instances testingFeatureSelection = set[1];
+
+						//No cost sensitive / Sensitive Threshold / Sensitive Learning (CFN = 10 * CFP)
+						for (int sensitiveSelectionIndex = 1; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
+
+							SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
+							
+							//PROBLEMA Nel training non viene filtrato
+							Evaluation evalNaiveBayes = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, naiveBayes, trainingFeatureSelection, testingFeatureSelection, metricEntity);
+							Evaluation evalIbk = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, ibk, trainingFeatureSelection, testingFeatureSelection, metricEntity);	
+							Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, trainingFeatureSelection, testingFeatureSelection, metricEntity);
+								
+							//%Training = training / total data
+							float trainingInstance = training.numInstances();
+							float totalInstance = trainingInstance + testing.numInstances();
+							float percentageTraining = (trainingInstance / totalInstance) * 100;
+							
+							//let's calculate the metrics for each classifier
+							metricController.calculateMetric(evalNaiveBayes, projectEntity, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
+									metricEntity, CSVResult);
+							metricController.calculateMetric(evalIbk, projectEntity, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
+									metricEntity, CSVResult);
+							metricController.calculateMetric(evalRandomForest, projectEntity, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
+									metricEntity, CSVResult);
+						}
+					}
 				}
 									
 			}	
 			
-		}
+		
 			
 	}
 	

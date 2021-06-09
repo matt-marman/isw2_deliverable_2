@@ -31,6 +31,7 @@ public class CSVController {
 							String firstRelease, int numberFeature, MetricEntity metricEntity) throws IOException {
 		
 		CSVReader reader = null;  
+		
 		try{  
 						
 			reader = new CSVReader(new FileReader(nameCSVProject));  
@@ -42,7 +43,7 @@ public class CSVController {
 
 			int version = 1;
 			
-			if(metricEntity.getBalancing() != "No Sampling") numberFeature --;
+			//if(metricEntity.getBalancing() != "No Sampling") numberFeature --;
 
 			FileWriter csv = new FileWriter(fileCSVList.get(version - 1));
 			String currentVersion = firstRelease;
@@ -126,11 +127,6 @@ public class CSVController {
 
 	public static void csvConverter(String[] args, MetricEntity metricEntity) throws Exception {
 	    
-		if (args.length != 2) {
-		      System.out.println("\nUsage: CSV2Arff <input.csv> <output.arff>\n");
-		      System.exit(1);
-	    }
-
 	    // load CSV
 	    CSVLoader loader = new CSVLoader();
 	    loader.setSource(new File(args[0]));
@@ -140,7 +136,8 @@ public class CSVController {
 	    //index = 1, corresponds to path name
     	Remove removeFilter = new Remove();
 
-	    if(metricEntity.getBalancing() == "No Sampling") {
+    	
+	    //if(metricEntity.getBalancing() == "No Sampling") {
 	    	
 	    	int[] indices = {1};
 			removeFilter.setAttributeIndicesArray(indices);
@@ -148,7 +145,8 @@ public class CSVController {
 		    removeFilter.setInputFormat(data);
 		    data = Filter.useFilter(data, removeFilter);	    
 
-	    }
+	    //}
+	    
 	    /*
 	     * This assumes that indices contains 
 	     * the indices of attributes that you want to keep. 

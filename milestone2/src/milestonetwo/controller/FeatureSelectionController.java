@@ -2,15 +2,11 @@ package milestonetwo.controller;
 
 import weka.attributeSelection.BestFirst;
 import weka.attributeSelection.CfsSubsetEval;
-import weka.attributeSelection.GreedyStepwise;
 import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.AttributeSelection;
-import weka.core.converters.ArffSaver;
-import java.io.File;
 
 import milestonetwo.entity.MetricEntity;
-import weka.core.converters.ConverterUtils.DataSource;
 
 public class FeatureSelectionController {
 	
@@ -31,16 +27,16 @@ public class FeatureSelectionController {
 					
 	}
 	
-	public Instances [] applyNoSelection(){
+	private Instances [] applyNoSelection(){
 		
 		this.metricEntity.setFeatureSelection("No Selection");
 		
-		Instances [] param = {this.training, this.testing};
-		return param;
+		Instances [] newSet = {this.training, this.testing};
+		return newSet;
 		
 	}
 	
-	public Instances [] applyBestFirst() throws Exception{
+	private Instances [] applyBestFirst() throws Exception{
 		
 		this.metricEntity.setFeatureSelection("Best First");
 		
@@ -56,7 +52,6 @@ public class FeatureSelectionController {
 		filter.setSearch(search);
 		filter.setInputFormat(this.training);
 		
-		//apply
 		Instances trainingFeatureSelection = Filter.useFilter(this.training, filter);
 		Instances testingFeatureSelection = Filter.useFilter(this.testing, filter);
 		
@@ -65,8 +60,8 @@ public class FeatureSelectionController {
 		trainingFeatureSelection.setClassIndex(numAttr - 1);
 		testingFeatureSelection.setClassIndex(numAttr - 1);
 				
-		Instances [] param2 = {trainingFeatureSelection, testingFeatureSelection};
-		return param2;
+		Instances [] newSet = {trainingFeatureSelection, testingFeatureSelection};
+		return newSet;
 		
 	}
 	
