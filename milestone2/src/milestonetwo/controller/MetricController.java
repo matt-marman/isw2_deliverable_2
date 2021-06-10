@@ -9,9 +9,6 @@ import weka.classifiers.Evaluation;
 import weka.core.Instance;
 import weka.core.Instances;
 
-import java.util.logging.Logger;
-import java.util.logging.Level;
-
 public class MetricController {
 	
 	/**
@@ -31,8 +28,6 @@ public class MetricController {
 										int numberRelease, 
 										String classifierName, 
 										float percentageTraining, 
-										int [] compositionDefectiveTraining, 
-										int [] compositionDefectiveTesting,
 										MetricEntity metricEntity,
 										FileWriter csvResult) {
 		
@@ -40,6 +35,9 @@ public class MetricController {
 		double tn = eval.numTrueNegatives(0);
 		double fp = eval.numFalsePositives(0);
 		double fn = eval.numFalseNegatives(0);
+		
+		int [] compositionDefectiveTraining = metricEntity.getCompositionDefectiveTraining();
+		int [] compositionDefectiveTesting = metricEntity.getCompositionDefectiveTesting();
 		
 		float totalInstancesTraining = compositionDefectiveTraining[0] + compositionDefectiveTraining[1];
 		float defectiveTraining = compositionDefectiveTraining[0] / totalInstancesTraining;

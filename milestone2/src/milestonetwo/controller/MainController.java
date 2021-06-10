@@ -7,6 +7,7 @@ import weka.core.Instances;
 
 import java.io.FileWriter;
 import java.util.ArrayList;
+import java.util.List;
 
 import milestonetwo.entity.MetricEntity;
 import milestonetwo.entity.ProjectEntity;
@@ -40,10 +41,8 @@ public class MainController{
 	 * true = Syncope project
 	 */
 	
-	private static boolean projectSelection = false;
-	
-	private static String pathFile = "/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/";
-	
+	private static boolean projectSelection = true;
+		
 	private static FileWriter csvResult;
 	
 	private static String extensionArff = ".arff";
@@ -52,23 +51,25 @@ public class MainController{
 	private static int numberRelease;
 
 	public static void main(String[] args) throws Exception{
-		
+			    
+		String pathFile = System.getProperty("user.dir");		
+	    
 		ProjectEntity projectEntity = new ProjectEntity(); 
 		
 		//set attributes for project
 		if(projectSelection) {
 			
-			projectEntity.setBaseFilePath(pathFile + "syncopeFile/SYNCOPE");
-			projectEntity.setFileARFF(pathFile + "syncopeFile/SYNCOPE.arff");
-			projectEntity.setFileCSV(pathFile + "syncopeFile/SYNCOPE.csv");
+			projectEntity.setBaseFilePath(pathFile + "/syncopeFile/SYNCOPE");
+			projectEntity.setFileARFF(pathFile + "/syncopeFile/SYNCOPE.arff");
+			projectEntity.setFileCSV(pathFile + "/syncopeFile/SYNCOPE.csv");
 			projectEntity.setFirstRelease("1.0.0-incubating");
 			projectEntity.setProjectName("SYNCOPE");
 						
 		}else {
 			
-			projectEntity.setBaseFilePath(pathFile + "bookkeeperFile/BOOKKEEPER");
-			projectEntity.setFileARFF(pathFile + "bookkeeperFile/BOOKKEEPER.arff");
-			projectEntity.setFileCSV(pathFile + "bookkeeperFile/BOOKKEEPER.csv");
+			projectEntity.setBaseFilePath(pathFile + "/bookkeeperFile/BOOKKEEPER");
+			projectEntity.setFileARFF(pathFile + "/bookkeeperFile/BOOKKEEPER.arff");
+			projectEntity.setFileCSV(pathFile + "/bookkeeperFile/BOOKKEEPER.csv");
 			projectEntity.setFirstRelease("4.0.0");
 			projectEntity.setProjectName("BOOKKEEPER");
 	
@@ -115,30 +116,20 @@ public class MainController{
 		}
 					
 		//use walk forward
-		walkForward(fileArffList, versions, projectEntity, metricEntity);
+		walkForward(fileArffList, projectEntity, metricEntity);
 				
 	}
 		
 	
 	/**
 	 * @param releaseFileArffList
-	 * @param versions
 	 * @param projectEntity
 	 * @param metricEntity
 	 * @throws Exception
 	 */
 	
-	private static void walkForward(ArrayList<String> releaseFileArffList, Attribute versions, 
+	private static void walkForward(ArrayList<String> releaseFileArffList, 
 									ProjectEntity projectEntity, MetricEntity metricEntity) {
-		
-		//create array with all release
-		ArrayList<String> releaseList = new ArrayList<>();
-
-		for(int j = 0; j < numberRelease; j++) {
-			
-			String version = versions.value(j);			
-			releaseList.add(version);
-		}
 		
 		Instances training = null;
 		DataSource sourceTraining = null;
@@ -148,34 +139,7 @@ public class MainController{
 			//merge instances
 			if(j != 0) {
 					
-				DataSource newSourceTraining = null;
-				try {
-					newSourceTraining = new DataSource(releaseFileArffList.get(j));
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-				Instances newTraining = null;
-				try {
-					newTraining = newSourceTraining.getDataSet();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}	
-					
-				String releaseNewTraining = null;
-				try {
-					releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
-				} catch (Exception e) {
-					e.printStackTrace();
-				}
-					
-				//change the version number
-				//for merge the two set
-				newTraining.renameAttributeValue(
-						newTraining.attribute("Version Number"),
-						releaseNewTraining,
-						projectEntity.getFirstRelease());
-							
-				training = mergeInstances(training, newTraining);
+				training = mergeInstancesPrepare(releaseFileArffList.get(j), projectEntity, training);
 				
 			}else {
 					
@@ -212,64 +176,115 @@ public class MainController{
 			training.setClassIndex(numAttr - 1);
 			testing.setClassIndex(numAttr - 1);
 				
-			//use RandomForest, NaiveBayes, Ibk as classifiers
-			NaiveBayes naiveBayes = new NaiveBayes();
-			IBk ibk = new IBk();
-			RandomForest randomForest = new RandomForest();
-				
-			//use balancing
-			for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
-					
-				BalancingController balancingController = new BalancingController();
-				Instances trainingSetBalancing = balancingController.applyBalancing(training, balancingSelectionIndex, metricEntity);
-				
-				//%Training = training / total data
-				float trainingInstance = trainingSetBalancing.numInstances();
-				float totalInstance = trainingInstance + testing.numInstances();
-				float percentageTraining = (trainingInstance / totalInstance) * 100;
-				
-				MetricController metricController = new MetricController();	
-				
-				//calculate %Defective in training and testing set
-				int [] compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing);
-				int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing);
-						
-				//use feature selection
-				for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
-						
-					FeatureSelectionController featureSelectionController = new FeatureSelectionController();
-					Instances[] set = null;
-					try {
-						set = featureSelectionController.applyFeatureSelection(featureSelectionIndex, trainingSetBalancing, testing, metricEntity);
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
-						
-					Instances trainingFeatureSelection = set[0];	
-					Instances testingFeatureSelection = set[1];
-
-					//use sensitive cost classifier
-					for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
-
-						SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
-							
-						Evaluation evalNaiveBayes = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, naiveBayes, trainingFeatureSelection, testingFeatureSelection, metricEntity);
-						Evaluation evalIbk = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, ibk, trainingFeatureSelection, testingFeatureSelection, metricEntity);	
-						Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, trainingFeatureSelection, testingFeatureSelection, metricEntity);
-							
-						//let's calculate the metrics for each classifier
-						metricController.calculateMetric(evalNaiveBayes, projectEntity, j + 1, "NaiveBayes", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-								metricEntity, csvResult);
-						metricController.calculateMetric(evalIbk, projectEntity, j + 1, "IBk", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-								metricEntity, csvResult);
-						metricController.calculateMetric(evalRandomForest, projectEntity, j + 1, "RandomForest", percentageTraining, compositionDefectiveTraining, compositionDefectiveTesting, 
-								metricEntity, csvResult);
-					}
-				}
-			}
+			applyCombination(testing, training, j, projectEntity, metricEntity);
 								
 		}		
 			
+	}
+	
+	/**
+	 * @param fileArff
+	 * @param projectEntity
+	 * @param training
+	 * @return
+	 */
+	private static Instances mergeInstancesPrepare(String fileArff, ProjectEntity projectEntity, Instances training) {
+		
+		DataSource newSourceTraining = null;
+		try {
+			newSourceTraining = new DataSource(fileArff);
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		Instances newTraining = null;
+		try {
+			newTraining = newSourceTraining.getDataSet();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}	
+			
+		String releaseNewTraining = null;
+		try {
+			releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
+		} catch (Exception e) {
+			e.printStackTrace();
+		}
+		
+		//change the version number
+		//for merge the two set
+		newTraining.renameAttributeValue(
+				newTraining.attribute("Version Number"),
+				releaseNewTraining,
+				projectEntity.getFirstRelease());
+					
+		return mergeInstances(training, newTraining);
+	}
+		
+	/**
+	 * @param testing
+	 * @param training
+	 * @param lastRealese
+	 * @param projectEntity
+	 * @param metricEntity
+	 */
+	private static void applyCombination(Instances testing, Instances training, int lastRealese, ProjectEntity projectEntity, MetricEntity metricEntity) {
+		
+		//use RandomForest, NaiveBayes, Ibk as classifiers
+		NaiveBayes naiveBayes = new NaiveBayes();
+		IBk ibk = new IBk();
+		RandomForest randomForest = new RandomForest();
+		
+		//use balancing
+		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
+				
+			BalancingController balancingController = new BalancingController();
+			Instances trainingSetBalancing = balancingController.applyBalancing(training, balancingSelectionIndex, metricEntity);
+			
+			//%Training = training / total data
+			float trainingInstance = trainingSetBalancing.numInstances();
+			float totalInstance = trainingInstance + testing.numInstances();
+			float percentageTraining = (trainingInstance / totalInstance) * 100;
+			
+			MetricController metricController = new MetricController();	
+			
+			//calculate %Defective in training and testing set
+			int [] compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing);
+			int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing);
+					
+			metricEntity.setCompositionDefectiveTesting(compositionDefectiveTesting);
+			metricEntity.setCompositionDefectiveTraining(compositionDefectiveTraining);
+			
+			//use feature selection
+			for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
+					
+				FeatureSelectionController featureSelectionController = new FeatureSelectionController();
+				List<Instances> set = new ArrayList<>();
+
+				try {
+					set = featureSelectionController.applyFeatureSelection(featureSelectionIndex, trainingSetBalancing, testing, metricEntity);
+				} catch (Exception e) {
+					e.printStackTrace();
+				}
+					
+				Instances trainingFeatureSelection = set.get(0);	
+				Instances testingFeatureSelection = set.get(1);
+
+				//use sensitive cost classifier
+				for (int sensitiveSelectionIndex = 0; sensitiveSelectionIndex < 3; sensitiveSelectionIndex++) {
+
+					SensitiveSelectionController sensitiveSelectionController = new SensitiveSelectionController();
+						
+					Evaluation evalNaiveBayes = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, naiveBayes, trainingFeatureSelection, testingFeatureSelection, metricEntity);
+					Evaluation evalIbk = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, ibk, trainingFeatureSelection, testingFeatureSelection, metricEntity);	
+					Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, trainingFeatureSelection, testingFeatureSelection, metricEntity);
+							
+					//let's calculate the metrics for each classifier
+					metricController.calculateMetric(evalNaiveBayes, projectEntity, lastRealese + 1, "NaiveBayes", percentageTraining, metricEntity, csvResult);
+					metricController.calculateMetric(evalIbk, projectEntity, lastRealese + 1, "IBk", percentageTraining, metricEntity, csvResult);
+					metricController.calculateMetric(evalRandomForest, projectEntity, lastRealese + 1, "RandomForest", percentageTraining, metricEntity, csvResult);
+				}
+			}
+		}
 	}
 	
 	/**

@@ -6,6 +6,8 @@ public class MetricEntity {
 	private static String featureSelection;
 	private static String sensitivity; 
 	private static float percentageMajorityClass;
+	private static int [] compositionDefectiveTraining;
+	private static int [] compositionDefectiveTesting;
 	
 	public String getBalancing() {
 		return balancing;
@@ -30,6 +32,18 @@ public class MetricEntity {
 	}
 	public static void setPercentageMajorityClass(float percentageMajorityClass) {
 		MetricEntity.percentageMajorityClass = percentageMajorityClass;
+	}
+	public static int [] getCompositionDefectiveTraining() {
+		return compositionDefectiveTraining;
+	}
+	public static void setCompositionDefectiveTraining(int [] compositionDefectiveTraining) {
+		MetricEntity.compositionDefectiveTraining = compositionDefectiveTraining;
+	}
+	public static int [] getCompositionDefectiveTesting() {
+		return compositionDefectiveTesting;
+	}
+	public static void setCompositionDefectiveTesting(int [] compositionDefectiveTesting) {
+		MetricEntity.compositionDefectiveTesting = compositionDefectiveTesting;
 	}
 	
 	

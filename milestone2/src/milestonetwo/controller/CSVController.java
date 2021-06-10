@@ -90,8 +90,7 @@ public class CSVController {
 
 						if(token.equals(currentVersion)) {
 							
-							if(currentRow == numberFeature + 2) csv.append(attributeList + "\n");
-							currentRow++;
+							currentRow = addAttribute(currentRow, numberFeature, csv, attributeList);
 							
 						}else {
 							
@@ -113,8 +112,7 @@ public class CSVController {
 						
 						//create the first row with the feature
 						attributeList.append(token);
-						if(currentRow != numberFeature + 1) attributeList.append(",");
-						currentRow++;
+						currentRow = addFirstRow(currentRow,  numberFeature, attributeList);
 					}
 
 				}  
@@ -133,6 +131,39 @@ public class CSVController {
 		}  
 	}
 	
+	/**
+	 * @param currentRow
+	 * @param numberFeature
+	 * @param attributeList
+	 * @return
+	 */
+	private static int addFirstRow(int currentRow, int numberFeature, StringBuilder attributeList) {
+		
+		if(currentRow != numberFeature + 1) attributeList.append(",");
+		currentRow++;
+		return currentRow;
+	}
+	
+	/**
+	 * @param currentRow
+	 * @param numberFeature
+	 * @param csv
+	 * @param attributeList
+	 * @return
+	 */
+	private static int addAttribute(int currentRow, int numberFeature, FileWriter csv, StringBuilder attributeList) {
+		
+		if(currentRow == numberFeature + 2)
+			try {
+				csv.append(attributeList + "\n");
+			} catch (IOException e) {
+				e.printStackTrace();
+			}
+		
+		currentRow++;
+		return currentRow;
+		
+	}
 	/**
 	 * @param nextLine
 	 * @param csv

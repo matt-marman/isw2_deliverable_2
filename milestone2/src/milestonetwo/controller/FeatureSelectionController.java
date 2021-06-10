@@ -6,6 +6,9 @@ import weka.core.Instances;
 import weka.filters.Filter;
 import weka.filters.supervised.attribute.AttributeSelection;
 
+import java.util.ArrayList;
+import java.util.List;
+
 import milestonetwo.entity.MetricEntity;
 
 /**
@@ -32,7 +35,7 @@ public class FeatureSelectionController {
 	 * @throws Exception
 	 */
 	
-	public Instances [] applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) {
+	public List<Instances> applyFeatureSelection(int selection, Instances training, Instances testing, MetricEntity metricEntity) {
 				
 		this.metricEntity = metricEntity;
 		this.training = training;
@@ -41,22 +44,23 @@ public class FeatureSelectionController {
 		if(selection == 0) return applyNoSelection();
 		if(selection == 1) return applyBestFirst();
 		
-		return new Instances [2];
+		return new ArrayList<>();
 					
 	}
 	
-	private Instances [] applyNoSelection(){
+	private ArrayList<Instances> applyNoSelection(){
 		
 		this.metricEntity.setFeatureSelection("No Selection");
 		
-		Instances [] newSet = null; 
-		newSet[0] = this.training;
-		newSet[1] = this.testing;
+		ArrayList<Instances> newSet = new ArrayList<>();
+		newSet.add(0, this.training);
+		newSet.add(1, this.testing);
+		
 		return newSet;
 		
 	}
 	
-	private Instances [] applyBestFirst(){
+	private ArrayList<Instances> applyBestFirst(){
 		
 		this.metricEntity.setFeatureSelection("Best First");
 		
@@ -94,9 +98,10 @@ public class FeatureSelectionController {
 		trainingFeatureSelection.setClassIndex(numAttr - 1);
 		testingFeatureSelection.setClassIndex(numAttr - 1);
 				
-		Instances [] newSet = null;
-		newSet[0] = trainingFeatureSelection;
-		newSet[1] = testingFeatureSelection;
+		ArrayList<Instances> newSet = new ArrayList<>();
+		newSet.add(0, trainingFeatureSelection);
+		newSet.add(1, testingFeatureSelection);
+		
 		return newSet;
 		
 	}
