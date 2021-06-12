@@ -90,8 +90,9 @@ public class BalancingController {
 		
 		metricEntity.setBalancing("Oversampling");
 			
-		float percentageMajorityClass = 1;
-		String[] optsOverSampling = new String[]{"-B", "1.0", "-Z", String.valueOf(2 * percentageMajorityClass  * 100)};
+		float percentageMajorityClass = metricEntity.getPercentageMajorityClass();
+				
+		String[] optsOverSampling = new String[]{"-B", "1.0", "-Z", String.valueOf(2 * percentageMajorityClass)};
 		
 		Resample  overSampling = new Resample();
 		try {
@@ -120,7 +121,7 @@ public class BalancingController {
 	private static Instances applySmote() {
 		
 		metricEntity.setBalancing("Smote");
-						
+								
 		SMOTE smote = new SMOTE(); 
 		try {
 			smote.setInputFormat(training);
@@ -130,13 +131,17 @@ public class BalancingController {
 		
 		FilteredClassifier filteredClassifier = new FilteredClassifier();
 		filteredClassifier.setFilter(smote);
-		
+				
 		Instances trainingSmote = null;
 		try {
-			return Filter.useFilter(training, smote);
+			
+			trainingSmote = Filter.useFilter(training, smote);
+			return trainingSmote;
+			
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+		
 		return trainingSmote; 
 	}
 	

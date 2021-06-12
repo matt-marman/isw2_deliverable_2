@@ -27,7 +27,6 @@ public class MetricController {
 	public void calculateMetric(Evaluation eval, ProjectEntity projectEntity, 
 										int numberRelease, 
 										String classifierName, 
-										float percentageTraining, 
 										MetricEntity metricEntity,
 										FileWriter csvResult) {
 		
@@ -47,16 +46,12 @@ public class MetricController {
 		float defectiveTesting = compositionDefectiveTesting[0] / totalInstancesTesting;
 		float percentageDefectiveTesting = defectiveTesting * 100;
 		
-		/*
-		if(numberRelease == 6 && metricEntity.getBalancing() == "No Balancing") {
-			
-			metricEntity.setPercentageMajorityClass(((compositionDefectiveTraining[0] + compositionDefectiveTesting[0])/
-											totalInstancesTraining + totalInstancesTesting) * 100);
-			
-			
-		}
-		*/
-			
+		float percentageTraining = totalInstancesTraining/(totalInstancesTraining + totalInstancesTesting) * 100;
+
+		double precision = 0;
+		
+		if(fp != 0) precision = eval.precision(0);
+
 		//write the result .csv file
 		try {
 			csvResult.append(projectEntity.getProjectName() + "," 
@@ -69,11 +64,12 @@ public class MetricController {
 							+ metricEntity.getFeatureSelection() + ","  
 							+ metricEntity.getSensitivity() + "," 
 							+ tp + "," + fp + "," + tn + ","  + fn + "," 
-							+ eval.precision(0) + "," 
+							+ precision + "," 
 							+ eval.recall(0) +  "," 
 							+ eval.areaUnderROC(0) + "," 
 							+ eval.kappa() + 
 							"\n");
+			
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

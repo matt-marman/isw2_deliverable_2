@@ -41,7 +41,7 @@ public class MainController{
 	 * true = Syncope project
 	 */
 	
-	private static boolean projectSelection = true;
+	private static boolean projectSelection = false;
 		
 	private static FileWriter csvResult;
 	
@@ -133,7 +133,7 @@ public class MainController{
 		
 		Instances training = null;
 		DataSource sourceTraining = null;
-								
+		
 		for(int j = 0; j < numberRelease - 1; j++) {
 				
 			//merge instances
@@ -205,11 +205,12 @@ public class MainController{
 			
 		String releaseNewTraining = null;
 		try {
-			releaseNewTraining = newSourceTraining.getDataSet().attribute(0).toString().subSequence(29, 34).toString();
+			
+			releaseNewTraining = newSourceTraining.getDataSet().attribute(0).value(0).toString();
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+				
 		//change the version number
 		//for merge the two set
 		newTraining.renameAttributeValue(
@@ -235,27 +236,39 @@ public class MainController{
 		RandomForest randomForest = new RandomForest();
 		
 		//use balancing
-		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
+		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 1; balancingSelectionIndex++) {
 				
 			BalancingController balancingController = new BalancingController();
-			Instances trainingSetBalancing = balancingController.applyBalancing(training, balancingSelectionIndex, metricEntity);
 			
-			//%Training = training / total data
-			float trainingInstance = trainingSetBalancing.numInstances();
-			float totalInstance = trainingInstance + testing.numInstances();
-			float percentageTraining = (trainingInstance / totalInstance) * 100;
+			/*
+			 * metricEntity.setPercentageMajorityClass method is for oversampling 
+			 * if there are more defective than not defective 
+			 * set the PercentageMajorityClass on defective
+			 */	
 			
 			MetricController metricController = new MetricController();	
+			int [] compositionDefectiveTraining = metricController.calculateNumDefective(training);
 			
+			float percentageDefectiveTraining = (compositionDefectiveTraining[0] / (float)training.numInstances()) * 100;
+			
+			if(compositionDefectiveTraining[0] > compositionDefectiveTraining[1]) {
+				
+				metricEntity.setPercentageMajorityClass(percentageDefectiveTraining);
+			}
+				
+			else metricEntity.setPercentageMajorityClass(100 - percentageDefectiveTraining);
+
+			Instances trainingSetBalancing = balancingController.applyBalancing(training, balancingSelectionIndex, metricEntity);
+						
 			//calculate %Defective in training and testing set
-			int [] compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing);
+			compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing);
 			int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing);
 					
 			metricEntity.setCompositionDefectiveTesting(compositionDefectiveTesting);
 			metricEntity.setCompositionDefectiveTraining(compositionDefectiveTraining);
 			
 			//use feature selection
-			for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
+			for (int featureSelectionIndex = 0; featureSelectionIndex < 1; featureSelectionIndex++) {
 					
 				FeatureSelectionController featureSelectionController = new FeatureSelectionController();
 				List<Instances> set = new ArrayList<>();
@@ -279,9 +292,9 @@ public class MainController{
 					Evaluation evalRandomForest = sensitiveSelectionController.applySensitiveSelection(sensitiveSelectionIndex, randomForest, trainingFeatureSelection, testingFeatureSelection, metricEntity);
 							
 					//let's calculate the metrics for each classifier
-					metricController.calculateMetric(evalNaiveBayes, projectEntity, lastRealese + 1, "NaiveBayes", percentageTraining, metricEntity, csvResult);
-					metricController.calculateMetric(evalIbk, projectEntity, lastRealese + 1, "IBk", percentageTraining, metricEntity, csvResult);
-					metricController.calculateMetric(evalRandomForest, projectEntity, lastRealese + 1, "RandomForest", percentageTraining, metricEntity, csvResult);
+					metricController.calculateMetric(evalNaiveBayes, projectEntity, lastRealese + 1, "NaiveBayes", metricEntity, csvResult);
+					metricController.calculateMetric(evalIbk, projectEntity, lastRealese + 1, "IBk", metricEntity, csvResult);
+					metricController.calculateMetric(evalRandomForest, projectEntity, lastRealese + 1, "RandomForest", metricEntity, csvResult);
 				}
 			}
 		}
