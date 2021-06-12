@@ -1,8 +1,8 @@
 
-# DIRECTORY FOR THE SECOND DELIVERABLE 
-## ISW2 COURSE
+# ISW2 COURSE
+## DIRECTORY FOR THE SECOND DELIVERABLE 
 
-[![SonarCloud](https://sonarcloud.io/images/project_badges/sonarcloud-black.svg)](https://sonarcloud.io/dashboard?id=matt-marman_isw2_deliverable_2)
+[![Code Smells](https://sonarcloud.io/api/project_badges/measure?project=matt-marman_isw2_deliverable_2&metric=code_smells)](https://sonarcloud.io/dashboard?id=matt-marman_isw2_deliverable_2)
 
 ### PROBLEMS IN WEKA
 - SMOTE does not balance training set.
