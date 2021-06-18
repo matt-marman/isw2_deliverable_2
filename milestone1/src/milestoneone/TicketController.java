@@ -1,504 +1,540 @@
 package milestoneone;
 
-import java.io.File;
 import java.io.IOException;
+import java.nio.file.Paths;
 import java.time.LocalDate;
-import java.time.ZoneId;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Map;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
+
+import org.apache.commons.collections4.map.MultiKeyMap;
+import org.eclipse.jgit.diff.DiffEntry;
+import org.eclipse.jgit.diff.DiffFormatter;
+import org.eclipse.jgit.diff.Edit;
+import org.json.JSONArray;
+import org.json.JSONException;
+import org.json.JSONObject;
 
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Multimap;
 import com.google.common.collect.MultimapBuilder;
-import org.apache.commons.collections4.map.MultiKeyMap;
-import org.eclipse.jgit.api.Git;
-import org.eclipse.jgit.api.errors.GitAPIException;
-import org.eclipse.jgit.api.errors.NoHeadException;
-import org.eclipse.jgit.diff.DiffEntry;
-import org.eclipse.jgit.diff.DiffEntry.ChangeType;
-import org.eclipse.jgit.diff.DiffFormatter;
-import org.eclipse.jgit.diff.Edit;
-import org.eclipse.jgit.diff.Edit.Type;
-import org.eclipse.jgit.errors.CorruptObjectException;
-import org.eclipse.jgit.errors.MissingObjectException;
-import org.eclipse.jgit.lib.Repository;
-import org.eclipse.jgit.revwalk.RevCommit;
-import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
 public class TicketController {
+
+	//Multimap<ReleaseDate, VersionName, VersionIndex>
+	private  Multimap<LocalDate, String> versionListWithDateAndIndex;
+
+	// Map<ticketID, (OV, FV)>
+	private  Multimap<Integer, Double> ticketWithProportion = MultimapBuilder.treeKeys().linkedListValues().build();
+
+	// Map<ticketID, (IV, FV)>
+	private  Map<Integer, List<Integer>> ticketWithBuggyIndex;
+
+	private static final String RELEASE_DATE = "releaseDate";
+	private static ProjectEntity projectEntity;
 	
-		//Multimap<ReleaseDate, VersionName, VersionIndex>
-		private  Multimap<LocalDate, String> versionListWithDateAndIndex;
-
-		// Map<ticketID, (OV, FV)>
-		private  Multimap<Integer, Integer> ticketWithProportion = MultimapBuilder.treeKeys().linkedListValues().build();
-
-		// Map<ticketID, (OV, FV)>
-		private  Multimap<Integer, Integer> ticketWithoutAffectedVersionList = MultimapBuilder.treeKeys().linkedListValues().build();
-
-		// MultiKeyMap<FileVersion, FilePath, MetricsList>
-		@SuppressWarnings("rawtypes")
-		private  MultiKeyMap fileMapDataset;
+	public TicketController(ProjectEntity projectEntity, Multimap<LocalDate, String> versionListWithDate, Map<Integer, List<Integer>> ticketWithBuggyIndex, List <TicketEntity> ticketList) {
 		
-		// Map<ticketID, (IV, FV)>
-		private  Map<Integer, List<Integer>> ticketWithBuggyIndex;
-
-		private int metrics = 10;
+		this.projectEntity = projectEntity;
+		this.versionListWithDateAndIndex = versionListWithDate;
+		this.ticketWithBuggyIndex = ticketWithBuggyIndex;
 		
-		@SuppressWarnings("rawtypes")
-		public TicketController(Multimap<LocalDate, String> versionListWithDate, MultiKeyMap fileMapDataset) {
-			
-			this.versionListWithDateAndIndex = versionListWithDate;
-			this.fileMapDataset = fileMapDataset;			
-			ticketWithBuggyIndex = new HashMap<>();
+	}
 
-		}
-		
-		//it puts entries like [4.0.0, file.java, 0, 0, ... ,0] in fileMapDataset
-		@SuppressWarnings("unchecked")
-		public void insertEntry(String appartainVersion, String nameFile) { 
-			
-			ArrayList<Integer> initialArrayMetrics;
+	public void getJsonAffectedVersionList(JSONArray json, TicketEntity ticketEntity) throws JSONException{
 
-			//create an array with all metrics equal to 0
-			initialArrayMetrics = new ArrayList<>();
-			for (int k = 0; k < metrics; k++) initialArrayMetrics.add(0);
-			fileMapDataset.put(appartainVersion, nameFile, initialArrayMetrics); 
-			
-		}
-		
-		public static Iterable<RevCommit> getCommits(Git git) {
-			   
-			   Iterable<RevCommit> commits = null;
+		if (json.length() > 0) {
 
-				// Get all commits
-				try {
-					return git.log().all().call();
-				} catch (NoHeadException e) {
-					e.printStackTrace();
-				} catch (GitAPIException e) {
-					e.printStackTrace();
-				} catch (IOException e) {
-					e.printStackTrace();
+			// For each release in the AV version...
+			for (int k = 0; k < json.length(); k++) {
+
+				JSONObject singleRelease = json.getJSONObject(k);
+
+				// ... check if the single release has been released
+				if (singleRelease.has(RELEASE_DATE)) {
+					ticketEntity.addAv(singleRelease.getString("name"));
 				}
-				return commits;
-		   }
-		
-		//return the date of ticket, not from jira, but from commit that contains the ID in the comment
-		public String getResolutionDateForTicketFromCommit(String projectName, int id) {
-			
-			List<String> listDate = new ArrayList<>();
-			
-			FileRepositoryBuilder builder = new FileRepositoryBuilder();
-			String repoFolder = projectName + "/.git";
-			Repository repository = null;
-			
-			try {
-				repository = builder.setGitDir(new File(repoFolder)).readEnvironment().findGitDir().build();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
-			
-			Pattern pattern = null;
-			Matcher matcher = null;
-			
-			try (Git git = new Git(repository)) {
+		}
+	}
 
-				Iterable<RevCommit> commits = getCommits(git);
+	public List<TicketEntity> getTicketAssociatedCommitBuggy(String commitMessage, String projectName) {
+		
+		List<TicketEntity> resultList = new ArrayList<>();
+		Pattern pattern = null;
+		Matcher matcher = null;
+
+		for (Map.Entry<Integer,List<Integer>> entry : ticketWithBuggyIndex.entrySet()) {
 				
-				for (RevCommit commit : commits) {
-					
-					String message = commit.getFullMessage();
-					// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
-					pattern = Pattern.compile("\\b"+ projectName + "-" + id + "\\b", Pattern.CASE_INSENSITIVE);
-					matcher = pattern.matcher(message);
+			// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
+			pattern = Pattern.compile("\\b"+ projectName + "-" + entry.getKey() + "\\b", Pattern.CASE_INSENSITIVE);
+			matcher = pattern.matcher(commitMessage);
 
-					// Check if commit message contains the issues ID and the issues is labeled like "not checked"
-					if (matcher.find()) {
+			// Check if commit message contains the issues ID and the issues is labeled like "not checked"
+			if (matcher.find() && !resultList.contains(entry.getKey())) {
+			
+				TicketEntity ticketEntity = new TicketEntity();
+				ticketEntity.setIvIndex(ticketWithBuggyIndex.get(entry.getKey()).get(0));
+				ticketEntity.setFvIndex(ticketWithBuggyIndex.get(entry.getKey()).get(1));
+				ticketEntity.setId(entry.getKey());
+		
+				resultList.add(ticketEntity);
+			}
+		}
+		
+		return resultList;
+	}
+
+	public void getMetrics (CommitEntity commitEntity, DiffEntry entry, DiffFormatter diffFormatter, int limitVersion) throws IOException{
+
+		/*	
+		 * Metrics Data Structure
+		 *  0 - LOC_Touched
+		 *  1 - NumberRevisions
+		 *  2 - NumberBugFix
+		 *  3 - LOC_Added
+		 *  4 - MAX_LOC_Added
+		 *  5 - Chg_Set_Size
+		 *  6 - Max_Chg_Set
+		 *  7 - Avg_Chg_Set
+		 *  8 - AVG_LOC_Added
+		 * 
+		 * */
+
+		FileEntity fileEntity = removeFileEntity(commitEntity.getAppartainVersion(), entry.getNewPath());
+		
+		if(fileEntity == null) {
+			
+			fileEntity = new FileEntity(); 
+			fileEntity.setFileName(entry.getNewPath());
+			fileEntity.setIndexVersion(commitEntity.getAppartainVersion());
+			
+		}
+		
+		// Check if the appartaining version of the file is less than the upper bound
+		if (commitEntity.getAppartainVersion() < limitVersion) {
+			
+			int locTouched = 0;
+			int locAdded = 0;
+			int chgSetSize = 0;
+
+			// Get the total number of file committed
+			chgSetSize = commitEntity.getFilesChanged().size();
+
+			// For each edit made to the file...
+			for (Edit edit : diffFormatter.toFileHeader(entry).toEditList()) {
+
+				// Check the type of the edit and increment the corresponding variable
+				if (edit.getType() == Edit.Type.INSERT) {
+					
+					locAdded += edit.getEndB() - edit.getBeginB();
+					locTouched += edit.getEndB() - edit.getBeginB();
+			
+				} else if (edit.getType() == Edit.Type.DELETE) {
+				
+					locTouched += edit.getEndA() - edit.getBeginA();
+				
+				} else if (edit.getType() == Edit.Type.REPLACE) {
+				
+					locTouched += edit.getEndA() - edit.getBeginA();
+				
+				}
+			}
+		
+			int prevLocTouched = fileEntity.getLocTouched();
+			fileEntity.setLocTouched(prevLocTouched + locTouched);
+			
+			int prevNumberRevisions = fileEntity.getNumberRevisions();
+			fileEntity.setNumberRevisions(prevNumberRevisions + 1);
+
+
+			// Check if the commit is associated to some ticket
+			if (!commitEntity.getTicketEntityList().isEmpty()) {
+				
+				// If yes, set the call buggy and calculate the number of "NumberBugFix"
+				int prevNumberBugFix = fileEntity.getNumberBugFix();
+				fileEntity.setNumberBugFix(prevNumberBugFix + commitEntity.getTicketEntityList().size());
+				fileEntity.setBuggy(true);
+			}
+
+			int prevLocAdded = fileEntity.getLocAdded();
+			fileEntity.setLocAdded(prevLocAdded + locAdded);
 						
-						/* add this date to the list
-						 * because it could happens that more commits
-						 * correspond to the same buggy ticket. I'm taking the last one.
-						 */ 
-						LocalDate commitDate = commit.getCommitterIdent().getWhen().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
-
-						listDate.add(commitDate.toString());
-
-					}
-				}
+			if (locAdded > fileEntity.getMaxLocAdded()) {
 				
-				//return the last commit added to the list
-				if(!listDate.isEmpty()) {
-					
-					return listDate.get(0);
-					
-				}else return "";
+				fileEntity.setMaxLocAdded(locAdded);
+			}
+
+			int prevChgSetSize = fileEntity.getChgSetSize();
+			fileEntity.setChgSetSize(prevChgSetSize + chgSetSize);
+			
+			if (chgSetSize > fileEntity.getMaxChgSet()) {
+				fileEntity.setMaxChgSet(chgSetSize);
+			} 
 				
+			fileEntity.setAvgLocAdded((float)(prevLocAdded + locAdded) / (float)(prevNumberRevisions + 1));
+			fileEntity.setAvgChgSet((float)(prevChgSetSize + chgSetSize) / (float)(prevNumberRevisions + 1));
+			
+			putEmptyRecord(fileEntity);
+			
+		} 
+
+		return;
+
+	}
+
+	private FileEntity removeFileEntity(int version, String filename) {
+
+		for(int k = 0; k < projectEntity.getFileEntityList().size() - 1; k++) {
+			
+			FileEntity fileEntity = projectEntity.getFileEntityList().get(k);
+			
+			if(fileEntity.getIndexVersion() == version && fileEntity.getFileName().equals(filename)) {
+
+				projectEntity.getFileEntityList().remove(k);
+				return fileEntity;
 			}
 		}
-		
-		public void getBuggyVersionListAV(List<String> affectedVersionList, String projectName, String creationDate, int ticketID) {
-
-			int fixedVersionIndex = 0;
-			int injectedVersionIndex = 0;
-			int openingVersionIndex = 0;
-
-			double numerator = 0;
-			double denominator = 0;
-			int proportion = 0;
-			
-			// Get the three version index
-			openingVersionIndex = getOpeningVersionIndex(creationDate);
-			
-			String resolutionDate = "";
-			resolutionDate = getResolutionDateForTicketFromCommit(projectName, ticketID);
-			
-			//if commit does not has a date, return
-			if(resolutionDate.equals("")) return;
-			
-			fixedVersionIndex = getFixedVersionIndex(resolutionDate);
-			injectedVersionIndex = getAffectedVersionByList(affectedVersionList);
-			
-			//remove all tickets with invalid indexes
-			//use the proportion method with these tickets
-			if(injectedVersionIndex > openingVersionIndex || injectedVersionIndex > fixedVersionIndex || openingVersionIndex >= fixedVersionIndex) {
 				
-				ticketWithoutAffectedVersionList.put(ticketID, openingVersionIndex);
-				ticketWithoutAffectedVersionList.put(ticketID, fixedVersionIndex);
+		return null;
+
+	}
+
+	public void putEmptyRecord(FileEntity fileEntity) {
+				
+		//check if fileEntity already exists
+		for(int k = 0; k < projectEntity.getFileEntityList().size() - 1; k++) {
+			
+			FileEntity currentFileEntity = projectEntity.getFileEntityList().get(k);
+			
+			if(currentFileEntity.getIndexVersion() == fileEntity.getIndexVersion() && currentFileEntity.getFileName().equals(fileEntity.getFileName())) {
+				
 				return;
 			}
-			
-			// Check if the index of IV is different from 0, then the ticket has associated valid AV
-			if (injectedVersionIndex != 0) {
-
-				//calculate P = (FV - IV)/(FV - OV)
-				numerator = fixedVersionIndex - injectedVersionIndex;
-				denominator = fixedVersionIndex - openingVersionIndex;
-				proportion = (int)(numerator/denominator);
-				
-				ticketWithProportion.put(ticketID, 1);
-				ticketWithProportion.put(ticketID, proportion);
-				
-				// Get the IV and FV index of the ticket
-				List<Integer> affectedVersionBoundaryList = new ArrayList<>();
-				
-				// Then add the ticket to the list of the tickets with not empty affected version list
-				affectedVersionBoundaryList.add(injectedVersionIndex);
-				affectedVersionBoundaryList.add(fixedVersionIndex);
-				ticketWithBuggyIndex.put(ticketID, affectedVersionBoundaryList);
-				
-			}else {
-
-				// If AV is not present, then put the ticket in the list of the tickets that needs proportion for estimate IV
-				ticketWithoutAffectedVersionList.put(ticketID, openingVersionIndex);
-				ticketWithoutAffectedVersionList.put(ticketID, fixedVersionIndex);
-			}
 		}
 		
-		public int getOpeningVersionIndex(String ticketCreationDate) {
+		projectEntity.addFileToList(fileEntity);
 
-			int openingVersionIndex = 0;
-			LocalDate creationDate = LocalDate.parse(ticketCreationDate);
-
-			// Iterate over all version with release date
-			for (LocalDate k : versionListWithDateAndIndex.keySet()) {
-							
-				if(creationDate.isAfter(k)) {
-										
-					openingVersionIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-					
-				}else break;
-
-			}
-
-			return openingVersionIndex;
-		}
-		
-		public int getFixedVersionIndex(String ticketResolutionDate) {
-
-			int fixedVersionIndex = 0;
-			LocalDate resolutionDate = LocalDate.parse(ticketResolutionDate);
-			
-			// Iterate over all version with release date
-			for (LocalDate k : versionListWithDateAndIndex.keySet()) {
-				
-				if(resolutionDate.isAfter(k)) {
-					
-					fixedVersionIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-					
-				}else break;
 	
-			}
+	}
 
-			return fixedVersionIndex;
-		}
-		
-		public int getAffectedVersionByList(List<String> versionList) {
-
-			int injectedVersionIndex = 0;
-			//if the ticket has not, at least, an affected version return 0
-			if(versionList.isEmpty()) return 0;
+	public ProjectEntity calculateAverageMetric() {
 			
-			String firstIV = versionList.get(0);
-
-			for (LocalDate k : versionListWithDateAndIndex.keySet()) {
-				// Iterate over all version with release date
-				String releaseToCompare = String.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 0));
-				//it founds the index of injected version
-				if(releaseToCompare.equals(firstIV)) {
-					
-					injectedVersionIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-					break;					
-					
-				}
-			}
-				
-			return injectedVersionIndex;
-		}
-		
-		public void getBuggyVersionList(int ticketID, int fixedVersionIndex, int injectedVersionIndex) {
-
-			List<Integer> affectedVersionBoundaryList = new ArrayList<>();
-
-			// Check if the index of the versions are ok
-			if (fixedVersionIndex != injectedVersionIndex && injectedVersionIndex < fixedVersionIndex) {
-
-				// Then add the ticket to the list of the tickets with not empty affected version list
-				affectedVersionBoundaryList.add(injectedVersionIndex);
-				affectedVersionBoundaryList.add(fixedVersionIndex);
-				ticketWithBuggyIndex.put(ticketID, affectedVersionBoundaryList);
-			}
-		}
-		
-		public void getBuggyVersionProportionTicket(int proportion) {
-
-			int injectedVersionIndex = 1;
+		for(int i = 0; i < projectEntity.getFileEntityList().size() - 1; i++) {
 			
-			// Iterate over all the commit without affected version list
-			// Map<ticketID, (OV, FV)>
-			for (int ticketID : ticketWithoutAffectedVersionList.keySet()) {
-				
-				int fixedVersionIndex = Iterables.get(ticketWithoutAffectedVersionList.get(ticketID), 1);
-				int openingVersionIndex = Iterables.get(ticketWithoutAffectedVersionList.get(ticketID), 0);
-
-				injectedVersionIndex = fixedVersionIndex - (fixedVersionIndex - openingVersionIndex)*proportion;
-				if (injectedVersionIndex < 1) injectedVersionIndex = 1;
-				
-				//if injectedVersionIndex > fixedVersionIndex, ingnore the ticket
-				if(injectedVersionIndex > fixedVersionIndex) continue;
-
-				// Get the IV and FV index of the ticket
-				List<Integer> affectedVersionBoundaryList = new ArrayList<>();
-				
-				//add the ticket to the list
-				affectedVersionBoundaryList.add(injectedVersionIndex);
-				affectedVersionBoundaryList.add(fixedVersionIndex);
-				ticketWithBuggyIndex.put(ticketID, affectedVersionBoundaryList);
-				
-				} 
-		}
-		
-		public int getEstimateProportion() {
-			
-			int currentProportion = 0;
-			double sumProportion = 0;
-			
-			for (int k : ticketWithProportion.keySet()) {			
-				
-				currentProportion = Iterables.get(ticketWithProportion.get(k), 1);
-				sumProportion += currentProportion;
-			}
-				
-			return (int) (sumProportion/(double)ticketWithProportion.keySet().size());
-			
-			
-		}
-		
-		public int getCommitAppartainVersionIndex(LocalDate fileCommitDate) {
-
-			int lastIndex = 0;
-
-			// Iterate over all version with release date
-			for (LocalDate k : versionListWithDateAndIndex.keySet()) {
-
-				lastIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-
-				// Break if we found the appartaining version of the file before the end of the iteration
-				if (k.isAfter(fileCommitDate)) break;
-	
-			}
-			return lastIndex;
-		}
-		
-		public List<Integer> getTicketAssociatedCommitBuggy(String commitMessage, String projectName) {
-			
-			List<Integer> ticketListBuggy = new ArrayList<>();
-			Pattern pattern = null;
-			Matcher matcher = null;
-
-			// Map<ticketID, (IV, FV)>
-			for (Map.Entry<Integer, List<Integer>> entry : ticketWithBuggyIndex.entrySet()) {
-					
-				// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
-				pattern = Pattern.compile("\\b" + projectName + "-" + entry.getKey() + "\\b", Pattern.CASE_INSENSITIVE);				
-				matcher = pattern.matcher(commitMessage);
-				
-				if (matcher.find()) {
-					
-					ticketListBuggy.add(ticketWithBuggyIndex.get(entry.getKey()).get(0));
-					ticketListBuggy.add(ticketWithBuggyIndex.get(entry.getKey()).get(1));
-					ticketListBuggy.add(entry.getKey());
-					return ticketListBuggy;
-				}
-			}
-			
-			return ticketListBuggy;
-		}
-		
-		public List<Integer> getTicketAssociatedCommitBugFix(String commitMessage, String projectName, List<Integer> ticketList) {
-			
-			List<Integer> ticketListBugFix = new ArrayList<>();
-			Pattern pattern = null;
-			Matcher matcher = null;
-			
-			for (Integer entry : ticketList) {
-
-				// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
-				pattern = Pattern.compile("\\b"+ projectName + "-" + entry + "\\b", Pattern.CASE_INSENSITIVE);
-				matcher = pattern.matcher(commitMessage);
-
-				// Check if commit message contains the issues ID and the issues is labeled like "not checked"
-				if (matcher.find() && !ticketListBugFix.contains(entry)) ticketListBugFix.add(entry);
-			
-			}
-			return ticketListBugFix;
-		}
-		
-		public List<Integer> calculateMetrics (DiffEntry entry, String version, DiffFormatter diffFormatter, List<DiffEntry> filesChanged, List<Integer> ticketAssociated) throws CorruptObjectException, MissingObjectException, IOException{
-
-			/*	
-			 *  Metrics used:
-			 *  
-			 *  0 - LOC_touched
-			 *  1 - NR
-			 *  2 - NFix
-			 *  3 - LOC_Added
-			 *  4 - MAX_LOC_Added
-			 *  5 - ChgSetSize
-			 *  6 - MAX_ChgSet
-			 *  7 - AVG_ChgSet
-			 *  8 - AVG_LOC_added
-			 * 	9 - Bugginess
-			 * 
-			 * 
-			 */
-			
-			
-			@SuppressWarnings("unchecked")
-			ArrayList<Integer> metricsForFile = (ArrayList<Integer>) fileMapDataset.get(version, entry.getNewPath());
-
-			int loctouched = 0;
-			int locadded = 0;
-			int chgsetsize = filesChanged.size();
-			
-			try {
-				
-				for (Edit edit : diffFormatter.toFileHeader(entry).toEditList()) {
-
-					Type type = edit.getType();
-
-					if (type == Edit.Type.INSERT) {
+			FileEntity currentFileEntity = projectEntity.getFileEntityList().get(i);
 								
-						locadded += edit.getEndB() - edit.getBeginB();
-						loctouched += edit.getEndB() - edit.getBeginB();
-						
-					} 
-					
-					else if ((type == Edit.Type.DELETE) || (type == Edit.Type.REPLACE)) loctouched += edit.getEndA() - edit.getBeginA();
-					
+			float numberRevisions = currentFileEntity.getNumberRevisions();
+			
+			if(numberRevisions != 0) {
+				
+				float avgChgSet = currentFileEntity.getAvgChgSet() / numberRevisions;
+				float avgLocAdded = currentFileEntity.getLocAdded() / numberRevisions;
+				
+				currentFileEntity = removeFileEntity(currentFileEntity.getIndexVersion(), currentFileEntity.getFileName());
+				
+				currentFileEntity.setAvgChgSet(avgChgSet);
+				currentFileEntity.setAvgLocAdded(avgLocAdded);
+				
+				putEmptyRecord(currentFileEntity);		
+				
+			}
+			
+		}
+			
+		return projectEntity;
+	}
+	
+	public ProjectEntity setClassBuggy(CommitEntity commitEntity, DiffEntry entry, int numberOfVersions) {
+
+		// Check the ticket list associated to the commit  and the edit type of the file
+		if (!commitEntity.getTicketEntityList().isEmpty() && (entry.getChangeType() == DiffEntry.ChangeType.MODIFY
+				|| entry.getChangeType() == DiffEntry.ChangeType.DELETE)) {
+
+			// For each ticket (IV, OV, ID, ..., IV, OV, ID)...
+			for (int j = 0; j < commitEntity.getTicketEntityList().size() - 1; j++) {
+				
+				int startVersion = commitEntity.getTicketEntityList().get(j).getIvIndex();
+				int endVersion = commitEntity.getTicketEntityList().get(j).getOvIndex();
+
+				// ... for each version in the affected version range (list) check if the version index is included in the first half of the release ...
+				for (int version = startVersion; version < endVersion && version < numberOfVersions; version++) {
+
+					//if (!fileMapDataset.containsKey(version, entry.getNewPath())) {
+					if (!checkFileEntity(version, entry.getNewPath())) {
+								
+						// ... set the class "Buggy"
+						FileEntity fileEntity = removeFileEntity(version, entry.getNewPath());
+						fileEntity.setBuggy(true);
+						putEmptyRecord(fileEntity);
+					}
 				}
-				
-			} catch (CorruptObjectException e) {
-				e.printStackTrace();
-			} catch (MissingObjectException e) {
-				e.printStackTrace();
-			} catch (IOException e) {
-				e.printStackTrace();
 			}
-				
-			metricsForFile.set(0, metricsForFile.get(0) + loctouched);
-			metricsForFile.set(1, metricsForFile.get(1) + 1);	
-			metricsForFile.set(3, locadded);
-				
-			// Check if the commit is associated to some bug ticket
-			if (ticketAssociated.isEmpty()) metricsForFile.set(2, metricsForFile.get(2) + 0);
-			else {
-				
-				metricsForFile.set(2, metricsForFile.get(2) + ticketAssociated.size());
-				metricsForFile.set(9, 1);
-			}
-			
-			metricsForFile.set(3, metricsForFile.get(3) + locadded);
-			
-			if (locadded > metricsForFile.get(4)) metricsForFile.set(4,  locadded);
-				
-			metricsForFile.set(5, metricsForFile.get(5) + chgsetsize);
-			
-			if (chgsetsize > metricsForFile.get(6)) metricsForFile.set(6,  chgsetsize);
-			
-			return metricsForFile;
-			
 		}
 		
-		public void setVersionBuggy(int injectedVersionIndex, int fixedVersionIndex, float numberOfVersions, DiffEntry entry) {
+		return projectEntity;
+	}
+
+
+	private boolean checkFileEntity(int version, String newPath) {
+		
+		for(int k = 0; k < projectEntity.getFileEntityList().size() - 1; k++) {
 			
-			// ... for each version in the affected version range (list) check if the version index is included in the first half of the release ...
-			for (int version = injectedVersionIndex; version < fixedVersionIndex && version < numberOfVersions; version++) {
-
-				String versionString = null;
+			FileEntity fileEntity = projectEntity.getFileEntityList().get(k);
+			
+			if(fileEntity.getIndexVersion() == version && fileEntity.getFileName().equals(newPath)) {
 				
-				if (!fileMapDataset.containsKey(version, entry.getNewPath())) {
-					
-					//take the string version
-					for (LocalDate k : versionListWithDateAndIndex.keySet()) {
-						
-						int index = Integer.parseInt(Iterables.get(versionListWithDateAndIndex.get(k), 1));
-						if(index == version) versionString = String.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 0));
-						
-					}
-						
-					insertEntry(versionString, entry.getNewPath());
+				return true;
+			}
+		}
+		
+		return false;
+	}
 
-					//set the class "Buggy"
-					List<Integer> metricsForFile = (ArrayList<Integer>) fileMapDataset.get(versionString, entry.getNewPath());
-					metricsForFile.set(9, 1);
-					fileMapDataset.replace(versionString, entry.getNewPath(), metricsForFile);
+	public void getBuggyVersionListAV(TicketEntity ticketEntity, ProjectEntity projectEntity) {
+
+		// Get the three version index
+		ticketEntity.setOvIndex(getOpeningVersion(ticketEntity.getCreationDate()));
+		ticketEntity.setIvIndex(getAffectedVersionByList(ticketEntity.getAv(), ticketEntity.getCreationDate()));
+		ticketEntity.setFvIndex(getFixedVersion(ticketEntity.getResolutionDate()));
+
+		// Check if the index of IV is different from 0, then the ticket has associated valid AV
+		if (ticketEntity.getIvIndex() != 0) {
+
+			// Calculate (if check is ok) the proportion of the ticket and add it to the list of all ticket with proportion
+			if (!(ticketEntity.getFvIndex() == ticketEntity.getOvIndex() || ticketEntity.getFvIndex() == ticketEntity.getIvIndex() || ticketEntity.getFvIndex() < ticketEntity.getIvIndex())) {
+				
+				double fvIv = (double)ticketEntity.getFvIndex() - ticketEntity.getIvIndex();
+				double fvOv = (double)ticketEntity.getFvIndex() - ticketEntity.getOvIndex();
+				double proportion = fvIv / fvOv;
+				
+				if (proportion > 0) {
+					
+					ticketEntity.setProportion(proportion);
+					projectEntity.addTicketBuggyAV(ticketEntity);
+					
+					//ticketWithProportion.put(ticketEntity.getId(), 1.0);
+					//ticketWithProportion.put(ticketEntity.getId(), proportion);
+				}
+			}
+
+			// Get the IV and FV index of the ticket
+			getBuggyVersionList(ticketEntity);
+
+		} else {
+
+			// If AV is not present, then put the ticket in the list of the tickets that needs proportion for estimate IV
+			projectEntity.addTicketBuggyNoAV(ticketEntity);
+			
+			//ticketWithoutAffectedVersionList.put(ticketEntity.getId(), ticketEntity.getOvIndex());
+			//ticketWithoutAffectedVersionList.put(ticketEntity.getId(), ticketEntity.getFvIndex());
+		}
+	}
+
+	public void getBuggyVersionProportionTicket(ProjectEntity projectEntity) {
+
+		int ivIndex = 1;
+
+		// Iterate over all the commit without affected version list
+		for(int k = 0; k < projectEntity.getTicketBuggyNoAV().size() - 1; k++) {
+			
+			TicketEntity ticketEntity = projectEntity.getTicketBuggyNoAV().get(k);
+			
+			int fvIndex = ticketEntity.getFvIndex();
+			int ovIndex = ticketEntity.getOvIndex();
+
+			// Get the mean proportion of the previous tickets
+			int proportion = (int) Math.round(getProportionPreviousTicket(k));
+
+			// Check if the affected version list is not empty
+			if (fvIndex != ovIndex) {
+
+				// Use the P formula, if the mean value of previous tickets it's greater than 0
+				if (proportion > 0) {
+					ivIndex = fvIndex - (fvIndex - ovIndex)*proportion;
+					if (ivIndex < 1)
+						ivIndex = 1;
+
+				} else {
+					// otherwise use the "simple approach"
+					ivIndex = ovIndex;
+				}
+
+				// Get the IV and FV index of the ticket
+				getBuggyVersionList(ticketEntity);
+			} 
+			
+			
+						
+		}
+
+	}
+
+
+	/** This function calculate the index of the appertaining version of a file
+	 * 
+	 * @param fileCommitDate,the date of the commit
+	 * @return lastIndex, the index of the appertaining version of the file
+	 */ 
+	public int getCommitAppartainVersion(LocalDate fileCommitDate, ProjectEntity projectEntity) {
+
+		int lastIndex = 0;
+		LocalDate currentDate = null;
+
+		for(int k = 0; k < projectEntity.getVersionEntityList().size(); k++) {
+			
+			VersionEntity versionEntity = projectEntity.getVersionEntityList().get(k);
+			lastIndex = versionEntity.getIndex();
+			currentDate = versionEntity.getReleaseDate();
+			
+			if (currentDate.isAfter(fileCommitDate)) {
+				break;
+			}
+			
+		}
+			
+		return lastIndex;
+	}
+
+
+	/** This function calculate value of P of the previous tickets (if any available)
+	 * 
+	 * @param ticketID, the ID of the ticket
+	 * @return result, the value of P (could be 0 if no previous tickets)
+	 */ 
+	public double getProportionPreviousTicket(int ticketID) {
+
+		int counter = 0;
+		double proportion = 0;
+		double result;
+
+		// For each ticket with correct calculated P value...
+		for (int k : ticketWithProportion.keySet()) {
+
+			// ... check iv the ticket ID is lower than the current ticket and sum the P value
+			if (k < ticketID && Iterables.get(ticketWithProportion.get(k), 0) != -1.0) {
+				counter = counter + 1;
+				proportion = proportion + Iterables.get(ticketWithProportion.get(k), 1);
+			}
+		}
+
+		// If number of previous ticket is greater than 0, calculate the mean value P
+		if (counter > 0) {
+			result = counter / proportion;
+		} else {
+
+			// Else, return 0, to signal that we need to use the simple method
+			result = 0;
+		}
+
+		return result;
+	}
+
+
+	/** This function calculate the index of the fixed version
+	 * 
+	 * @param ticketCreationDate, the date of the creation of the ticket
+	 * @return fvIndex, the index of the fixed version
+	 */ 
+	public int getFixedVersion(String resolutionDate) {
+
+		int fvIndex = 0;
+
+		// Iterate over all version with release date
+		for (LocalDate k : versionListWithDateAndIndex.keySet()) {
+
+			/*  Why this assign before the check? If we have a ticket with resolutionDate date after the last released version
+			 * in that way we associate it to the last released version. Is this wrong? Not in our scope, because we just
+			 * want to build the dataset for the first half of the release. In this way we assign a "fake" FV to the ticket,
+			 * because we don't want to loose the affected version list of the ticket. */
+			fvIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
+
+			if (k.isEqual(LocalDate.parse(resolutionDate)) || k.isAfter(LocalDate.parse(resolutionDate))) {
+
+				// Break if we found the fixed version of the file before the end of the iteration
+				break;
+			}
+		}
+
+		return fvIndex;
+	}
+
+
+	/** This function calculate the index of the opening version
+	 * 
+	 * @param ticketCreationDate, the date of the creation of the ticket
+	 * @return ov, the index of the opening version
+	 */ 
+	public int getOpeningVersion(String ticketCreationDate) {
+
+		int ovIndex = 0;
+
+		// Iterate over all version with release date
+		for (LocalDate k : versionListWithDateAndIndex.keySet()) {
+
+			/*  Why this assign before the check? If we have a commit with commit date after the last released version
+			 * in that way we associate it to the last released version. Is this wrong? Not in our scope, because we just
+			 * want to build the dataset for the first half of the release. In this way we assign a "fake" FV to the ticket,
+			 * because we don't want to loose the affected version list of the ticket. */
+			ovIndex = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
+			if (k.isAfter(LocalDate.parse(ticketCreationDate)) || k.isEqual(LocalDate.parse(ticketCreationDate))) {
+
+				// Break if we found the opening version of the file before the end of the iteration
+				break;
+			}
+		}
+
+		return ovIndex;
+	}
+
+
+	/** This function, given the list of the Affected Version taked from Jira, return the index of the oldest IV version
+	 * 
+	 * @param versionList, the list of all the AV from Jira
+	 * @param creationDate, the creation date of the ticket
+	 * @return version, the index of the oldest IV version
+	 */ 
+	public int getAffectedVersionByList(List<String> versionList, String creationDate) {
+
+		int ivVersion = 0;
+
+		// Iterate over all the version with release date and the versionList to found the oldest affected version
+		for (LocalDate k : versionListWithDateAndIndex.keySet()) {
+			for (String k1 : versionList) {
+
+				/* Check if the versio'ns index is equals to the one contained in the list,
+				 * but also check that the release date of the version is before the creation of the ticket
+				 * (check needed because of some wrong data on Jira)*/
+				if (Iterables.get(versionListWithDateAndIndex.get(k), 0).equals(k1) && k.isBefore(LocalDate.parse(creationDate))) {
+					ivVersion = Integer.valueOf(Iterables.get(versionListWithDateAndIndex.get(k), 1));
+					break;
 				}
 			}
 		}
-			
-		@SuppressWarnings("unchecked")
-		public void setBugginess(List<Integer> ticketAssociatedWithCommit, DiffEntry entry, float numberOfVersions) {
 
-			ChangeType changeType = entry.getChangeType();
+		return ivVersion;
+	}
 
-			if (!ticketAssociatedWithCommit.isEmpty() && ((changeType == DiffEntry.ChangeType.MODIFY) || (changeType == DiffEntry.ChangeType.DELETE))) {
-				
-				//ticketAssociatedWithCommit = [IV, FV, ID, ..., IV, FV, ID]
-				for (int j = 0; j < ticketAssociatedWithCommit.size(); j= j+3) {
-					
-					int injectedVersionIndex = ticketAssociatedWithCommit.get(j);
-					int fixedVersionIndex = ticketAssociatedWithCommit.get(j + 1);
 
-					setVersionBuggy(injectedVersionIndex, fixedVersionIndex, numberOfVersions, entry);
+	/** This function check the IV and FV index and add the ticket to the commit with valid AV list, with [IV,FV) index
+	 * 
+	 * @param tickedID, the ID of the ticket
+	 * @param fvIndex, the index of the FV version
+	 * @param ivIndex, the index of the OV version
+	 */ 
+	public void getBuggyVersionList(TicketEntity ticketEntity) {
 
-				}
-			
+		List<Integer> affectedVersionBoundaryList = new ArrayList<>();
+
+		// Check if the index of the versions are ok
+		if (ticketEntity.getFvIndex() != ticketEntity.getIvIndex() && ticketEntity.getIvIndex() < ticketEntity.getFvIndex()) {
+
+			// Then add the ticket to the list of the tickets with not empty affected version list
+			affectedVersionBoundaryList.add(ticketEntity.getIvIndex());
+			affectedVersionBoundaryList.add(ticketEntity.getFvIndex());
+			ticketWithBuggyIndex.put(ticketEntity.getId(), affectedVersionBoundaryList);
 		}
-		}
-
+	}
 }

@@ -1,16 +1,9 @@
 
-Cmilestonetwo.entity.MetricEntity#getSensitivity()Ljava/lang/String;Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java ("1*ê
+Dmilestonetwo.entity.MetricEntity#getCompositionDefectiveTraining()[IÑ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java$ $(5"1*ú
 1Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java	 (ﬂ
-‹
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java%	 %(%"è
 Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java	 (
-%0java.lang.String"__id*5*3"
- milestonetwo.entity.MetricEntity"
-sensitivity"°
-Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java (
-
-%0java.lang.StringB$"
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java% %(&
+""B$""
  milestonetwo.entity.MetricEntity
