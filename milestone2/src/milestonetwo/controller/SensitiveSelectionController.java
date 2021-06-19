@@ -55,7 +55,7 @@ public class SensitiveSelectionController {
 	
 	private Evaluation applyNoSensitive() {
 		
-		this.metricEntity.setSensitivity("No Cost Sensitive");
+		metricEntity.setSensitivity("No Cost Sensitive");
 
 		try {
 			classifier.buildClassifier(trainingSet);

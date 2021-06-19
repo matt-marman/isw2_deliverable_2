@@ -1,25 +1,11 @@
-package milestoneone;
+package milestoneone.Entity;
 
 public class FileEntity {
 
 	private String fileName;
 	private String version;
 	private int indexVersion;
-	
-	/*	
-	 * Metrics Data Structure
-	 *  0 - LOC_Touched
-	 *  1 - NumberRevisions
-	 *  2 - NumberBugFix
-	 *  3 - LOC_Added
-	 *  4 - MAX_LOC_Added
-	 *  5 - Chg_Set_Size
-	 *  6 - Max_Chg_Set
-	 *  7 - Avg_Chg_Set
-	 *  8 - AVG_LOC_Added
-	 * 
-	 * */
-	
+
 	private int locTouched;
 	private int numberRevisions;
 	private int numberBugFix;

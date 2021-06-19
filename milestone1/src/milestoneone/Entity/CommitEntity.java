@@ -1,10 +1,9 @@
-package milestoneone;
+package milestoneone.Entity;
 
 import java.time.LocalDate;
 import java.util.List;
 
 import org.eclipse.jgit.diff.DiffEntry;
-import org.eclipse.jgit.diff.DiffFormatter;
 
 public class CommitEntity {
 	
