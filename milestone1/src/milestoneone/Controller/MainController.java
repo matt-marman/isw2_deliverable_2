@@ -21,6 +21,32 @@ import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 import org.eclipse.jgit.util.io.NullOutputStream;
 
+/**
+ * The aim of this project is to provide a csv file 
+ * that contains the metrics for each couple (version, file) 
+ * of the Apache projects. 
+ * I'm analyzing the first half of release for project.
+ * 
+ * Metrics are:
+ * 
+ *	- LOC_Touched
+ *  - NumberRevisions
+ *  - NumberBugFix
+ *  - LOC_Added
+ *  - MAX_LOC_Added
+ *  - Chg_Set_Size
+ *  - Max_Chg_Set
+ *  - Avg_Chg_Set
+ *  - AVG_LOC_Added
+ * 
+ * Each row also contains a boolean buggy field. 
+ * 
+ * The projects taken are Bookkeeper and Syncope.
+ * 
+ * @author Mattia Di Battista
+ *
+ */
+
 public class MainController {
 
 	private static TicketController ticketController;
@@ -28,68 +54,60 @@ public class MainController {
 
 	public static void main(String[] args) throws IOException, JSONException, GitAPIException {
 
-		//project = true equals bookkeeper
-		//else syncope
-		boolean project = false;
+		/*
+		 * project = true  --> Bookkeeper
+		 * project = false --> Syncope
+		 * 
+		 */
+	
+		boolean project = true;
 		projectEntity = new ProjectEntity();
 		
 		if(project) projectEntity.setName("BOOKKEEPER");
 		else projectEntity.setName("SYNCOPE");
 			
 		JSONController jsonController = new JSONController();
-		
-		// Get the list of version with release date
-		projectEntity = jsonController.getVersionWithReleaseDate(projectEntity);
+		projectEntity = jsonController.getVersion(projectEntity);
 		
 		int numberRelease = projectEntity.getVersionEntityList().size();
 		projectEntity.setHalfVersion(numberRelease / 2);
-		
+	
+		projectEntity = jsonController.createTicket(projectEntity);
+	
 		ticketController = new TicketController();
-								
-		projectEntity = jsonController.getBuggyVersionAVTicket(projectEntity);
-		
-		// Find the IV and FV index for tickets without Jira affected version (proportion method needed)
-		ticketController.getBuggyVersionProportionTicket(projectEntity);
+		ticketController.applyEstimateProportion(projectEntity);
 
-		// Build the dataset
-		buildDataset(projectEntity.getName());		
+		createData();		
 
 		new CSVController(projectEntity);	
 
 	}
 
 	
-	public static void buildDataset(String projectName) throws IOException, GitAPIException {
+	public static void createData() throws IOException, GitAPIException {
 
 		FileRepositoryBuilder builder = new FileRepositoryBuilder();
 
-		// Setting the project's folder
-		String repoFolder = System.getProperty("user.dir") + "/" + projectName + "/.git";
-		Repository repository = builder.setGitDir(new File(repoFolder)).readEnvironment().findGitDir().build();
+		String gitDirectory = System.getProperty("user.dir") + "/" + projectEntity.getName() + "/.git";
+		Repository repository = builder.setGitDir(new File(gitDirectory)).readEnvironment().findGitDir().build();
 		
-		// Try to open the Git repository
 		try (Git git = new Git(repository)) {
 
 			Iterable<RevCommit> commits = null;
 
-			// Get all the commits
 			commits = git.log().all().call();
 
-			// Iterate over the single issues
 			for (RevCommit commit : commits) {
 
-				// Check if commit has parent commit
 				if (commit.getParentCount() == 0) continue;
 
 				List<DiffEntry> filesChanged;
 
-				// Get the date of the commit
 				LocalDate commitLocalDate = commit.getCommitterIdent().getWhen().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-				// Get the appartain version of the commit
-				int appartainVersion = ticketController.getCommitAppartainVersion(commitLocalDate, projectEntity);
+				int appartainVersion = ticketController.getVersionOfCommit(commitLocalDate, projectEntity);
 
-				// Check if the version index is in the first half of the releases
+				//ignore ticket released after the half of release
 				if (appartainVersion >= projectEntity.getHalfVersion() + 1) continue;
 
 				CommitEntity commitEntity = new CommitEntity();
@@ -97,29 +115,23 @@ public class MainController {
 				commitEntity.setDate(commitLocalDate);
 				commitEntity.setAppartainVersion(appartainVersion);
 				
-				// Get the list of the ticket (could be empty) associated to the commit
-				List<TicketEntity> ticketInformationBugginess = ticketController.getTicketAssociatedCommitBuggy(commit.getFullMessage(), projectName);
+				List<TicketEntity> ticketForCommit = ticketController.getTicketForCommit(commit.getFullMessage(), projectEntity.getName());
 				
-				commitEntity.setTicketEntityList(ticketInformationBugginess);
+				commitEntity.setTicketEntityList(ticketForCommit);
 
-				// Create a new DiffFormatter, needed to get the change between the commit and his parent
 				try (DiffFormatter differenceBetweenCommits = new DiffFormatter(NullOutputStream.INSTANCE)) {
 					
 					differenceBetweenCommits.setRepository(repository);
 					
-					// Get the difference between the two commit
 					filesChanged = differenceBetweenCommits.scan(commit.getParent(0), commit);
 					commitEntity.setFilesChanged(filesChanged);
 					
-					// For each file changed in the commit
 					for (DiffEntry singleFileChanged : filesChanged) {
 					
 						if (singleFileChanged.getNewPath().endsWith(".java")) {
 							
 							ticketController.getMetrics(commitEntity, singleFileChanged, differenceBetweenCommits);
-							
-							// Set this and other class contained in [IV, FV) buggy (if ther'are ticket(s) associated to the commit)
-							projectEntity = ticketController.setClassBuggy(commitEntity, singleFileChanged);
+							projectEntity = ticketController.setCoupleBuggy(commitEntity, singleFileChanged);
 							
 						}
 					}

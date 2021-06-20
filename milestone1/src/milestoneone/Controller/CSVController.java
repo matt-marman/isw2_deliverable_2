@@ -21,6 +21,7 @@ public class CSVController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 		CreateCSV();	
 		
 	}

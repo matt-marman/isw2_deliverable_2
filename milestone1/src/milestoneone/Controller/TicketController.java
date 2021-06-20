@@ -18,9 +18,6 @@ import org.eclipse.jgit.diff.Edit;
 import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
-import org.json.JSONArray;
-import org.json.JSONException;
-import org.json.JSONObject;
 
 import milestoneone.Entity.CommitEntity;
 import milestoneone.Entity.FileEntity;
@@ -30,37 +27,11 @@ import milestoneone.Entity.VersionEntity;
 
 public class TicketController {
 
-	private static final String RELEASE_DATE = "releaseDate";
 	private static ProjectEntity projectEntity;
 	
 	public TicketController() {};
 	
 	public TicketController(ProjectEntity projectEntity, List <TicketEntity> ticketList) {this.projectEntity = projectEntity;}
-
-	/**
-	 * For each release in "versions" field, it is added to av list
-	 * of ticket
-	 * 
-	 * @param json
-	 * @param ticketEntity
-	 * @throws JSONException
-	 */
-	
-	public void getJsonAffectedVersionList(JSONArray json, TicketEntity ticketEntity) throws JSONException{
-
-		if (json.length() > 0) {
-
-			for (int k = 0; k < json.length(); k++) {
-
-				JSONObject singleRelease = json.getJSONObject(k);
-
-				if (singleRelease.has(RELEASE_DATE)) {
-					
-					ticketEntity.addAv(singleRelease.getString("name"));
-				}
-			}
-		}
-	}
 
 	/**
 	 * Given a commit message, this function returns a list of all ticket id
@@ -70,7 +41,7 @@ public class TicketController {
 	 * @param projectName
 	 * @return
 	 */
-	public List<TicketEntity> getTicketAssociatedCommitBuggy(String commitMessage, String projectName) {
+	public List<TicketEntity> getTicketForCommit(String commitMessage, String projectName) {
 		
 		List<TicketEntity> resultList = new ArrayList<>();
 		Pattern pattern = null;
@@ -342,7 +313,7 @@ public class TicketController {
 	 * @return
 	 */
 	
-	public ProjectEntity setClassBuggy(CommitEntity commitEntity, DiffEntry entry) {
+	public ProjectEntity setCoupleBuggy(CommitEntity commitEntity, DiffEntry entry) {
 
 		if (commitEntity.getTicketEntityList().isEmpty()) return projectEntity;
 
@@ -382,7 +353,7 @@ public class TicketController {
 	 * @throws IOException
 	 */
 	
-	public void getBuggyVersionListAV(TicketEntity ticketEntity) throws IOException {
+	public void setVersions(TicketEntity ticketEntity) throws IOException {
 
 		/*
 		 * it set the resolution date of ticket getting
@@ -429,7 +400,7 @@ public class TicketController {
 	 * @param projectEntity
 	 */
 	
-	public void getBuggyVersionProportionTicket(ProjectEntity projectEntity) {
+	public void applyEstimateProportion(ProjectEntity projectEntity) {
 
 		int proportion = getEstimateProportion();
 		
@@ -461,7 +432,7 @@ public class TicketController {
 	 * @return lastIndex, the index of the appertaining version of the file
 	 */ 
 	
-	public int getCommitAppartainVersion(LocalDate fileCommitDate, ProjectEntity projectEntity) {
+	public int getVersionOfCommit(LocalDate fileCommitDate, ProjectEntity projectEntity) {
 
 		int index = 0;
 		LocalDate currentDate = null;

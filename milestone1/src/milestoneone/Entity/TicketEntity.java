@@ -66,6 +66,4 @@ public class TicketEntity {
 		this.proportion = proportion;
 	}
 	
-	
-	
 }
