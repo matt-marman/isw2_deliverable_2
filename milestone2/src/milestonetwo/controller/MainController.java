@@ -85,6 +85,9 @@ public class MainController{
 		ArrayList<String> fileArffList = new ArrayList<>();
 		ArrayList<String> fileCSVList = new ArrayList<>();
 		
+		String[] paramsCSVController = {projectEntity.getFileCSV(), projectEntity.getFileARFF()};
+		csvController.csvConverter(paramsCSVController);
+		
 		DataSource source = new DataSource(projectEntity.getFileARFF());
 		int numberFeature = source.getDataSet().numAttributes();
 		Attribute versions = source.getDataSet().attribute(0);
@@ -110,7 +113,9 @@ public class MainController{
 
 		for(int j = 0; j < numberRelease; j++) {
 					
-			String[] paramsCSVController = {fileCSVList.get(j), fileArffList.get(j)};
+			paramsCSVController[0] = fileCSVList.get(j);
+			paramsCSVController[1] = fileArffList.get(j);
+			
 			csvController.csvConverter(paramsCSVController);
 					
 		}

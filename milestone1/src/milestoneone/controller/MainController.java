@@ -60,7 +60,7 @@ public class MainController {
 		 * 
 		 */
 	
-		boolean project = false;
+		boolean project = true;
 		projectEntity = new ProjectEntity();
 		
 		if(project) projectEntity.setName("BOOKKEEPER");

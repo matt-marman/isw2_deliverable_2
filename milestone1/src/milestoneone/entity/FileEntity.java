@@ -3,7 +3,6 @@ package milestoneone.entity;
 public class FileEntity {
 
 	private String fileName;
-	private String version;
 	private int indexVersion;
 
 	private int locTouched;
@@ -16,7 +15,6 @@ public class FileEntity {
 	private float avgChgSet;
 	private float avgLocAdded;
 	private boolean buggy;
-	private int attributes = 13;
 	
 	public FileEntity() {
 		
@@ -38,12 +36,7 @@ public class FileEntity {
 	public void setFileName(String fileName) {
 		this.fileName = fileName;
 	}
-	public String getVersion() {
-		return version;
-	}
-	public void setVersion(String version) {
-		this.version = version;
-	}
+	
 	public int getLocTouched() {
 		return locTouched;
 	}
@@ -110,10 +103,4 @@ public class FileEntity {
 	public void setBuggy(boolean buggy) {
 		this.buggy = buggy;
 	}
-	public int getAttributes() {
-		return attributes;
-	}
-	public void setAttributes(int attributes) {
-		this.attributes = attributes;
-	} 
 }

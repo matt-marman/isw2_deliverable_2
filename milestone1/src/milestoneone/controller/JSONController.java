@@ -85,10 +85,18 @@ public class JSONController {
 
 		for (i = 0; i < versions.length(); i++) {
 
-			if (versions.getJSONObject(i).has(RELEASE_DATE) && versions.getJSONObject(i).has("name")) {
+			if (versions.getJSONObject(i).has(RELEASE_DATE)) {
 				
 				String releaseName = versions.getJSONObject(i).get("name").toString();
 				LocalDate localDate = LocalDate.parse(versions.getJSONObject(i).get(RELEASE_DATE).toString());
+				
+				/*
+				 * in SYNCOPE, some tickets do not have the "releaseDate"
+				 * (e.g. version 1.0.10) 
+				 * in particular v 1.0.9 and 1.1.7 have the same "releaseDate"
+				 * I'm ignoring the 1.1.7 and 2.0.0-M3 version
+				 * 
+				 */
 				
 				if(!(projectEntity.getName().equals("SYNCOPE") && (releaseName.equals("1.1.7") || releaseName.equals("2.0.0-M3") || releaseName.equals("2.0.8")
 						|| releaseName.equals("2.1.1") || releaseName.equals("2.1.2") || releaseName.equals("2.1.3")
@@ -135,7 +143,7 @@ public class JSONController {
 				}  
 			}  
 		}
-		
+				
 		return projectEntity;
 	}
 

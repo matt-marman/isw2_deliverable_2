@@ -10,7 +10,7 @@
 @attribute Max_Chg_Set numeric
 @attribute AVG_Chg_Set numeric
 @attribute Avg_LOC_Added numeric
-@attribute bugginess {Yes,No}
+@attribute Bugginess {No,Yes}
 
 @data
 4.3.0,0,0,0,0,0,0,0,0,0,No
