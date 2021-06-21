@@ -1,4 +1,4 @@
-package milestoneone.Controller;
+package milestoneone.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -19,29 +19,23 @@ import org.eclipse.jgit.lib.Repository;
 import org.eclipse.jgit.revwalk.RevCommit;
 import org.eclipse.jgit.storage.file.FileRepositoryBuilder;
 
-import milestoneone.Entity.CommitEntity;
-import milestoneone.Entity.FileEntity;
-import milestoneone.Entity.ProjectEntity;
-import milestoneone.Entity.TicketEntity;
-import milestoneone.Entity.VersionEntity;
+import milestoneone.entity.CommitEntity;
+import milestoneone.entity.FileEntity;
+import milestoneone.entity.ProjectEntity;
+import milestoneone.entity.TicketEntity;
+import milestoneone.entity.VersionEntity;
 
 public class TicketController {
-
-	private static ProjectEntity projectEntity;
-	
-	public TicketController() {};
-	
-	public TicketController(ProjectEntity projectEntity, List <TicketEntity> ticketList) {this.projectEntity = projectEntity;}
 
 	/**
 	 * Given a commit message, this function returns a list of all ticket id
 	 * contained in the message
 	 * 
 	 * @param commitMessage
-	 * @param projectName
+	 * @param projectEntity
 	 * @return
 	 */
-	public List<TicketEntity> getTicketForCommit(String commitMessage, String projectName) {
+	public List<TicketEntity> getTicketForCommit(String commitMessage, ProjectEntity projectEntity) {
 		
 		List<TicketEntity> resultList = new ArrayList<>();
 		Pattern pattern = null;
@@ -52,7 +46,7 @@ public class TicketController {
 			TicketEntity currentTicketEntity = projectEntity.getTicketBuggy().get(k);
 					
 			// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
-			pattern = Pattern.compile("\\b"+ projectName + "-" + currentTicketEntity.getId() + "\\b", Pattern.CASE_INSENSITIVE);
+			pattern = Pattern.compile("\\b"+ projectEntity.getName() + "-" + currentTicketEntity.getId() + "\\b", Pattern.CASE_INSENSITIVE);
 			matcher = pattern.matcher(commitMessage);
 
 			// Check if commit message contains the issues ID and the issues is labeled like "not checked"
@@ -73,19 +67,19 @@ public class TicketController {
 	
 	/**
 	 * This function associates the resolution date of ticket, 
-	 * not from jira, but to last commit that contains the ID in the message.
+	 * not from Jira, but to last commit that contains the ID in the message.
 	 * 
 	 * @param ticketEntity
+	 * @param projectEntity
 	 * @throws IOException
 	 */
 	
-	public void getResolutionDateForTicketFromCommit(TicketEntity ticketEntity) throws IOException {
+	public void getResolutionDateFromCommit(TicketEntity ticketEntity, ProjectEntity projectEntity) throws IOException {
 		
 		List<String> listDate = new ArrayList<>();
 		
 		FileRepositoryBuilder builder = new FileRepositoryBuilder();
 
-		// Setting the project's folder
 		String repoFolder = System.getProperty("user.dir") + "/" + projectEntity.getName() + "/.git";
 		Repository repository = builder.setGitDir(new File(repoFolder)).readEnvironment().findGitDir().build();
 				
@@ -99,16 +93,18 @@ public class TicketController {
 			for (RevCommit commit : commits) {
 						
 				String message = commit.getFullMessage();
-				// Use pattern to check if the commit message contains the word "*ProjectName-IssuesID*"
+
 				pattern = Pattern.compile("\\b" + projectEntity.getName() + "-" + ticketEntity.getId() + "\\b", Pattern.CASE_INSENSITIVE);
 				matcher = pattern.matcher(message);
 
-				// Check if commit message contains the issues ID and the issues is labeled like "not checked"
 				if (matcher.find()) {
 							
-				/* add this date to the list
+				/* 
+				 * add this date to the list
 				 * because it could happens that more commits
-				 * correspond to the same buggy ticket. I'm taking the last one.
+				 * correspond to the same buggy ticket. 
+				 * I'm taking the last one.
+				 *
 				 */ 
 				LocalDate commitDate = commit.getCommitterIdent().getWhen().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
@@ -131,7 +127,6 @@ public class TicketController {
 		   
 		   Iterable<RevCommit> commits = null;
 
-			// Get all commits
 			try {
 				return git.log().all().call();
 			} catch (NoHeadException e) {
@@ -163,16 +158,17 @@ public class TicketController {
 	 * @param entry
 	 * @param diffFormatter
 	 * @param limitVersion
+	 * @param projectEntity
 	 * @throws IOException
 	 */
 	
-	public void getMetrics (CommitEntity commitEntity, DiffEntry entry, DiffFormatter diffFormatter) throws IOException{
+	public void getMetrics (CommitEntity commitEntity, DiffEntry entry, DiffFormatter diffFormatter, ProjectEntity projectEntity) throws IOException{
 
 		//first, if version of the file is grater than the half version, ignore this file
 		if (commitEntity.getAppartainVersion() >= projectEntity.getHalfVersion() + 1) return;
 				
 		//it updates values of couple (version, file). 
-		FileEntity fileEntity = removeFileEntity(commitEntity.getAppartainVersion(), entry.getNewPath());
+		FileEntity fileEntity = removeFileEntity(commitEntity.getAppartainVersion(), entry.getNewPath(), projectEntity);
 		
 		//if it is the first time, let's create a new instance of (version, file)
 		if(fileEntity == null) {
@@ -240,8 +236,7 @@ public class TicketController {
 		fileEntity.setAvgChgSet((float)(prevChgSetSize + chgSetSize) / (float)(prevNumberRevisions + 1));
 		
 		projectEntity.addFileToList(fileEntity);
-			
-		return;
+	
 	}
 	
 	/**
@@ -250,9 +245,10 @@ public class TicketController {
 	 * 
 	 * @param version
 	 * @param filename
+	 * @param projectEntity
 	 * @return
 	 */
-	private FileEntity removeFileEntity(int version, String filename) {
+	private FileEntity removeFileEntity(int version, String filename, ProjectEntity projectEntity) {
 
 		for(int k = 0; k < projectEntity.getFileEntityList().size() - 1; k++) {
 			
@@ -274,9 +270,10 @@ public class TicketController {
 	 * 	- Avg_Chg_Set
 	 *  - AVG_LOC_Added
 	 * 
+	 * @param projectEntity
 	 * @return
 	 */
-	public ProjectEntity calculateAverageMetric() {
+	public ProjectEntity calculateAverageMetric(ProjectEntity projectEntity) {
 			
 		for(int i = 0; i < projectEntity.getFileEntityList().size() - 1; i++) {
 			
@@ -289,7 +286,7 @@ public class TicketController {
 				float avgChgSet = currentFileEntity.getAvgChgSet() / numberRevisions;
 				float avgLocAdded = currentFileEntity.getLocAdded() / numberRevisions;
 				
-				currentFileEntity = removeFileEntity(currentFileEntity.getIndexVersion(), currentFileEntity.getFileName());
+				currentFileEntity = removeFileEntity(currentFileEntity.getIndexVersion(), currentFileEntity.getFileName(), projectEntity);
 				
 				currentFileEntity.setAvgChgSet(avgChgSet);
 				currentFileEntity.setAvgLocAdded(avgLocAdded);
@@ -304,16 +301,17 @@ public class TicketController {
 	}
 	
 	/**
-	 * This function set the bugginess of couple (version, filename).
+	 * This function set the bagginess of couple (version, filename).
 	 * Given a file and the version of commit that contains an id
 	 * of ticket buggy.
 	 * 
 	 * @param commitEntity
 	 * @param entry
+	 * @param projectEntity
 	 * @return
 	 */
 	
-	public ProjectEntity setCoupleBuggy(CommitEntity commitEntity, DiffEntry entry) {
+	public ProjectEntity setCoupleBuggy(CommitEntity commitEntity, DiffEntry entry, ProjectEntity projectEntity) {
 
 		if (commitEntity.getTicketEntityList().isEmpty()) return projectEntity;
 
@@ -324,7 +322,7 @@ public class TicketController {
 
 			for (int k = iv; k < fv; k++) { 
 
-				FileEntity fileEntity = removeFileEntity(k, entry.getNewPath());
+				FileEntity fileEntity = removeFileEntity(k, entry.getNewPath(), projectEntity);
 				if(fileEntity == null) {
 					
 					fileEntity = new FileEntity();
@@ -350,20 +348,21 @@ public class TicketController {
 	 * for each ticket, and the proportion mean used for estimate other tickets.
 	 * 
 	 * @param ticketEntity
+	 * @param projectEntity
 	 * @throws IOException
 	 */
 	
-	public void setVersions(TicketEntity ticketEntity) throws IOException {
+	public void setVersions(TicketEntity ticketEntity, ProjectEntity projectEntity) throws IOException {
 
 		/*
 		 * it set the resolution date of ticket getting
 		 * the date of last commit with the id in message.
 		 */
-		getResolutionDateForTicketFromCommit(ticketEntity);
+		getResolutionDateFromCommit(ticketEntity, projectEntity);
 		
-		ticketEntity.setOvIndex(getOpeningVersion(ticketEntity.getCreationDate()));
-		ticketEntity.setIvIndex(getAffectedVersionByList(ticketEntity.getAv(), ticketEntity.getCreationDate()));
-		ticketEntity.setFvIndex(getFixedVersion(ticketEntity.getResolutionDate()));
+		ticketEntity.setOvIndex(getOpeningVersion(ticketEntity.getCreationDate(), projectEntity));
+		ticketEntity.setIvIndex(getAffectedVersion(ticketEntity.getAv(), ticketEntity.getCreationDate(), projectEntity));
+		ticketEntity.setFvIndex(getFixedVersion(ticketEntity.getResolutionDate(), projectEntity));
 
 		if (ticketEntity.getIvIndex() == 0) {
 		
@@ -402,7 +401,7 @@ public class TicketController {
 	
 	public void applyEstimateProportion(ProjectEntity projectEntity) {
 
-		int proportion = getEstimateProportion();
+		int proportion = getEstimateProportion(projectEntity);
 		
 		for(int k = 0; k < projectEntity.getTicketBuggyNoAV().size() - 1; k++) {
 			
@@ -416,11 +415,8 @@ public class TicketController {
 					
 			ticketEntity.setIvIndex(ivIndex);
 			
-			TicketEntity currentTicketEntity = new TicketEntity();
-			currentTicketEntity = ticketEntity;
-			
 			projectEntity.getTicketBuggyNoAV().remove(k);
-			projectEntity.getTicketBuggyNoAV().add(k, currentTicketEntity);
+			projectEntity.getTicketBuggyNoAV().add(k, ticketEntity);
 			
 		}
 	}
@@ -429,6 +425,7 @@ public class TicketController {
 	 * This function calculate the index of the appertaining version of commit.
 	 * 
 	 * @param fileCommitDate,the date of the commit
+	 * @param projectEntity
 	 * @return lastIndex, the index of the appertaining version of the file
 	 */ 
 	
@@ -454,10 +451,11 @@ public class TicketController {
 	 * It calculates the estimate proportion, doing 
 	 * the mean between all proportion calculated before.
 	 * 
+	 * @param projectEntity
 	 * @return
 	 */
 	
-	public int getEstimateProportion() {
+	public int getEstimateProportion(ProjectEntity projectEntity) {
 		
 		double sumProportion = 0;
 		int numberTicketBuggyAV = projectEntity.getTicketBuggyAV().size();
@@ -469,7 +467,7 @@ public class TicketController {
 			sumProportion += currentP;
 		}
 				
-		return (int) (sumProportion/(double)numberTicketBuggyAV);
+		return (int) (sumProportion/numberTicketBuggyAV);
 
 	}
 	
@@ -479,10 +477,11 @@ public class TicketController {
 	 * the relative index of appertained version.
 	 * 
 	 * @param resolutionDate
+	 * @param projectEntity
 	 * @return
 	 */
 	
-	public int getFixedVersion(String resolutionDate) {
+	public int getFixedVersion(String resolutionDate, ProjectEntity projectEntity) {
 
 		int fvIndex = 0;
 		LocalDate resolutionLocalDate = LocalDate.parse(resolutionDate);
@@ -507,9 +506,10 @@ public class TicketController {
 	 * the relative index of appertained version.
 	 * 
 	 * @param creationDate
+	 * @param projectEntity
 	 * @return
 	 */
-	public int getOpeningVersion(String creationDate) {
+	public int getOpeningVersion(String creationDate, ProjectEntity projectEntity) {
 
 		int ovIndex = 0;
 		LocalDate creationLocalDate = LocalDate.parse(creationDate);
@@ -534,9 +534,10 @@ public class TicketController {
 	 * the method returns the relative index of appertained version.
 	 * 
 	 * @param creationDate
+	 * @param projectEntity
 	 * @return
 	 */
-	public int getAffectedVersionByList(List<String> versionList, String creationDate) {
+	public int getAffectedVersion(List<String> versionList, String creationDate, ProjectEntity projectEntity) {
 
 		int ivVersion = 0;
 
@@ -551,7 +552,6 @@ public class TicketController {
 				
 				if (currentVersion.equals(currentVersionEntity.getReleaseName()) && localDate.isBefore(LocalDate.parse(creationDate))) {
 	
-					// Break if we found the fixed version of the file before the end of the iteration
 					ivVersion = currentVersionEntity.getIndex();
 					break;
 				}

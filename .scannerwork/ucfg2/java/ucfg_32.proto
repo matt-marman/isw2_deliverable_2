@@ -1,16 +1,136 @@
 
-Cmilestonetwo.entity.MetricEntity#getSensitivity()Ljava/lang/String;Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java ("1*ê
-1Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java	 (ﬂ
-‹
-Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java	 (
-%0java.lang.String"__id*5*3"
- milestonetwo.entity.MetricEntity"
-sensitivity"°
-Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/entity/MetricEntity.java (
+amilestonetwo.controller.CSVController#initializeCSVResult(Ljava/lang/String;)Ljava/io/FileWriter;â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java (&"1*Ò"
+1â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java( (4Ê
+„
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java( (D
+%0java.lang.String"__concat*"
+ 
+baseFilePathjava.lang.String*
+_RESULT.csvΩ∫
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java ('
+%1java.io.FileWriter"java.io.FileWriter˚
+¯
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java (E
+%2".java.io.FileWriter#<init>(Ljava/lang/String;)V*
+
+%1java.io.FileWriter*
 
-%0java.lang.StringB$"
- milestonetwo.entity.MetricEntity
+%0java.lang.String“
+œ
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java (F
+	csvResultjava.io.FileWriter"__id*
+
+%1java.io.FileWriter÷
+”
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! "(
+%3java.lang.String"__concat*
+
+Dataset,*
+#TrainingRelease,€
+ÿ
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! #(
+%4java.lang.String"__concat*
+
+%3java.lang.String*
+
+%Training,‰
+·
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! $(
+%5java.lang.String"__concat*
+
+%4java.lang.String*
+%DefectiveTraining,„
+‡
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! %(
+%6java.lang.String"__concat*
+
+%5java.lang.String*
+%DefectiveTesting,‹
+Ÿ
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! &(
+%7java.lang.String"__concat*
+
+%6java.lang.String*
+Classifier,€
+ÿ
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! '(
+%8java.lang.String"__concat*
+
+%7java.lang.String*
+
+Balancing,„
+‡
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! ((
+%9java.lang.String"__concat*
+
+%8java.lang.String*
+Feature Selection,ﬁ
+€
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! )(
+%10java.lang.String"__concat*
+
+%9java.lang.String*
+Sensitivity,ﬂ
+‹
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! *(
+%11java.lang.String"__concat*
+
+%10java.lang.String*
+TP,FP,TN,FN,›
+⁄
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! +(
+%12java.lang.String"__concat*
+
+%11java.lang.String*
+
+Precision,⁄
+◊
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! ,(
+%13java.lang.String"__concat*
+
+%12java.lang.String*	
+Recall,◊
+‘
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! -(
+%14java.lang.String"__concat*
+
+%13java.lang.String*
+AUC,⁄
+◊
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! .(
+%15java.lang.String"__concat*
+
+%14java.lang.String*	
+Kappa\n”–
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java! .(
+%16java.io.Writer"Kjava.io.OutputStreamWriter#append(Ljava/lang/CharSequence;)Ljava/io/Writer;*!
+
+	csvResultjava.io.FileWriter*
+
+%15java.lang.String2 append(Ljava/lang/CharSequence;)"Ø
+â
+/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone2/src/milestonetwo/controller/CSVController.java0 0(!
+
+	csvResultjava.io.FileWriter: 
+baseFilePathjava.lang.StringB)'
+%milestonetwo.controller.CSVController

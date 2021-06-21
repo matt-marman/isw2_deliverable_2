@@ -1,4 +1,4 @@
-package milestoneone.Controller;
+package milestoneone.controller;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -13,9 +13,9 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
-import milestoneone.Entity.ProjectEntity;
-import milestoneone.Entity.TicketEntity;
-import milestoneone.Entity.VersionEntity;
+import milestoneone.entity.ProjectEntity;
+import milestoneone.entity.TicketEntity;
+import milestoneone.entity.VersionEntity;
 
 /**
  * Part of this class has been provided by the professor.
@@ -25,7 +25,11 @@ import milestoneone.Entity.VersionEntity;
 
 public class JSONController {
 	
-	public static String readAll(Reader rd) throws IOException {
+	JSONController() {}
+	
+	private static final String RELEASE_DATE = "releaseDate";
+
+	private static String readAll(Reader rd) throws IOException {
 
 	 	 StringBuilder sb = new StringBuilder();
 		 int cp;
@@ -35,7 +39,7 @@ public class JSONController {
 		 return sb.toString();
 	 }
 	
-	public static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
+	private static JSONObject readJsonFromUrl(String url) throws IOException, JSONException {
 	 	
 		 InputStream is = new URL(url).openStream();
 		 JSONObject json = null;
@@ -81,10 +85,10 @@ public class JSONController {
 
 		for (i = 0; i < versions.length(); i++) {
 
-			if (versions.getJSONObject(i).has("releaseDate") && versions.getJSONObject(i).has("name")) {
+			if (versions.getJSONObject(i).has(RELEASE_DATE) && versions.getJSONObject(i).has("name")) {
 				
 				String releaseName = versions.getJSONObject(i).get("name").toString();
-				LocalDate localDate = LocalDate.parse(versions.getJSONObject(i).get("releaseDate").toString());
+				LocalDate localDate = LocalDate.parse(versions.getJSONObject(i).get(RELEASE_DATE).toString());
 				
 				if(!(projectEntity.getName().equals("SYNCOPE") && (releaseName.equals("1.1.7") || releaseName.equals("2.0.0-M3") || releaseName.equals("2.0.8")
 						|| releaseName.equals("2.1.1") || releaseName.equals("2.1.2") || releaseName.equals("2.1.3")
@@ -143,7 +147,7 @@ public class JSONController {
 		Integer total = 1;
 		String key = null;
 
-		TicketController ticketController = new TicketController(projectEntity, projectEntity.getTicketBuggy());
+		TicketController ticketController = new TicketController();
 		
 		do {
 			// Only gets a max of 1000 at a time, so must do this multiple times if bugs
@@ -176,7 +180,7 @@ public class JSONController {
 				
 				setAffectedVersion(affectedVersionArray, ticketEntity);
 
-				ticketController.setVersions(ticketEntity);
+				ticketController.setVersions(ticketEntity, projectEntity);
 
 			}
 		} while (i < total);
@@ -193,7 +197,7 @@ public class JSONController {
 	 * @throws JSONException
 	 */
 	
-	public static void setAffectedVersion(JSONArray json, TicketEntity ticketEntity) throws JSONException{
+	private static void setAffectedVersion(JSONArray json, TicketEntity ticketEntity) throws JSONException{
 
 		if (json.length() > 0) {
 
@@ -201,7 +205,7 @@ public class JSONController {
 
 				JSONObject singleRelease = json.getJSONObject(k);
 
-				if (singleRelease.has("releaseDate")) {
+				if (singleRelease.has(RELEASE_DATE)) {
 					
 					ticketEntity.addAv(singleRelease.getString("name"));
 				}

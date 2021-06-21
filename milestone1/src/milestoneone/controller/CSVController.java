@@ -1,12 +1,12 @@
-package milestoneone.Controller;
+package milestoneone.controller;
 
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.List;
 
-import milestoneone.Entity.FileEntity;
-import milestoneone.Entity.ProjectEntity;
+import milestoneone.entity.FileEntity;
+import milestoneone.entity.ProjectEntity;
 
 public class CSVController {
 		
@@ -22,7 +22,7 @@ public class CSVController {
 			e.printStackTrace();
 		}
 		
-		CreateCSV();	
+		createCSV();	
 		
 	}
 	
@@ -47,11 +47,11 @@ public class CSVController {
 		return csvResult;
 	}
 
-	public void CreateCSV() {
+	public void createCSV() {
 		
 		for(int k = projectEntity.getFileEntityList().size() - 1; k >= 0; k--) {
 
-			List<String> metric = new ArrayList<String>();
+			List<String> metric = new ArrayList<>();
 					
 			FileEntity currentFileEntity = projectEntity.getFileEntityList().get(k);
 			

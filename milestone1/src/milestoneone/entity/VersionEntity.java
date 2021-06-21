@@ -1,4 +1,4 @@
-package milestoneone.Entity;
+package milestoneone.entity;
 
 import java.time.LocalDate;
 

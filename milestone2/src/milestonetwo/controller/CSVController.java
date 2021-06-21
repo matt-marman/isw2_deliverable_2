@@ -263,8 +263,8 @@ public class CSVController {
 			e.printStackTrace();
 		}
 	    for (String line : lines) {
-	    	if (line.contains("@attribute Bugginess {No,Yes}")) {
-	    		lines.set(lines.indexOf(line), "@attribute bugginess {Yes,No}");
+	    	if (line.contains("@attribute Bugginess {false,true}")) {
+	    		lines.set(lines.indexOf(line), "@attribute bugginess {true,false}");
 	    	}
 	    }
 	    

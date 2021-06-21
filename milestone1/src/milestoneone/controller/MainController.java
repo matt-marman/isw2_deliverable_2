@@ -1,4 +1,4 @@
-package milestoneone.Controller;
+package milestoneone.controller;
 
 import java.io.File;
 import java.io.IOException;
@@ -8,9 +8,9 @@ import java.util.List;
 
 import org.json.JSONException;
 
-import milestoneone.Entity.CommitEntity;
-import milestoneone.Entity.ProjectEntity;
-import milestoneone.Entity.TicketEntity;
+import milestoneone.entity.CommitEntity;
+import milestoneone.entity.ProjectEntity;
+import milestoneone.entity.TicketEntity;
 
 import org.eclipse.jgit.api.Git;
 import org.eclipse.jgit.api.errors.GitAPIException;
@@ -60,7 +60,7 @@ public class MainController {
 		 * 
 		 */
 	
-		boolean project = true;
+		boolean project = false;
 		projectEntity = new ProjectEntity();
 		
 		if(project) projectEntity.setName("BOOKKEEPER");
@@ -83,8 +83,7 @@ public class MainController {
 
 	}
 
-	
-	public static void createData() throws IOException, GitAPIException {
+	private static void createData() throws IOException, GitAPIException {
 
 		FileRepositoryBuilder builder = new FileRepositoryBuilder();
 
@@ -97,44 +96,54 @@ public class MainController {
 
 			commits = git.log().all().call();
 
-			for (RevCommit commit : commits) {
+			iterateOnCommit(commits, repository);
+			
+		}
+	}
+	
+	private static void iterateOnCommit(Iterable<RevCommit> commits, Repository repository) throws IOException {
+		
+		for (RevCommit commit : commits) {
 
-				if (commit.getParentCount() == 0) continue;
+			LocalDate commitLocalDate = commit.getCommitterIdent().getWhen().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
 
-				List<DiffEntry> filesChanged;
+			int appartainVersion = ticketController.getVersionOfCommit(commitLocalDate, projectEntity);
 
-				LocalDate commitLocalDate = commit.getCommitterIdent().getWhen().toInstant().atZone(ZoneId.systemDefault()).toLocalDate();
+			//ignore ticket released after the half of release
+			if (commit.getParentCount() == 0 || appartainVersion >= projectEntity.getHalfVersion() + 1) continue;
 
-				int appartainVersion = ticketController.getVersionOfCommit(commitLocalDate, projectEntity);
+			CommitEntity commitEntity = new CommitEntity();
+			commitEntity.setMessage(commit.getFullMessage());
+			commitEntity.setDate(commitLocalDate);
+			commitEntity.setAppartainVersion(appartainVersion);
+			
+			
+			List<TicketEntity> ticketForCommit = ticketController.getTicketForCommit(commit.getFullMessage(), projectEntity);
+			commitEntity.setTicketEntityList(ticketForCommit);
 
-				//ignore ticket released after the half of release
-				if (appartainVersion >= projectEntity.getHalfVersion() + 1) continue;
-
-				CommitEntity commitEntity = new CommitEntity();
-				commitEntity.setMessage(commit.getFullMessage());
-				commitEntity.setDate(commitLocalDate);
-				commitEntity.setAppartainVersion(appartainVersion);
-				
-				List<TicketEntity> ticketForCommit = ticketController.getTicketForCommit(commit.getFullMessage(), projectEntity.getName());
-				
-				commitEntity.setTicketEntityList(ticketForCommit);
-
-				try (DiffFormatter differenceBetweenCommits = new DiffFormatter(NullOutputStream.INSTANCE)) {
+			iterateOnChange(repository, commit, commitEntity);
+			
+		}
+	}
+	
+	private static void iterateOnChange(Repository repository, RevCommit commit, CommitEntity commitEntity) throws IOException {
+		
+		List<DiffEntry> filesChanged;
+		
+		try (DiffFormatter differenceBetweenCommits = new DiffFormatter(NullOutputStream.INSTANCE)) {
+			
+			differenceBetweenCommits.setRepository(repository);
+			
+			filesChanged = differenceBetweenCommits.scan(commit.getParent(0), commit);
+			commitEntity.setFilesChanged(filesChanged);
+			
+			for (DiffEntry singleFileChanged : filesChanged) {
+			
+				if (singleFileChanged.getNewPath().endsWith(".java")) {
 					
-					differenceBetweenCommits.setRepository(repository);
+					ticketController.getMetrics(commitEntity, singleFileChanged, differenceBetweenCommits, projectEntity);
+					projectEntity = ticketController.setCoupleBuggy(commitEntity, singleFileChanged, projectEntity);
 					
-					filesChanged = differenceBetweenCommits.scan(commit.getParent(0), commit);
-					commitEntity.setFilesChanged(filesChanged);
-					
-					for (DiffEntry singleFileChanged : filesChanged) {
-					
-						if (singleFileChanged.getNewPath().endsWith(".java")) {
-							
-							ticketController.getMetrics(commitEntity, singleFileChanged, differenceBetweenCommits);
-							projectEntity = ticketController.setCoupleBuggy(commitEntity, singleFileChanged);
-							
-						}
-					}
 				}
 			}
 		}

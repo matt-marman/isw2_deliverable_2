@@ -1,4 +1,4 @@
-package milestoneone.Entity;
+package milestoneone.entity;
 
 import java.util.ArrayList;
 import java.util.List;
