@@ -120,7 +120,6 @@ public class MainController{
 					
 		}
 					
-		//use walk forward
 		walkForward(fileArffList, projectEntity, metricEntity);
 				
 	}
@@ -241,7 +240,7 @@ public class MainController{
 		RandomForest randomForest = new RandomForest();
 		
 		//use balancing
-		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 1; balancingSelectionIndex++) {
+		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
 				
 			BalancingController balancingController = new BalancingController();
 			
@@ -273,7 +272,7 @@ public class MainController{
 			metricEntity.setCompositionDefectiveTraining(compositionDefectiveTraining);
 			
 			//use feature selection
-			for (int featureSelectionIndex = 0; featureSelectionIndex < 1; featureSelectionIndex++) {
+			for (int featureSelectionIndex = 0; featureSelectionIndex < 2; featureSelectionIndex++) {
 					
 				FeatureSelectionController featureSelectionController = new FeatureSelectionController();
 				List<Instances> set = new ArrayList<>();

@@ -1,16 +1,9 @@
 
-?milestoneone.entity.CommitEntity#getMessage()Ljava/lang/String;Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java" "("1*å
+.milestoneone.entity.TicketEntity#getIvIndex()IÑ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java   ("1*ú
 1Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java#	 #(€
-ÿ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java!	 !("è
 Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java#	 #(
-%0java.lang.String"__id*1*/"
- milestoneone.entity.CommitEntity"	
-message"°
-Ñ
-z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java# #(
-
-%0java.lang.StringB$"
- milestoneone.entity.CommitEntity
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java! !(
+""B$"
+ milestoneone.entity.TicketEntity

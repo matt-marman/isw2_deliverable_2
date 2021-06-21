@@ -16,13 +16,15 @@ public class CSVController {
 	public CSVController(ProjectEntity projectEntity) {
 		
 		this.projectEntity = projectEntity;
+		
 		try {
 			csv = initializeCSVResult();
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
 		
-		createCSV();	
+		createCSV();
+		
 		
 	}
 	
@@ -54,9 +56,14 @@ public class CSVController {
 			List<String> metric = new ArrayList<>();
 					
 			FileEntity currentFileEntity = projectEntity.getFileEntityList().get(k);
+
+			int index = currentFileEntity.getIndexVersion();
 			
-			metric.add(projectEntity.getVersion().get(currentFileEntity.getIndexVersion()));
+			if(index < 0 || currentFileEntity.getIndexVersion() > projectEntity.getHalfVersion()) continue;
+					
+			metric.add(projectEntity.getVersion().get(index));
 			metric.add(currentFileEntity.getFileName());
+			
 			metric.add(Integer.toString(currentFileEntity.getLocTouched()));
 			metric.add(Integer.toString(currentFileEntity.getNumberRevisions()));
 			metric.add(Integer.toString(currentFileEntity.getNumberBugFix()));
@@ -67,7 +74,7 @@ public class CSVController {
 			metric.add(Float.toString(currentFileEntity.getAvgChgSet()));
 			metric.add(Float.toString(currentFileEntity.getAvgLocAdded()));
 			metric.add(Boolean.toString(currentFileEntity.getBuggy()));
-				 			
+				
 			try {
 				addRowToCSV(metric, csv);
 			} catch (IOException e) {

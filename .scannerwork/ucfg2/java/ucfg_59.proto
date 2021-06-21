@@ -1,16 +1,9 @@
 
->milestoneone.entity.ProjectEntity#getVersion()Ljava/util/List;Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javaa a("1*å
-1Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javab	 b(€
-ÿ
-Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javab	 b(
-%0java.util.List"__id*2*0#
-!milestoneone.entity.ProjectEntity"	
-version"†
-Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javab b(
-
-%0java.util.ListB%#
-!milestoneone.entity.ProjectEntity
+*milestoneone.entity.FileEntity#getBuggy()ZÇ
+x/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/FileEntity.javad d("1*ò
+1Ç
+x/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/FileEntity.javae	 e("ç
+Ç
+x/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/FileEntity.javae e(
+""B" 
+milestoneone.entity.FileEntity

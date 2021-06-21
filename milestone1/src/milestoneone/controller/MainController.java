@@ -60,7 +60,7 @@ public class MainController {
 		 * 
 		 */
 	
-		boolean project = true;
+		boolean project = false;
 		projectEntity = new ProjectEntity();
 		
 		if(project) projectEntity.setName("BOOKKEEPER");
@@ -70,6 +70,7 @@ public class MainController {
 		projectEntity = jsonController.getVersion(projectEntity);
 		
 		int numberRelease = projectEntity.getVersionEntityList().size();
+
 		projectEntity.setHalfVersion(numberRelease / 2);
 	
 		projectEntity = jsonController.createTicket(projectEntity);

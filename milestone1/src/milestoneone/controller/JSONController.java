@@ -129,7 +129,7 @@ public class JSONController {
 	
 	private static ProjectEntity orderVersion(ProjectEntity projectEntity) {
 		
-		for(int i = 0; i < projectEntity.getVersion().size() - 1; i++) {
+		for(int i = 0; i < projectEntity.getVersion().size(); i++) {
 			
 			for (int j = i + 1; j < projectEntity.getVersion().size(); j++) {  
 				

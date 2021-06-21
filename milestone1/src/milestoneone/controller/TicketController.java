@@ -41,7 +41,7 @@ public class TicketController {
 		Pattern pattern = null;
 		Matcher matcher = null;
 
-		for(int k = 0; k < projectEntity.getTicketBuggy().size() - 1; k++) {
+		for(int k = 0; k < projectEntity.getTicketBuggy().size(); k++) {
 			
 			TicketEntity currentTicketEntity = projectEntity.getTicketBuggy().get(k);
 					
@@ -440,10 +440,15 @@ public class TicketController {
 			index = versionEntity.getIndex();
 			currentDate = versionEntity.getReleaseDate();
 			
-			if (currentDate.isAfter(fileCommitDate)) break;
+			if (currentDate.isAfter(fileCommitDate)) {
+				
+				index --;
+				break;
+			}
 			
 		}
-			
+		
+		if(index < 0) index = 0;
 		return index;
 	}
 	

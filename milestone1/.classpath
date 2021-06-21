@@ -10,5 +10,6 @@
 	<classpathentry kind="lib" path="/home/mattia/Desktop/java-json.jar"/>
 	<classpathentry kind="lib" path="/home/mattia/Desktop/slf4j-simple-1.7.9.jar"/>
 	<classpathentry kind="lib" path="/home/mattia/Desktop/slf4j-api-1.7.9.jar"/>
+	<classpathentry kind="lib" path="/home/mattia/Desktop/opencsv-3.8.jar"/>
 	<classpathentry kind="output" path="bin"/>
 </classpath>

@@ -1,16 +1,9 @@
 
-Gmilestoneone.entity.VersionEntity#getReleaseDate()Ljava/time/LocalDate;Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/VersionEntity.java ( "1*ö
-1Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/VersionEntity.java	 (‰
-·
-Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/VersionEntity.java	 (
-%0java.time.LocalDate"__id*6*4#
-!milestoneone.entity.VersionEntity"
-releaseDate"•
-Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/VersionEntity.java (
-
-%0java.time.LocalDateB%#
-!milestoneone.entity.VersionEntity
+.milestoneone.entity.TicketEntity#getFvIndex()IÑ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java, ,("1*ú
+1Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java-	 -("è
+Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java- -(
+""B$"
+ milestoneone.entity.TicketEntity
