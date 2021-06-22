@@ -121,7 +121,7 @@ public class BalancingController {
 	private static Instances applySmote() {
 		
 		metricEntity.setBalancing("Smote");
-								
+		
 		SMOTE smote = new SMOTE(); 
 		try {
 			smote.setInputFormat(training);

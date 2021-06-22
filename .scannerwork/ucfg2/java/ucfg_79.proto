@@ -1,119 +1,9 @@
 
-Omilestoneone.controller.CSVController#initializeCSVResult()Ljava/io/FileWriter;â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java (&"1*ì
-1â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java!( !(5Ω∫
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java! !('
-%0java.io.FileWriter"java.io.FileWriterÈ
-Ê
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java! !(P
-%1".java.io.FileWriter#<init>(Ljava/lang/String;)V*
-
-%0java.io.FileWriter*
-""“
-œ
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java! !(Q
-	csvResultjava.io.FileWriter"__id*
-
-%0java.io.FileWriter÷
-”
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# $(
-%2java.lang.String"__concat*
-Version Number,*
-
-File Name,›
-⁄
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# %(
-%3java.lang.String"__concat*
-
-%2java.lang.String*
-LOC_Touched,·
-ﬁ
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# &(
-%4java.lang.String"__concat*
-
-%3java.lang.String*
-NumberRevisions,ﬁ
-€
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# '(
-%5java.lang.String"__concat*
-
-%4java.lang.String*
-NumberBugFix,€
-ÿ
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# ((
-%6java.lang.String"__concat*
-
-%5java.lang.String*
-
-LOC_Added,ﬂ
-‹
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# )(
-%7java.lang.String"__concat*
-
-%6java.lang.String*
-MAX_LOC_Added,ﬁ
-€
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# *(
-%8java.lang.String"__concat*
-
-%7java.lang.String*
-Chg_Set_Size,›
-⁄
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# +(
-%9java.lang.String"__concat*
-
-%8java.lang.String*
-Max_Chg_Set,ﬁ
-€
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# ,(
-%10java.lang.String"__concat*
-
-%9java.lang.String*
-AVG_Chg_Set,·
-ﬁ
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# -(
-%11java.lang.String"__concat*
-
-%10java.lang.String*
-Avg_LOC_Added,‹
-Ÿ
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# .(
-%12java.lang.String"__concat*
-
-%11java.lang.String*
-	Bugginess’
-“
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# /(
-
-%13java.lang.String"__concat*
-
-%12java.lang.String*
-\n”–
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java# /(
-%14java.io.Writer"Kjava.io.OutputStreamWriter#append(Ljava/lang/CharSequence;)Ljava/io/Writer;*!
-
-	csvResultjava.io.FileWriter*
-
-%13java.lang.String2 append(Ljava/lang/CharSequence;)"Ø
-â
-/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/controller/CSVController.java1 1(!
-
-	csvResultjava.io.FileWriterB)'
-%milestoneone.controller.CSVController
+1milestoneone.entity.TicketEntity#getProportion()DÑ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java> >("1*ú
+1Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java?	 ?("è
+Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/TicketEntity.java? ?(
+""B$"
+ milestoneone.entity.TicketEntity

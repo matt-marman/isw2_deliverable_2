@@ -1,16 +1,16 @@
 
->milestoneone.entity.ProjectEntity#getVersion()Ljava/util/List;Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javaa a("1*å
-1Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javab	 b(€
+?milestoneone.entity.CommitEntity#getDate()Ljava/time/LocalDate;Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java ("1*è
+1Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java	 (€
 ÿ
-Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javab	 b(
-%0java.util.List"__id*2*0#
-!milestoneone.entity.ProjectEntity"	
-version"†
-Ö
-{/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/ProjectEntity.javab b(
-
-%0java.util.ListB%#
-!milestoneone.entity.ProjectEntity
+Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java	 (
+%0java.time.LocalDate"__id*.*,"
+ milestoneone.entity.CommitEntity"
+date"§
+Ñ
+z/home/mattia/Desktop/ingegneria_software_2/Falessi/isw2_deliverable_2/milestone1/src/milestoneone/entity/CommitEntity.java (
+
+%0java.time.LocalDateB$"
+ milestoneone.entity.CommitEntity

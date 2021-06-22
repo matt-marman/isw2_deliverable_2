@@ -100,7 +100,7 @@ public class MetricController {
 			
 			Instance currentInstances = set.instance(k);
 
-			if(currentInstances.stringValue(indexBugginess).equals("Yes")) {
+			if(currentInstances.stringValue(indexBugginess).equals("true")) {
 				
 				numberDefective++;
 			}

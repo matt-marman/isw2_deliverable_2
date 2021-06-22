@@ -1,0 +1,94 @@
+@relation SYNCOPE2-weka.filters.unsupervised.attribute.Remove-R2
+
+@attribute 'Version Number' {1.0.1-incubating}
+@attribute LOC_Touched numeric
+@attribute NumberRevisions numeric
+@attribute NumberBugFix numeric
+@attribute LOC_Added numeric
+@attribute MAX_LOC_Added numeric
+@attribute Chg_Set_Size numeric
+@attribute Max_Chg_Set numeric
+@attribute AVG_Chg_Set numeric
+@attribute Avg_LOC_Added numeric
+@attribute Bugginess {true,false}
+
+@data
+1.0.1-incubating,8,1,1,2,2,19,19,19,2,true
+1.0.1-incubating,43,2,1,16,15,60,41,30,8,true
+1.0.1-incubating,6,1,1,2,2,19,19,19,2,true
+1.0.1-incubating,10,1,1,5,5,19,19,19,5,true
+1.0.1-incubating,18,1,1,11,11,19,19,19,11,true
+1.0.1-incubating,2,1,1,2,2,19,19,19,2,true
+1.0.1-incubating,17,1,0,12,12,9,9,9,12,false
+1.0.1-incubating,14,1,0,1,1,9,9,9,1,false
+1.0.1-incubating,5,1,0,5,5,9,9,9,5,false
+1.0.1-incubating,14,1,0,1,1,9,9,9,1,false
+1.0.1-incubating,1,1,0,0,0,9,9,9,0,false
+1.0.1-incubating,2,1,0,1,1,9,9,9,1,false
+1.0.1-incubating,21,2,0,19,16,60,38,30,9.5,false
+1.0.1-incubating,79,4,0,51,36,89,38,22.25,12.75,false
+1.0.1-incubating,28,2,0,22,20,60,38,30,11,false
+1.0.1-incubating,41,2,0,27,25,60,38,30,13.5,false
+1.0.1-incubating,25,2,0,20,18,60,38,30,10,false
+1.0.1-incubating,36,2,0,26,24,60,38,30,13,false
+1.0.1-incubating,50,2,0,20,18,60,38,30,10,false
+1.0.1-incubating,65,4,0,42,24,89,38,22.25,10.5,false
+1.0.1-incubating,23,2,0,19,17,60,38,30,9.5,false
+1.0.1-incubating,47,2,0,30,28,60,38,30,15,false
+1.0.1-incubating,21,2,0,19,17,60,38,30,9.5,false
+1.0.1-incubating,28,2,0,18,16,60,38,30,9,false
+1.0.1-incubating,21,2,0,19,17,60,38,30,9.5,false
+1.0.1-incubating,26,2,0,18,16,60,38,30,9,false
+1.0.1-incubating,28,2,0,23,21,60,38,30,11.5,false
+1.0.1-incubating,44,2,0,29,27,60,38,30,14.5,false
+1.0.1-incubating,30,1,0,28,28,1,1,1,28,false
+1.0.1-incubating,30,1,0,28,28,1,1,1,28,false
+1.0.1-incubating,17,1,0,17,17,2,2,2,17,false
+1.0.1-incubating,29,1,0,22,22,2,2,2,22,false
+1.0.1-incubating,6,2,2,0,0,4,2,2,0,true
+1.0.1-incubating,32,3,2,30,30,25,21,8.333333,10,true
+1.0.1-incubating,58,2,2,58,29,4,2,2,29,true
+1.0.1-incubating,22,2,2,10,5,4,2,2,5,true
+1.0.1-incubating,5,1,0,5,5,21,21,21,5,false
+1.0.1-incubating,32,1,0,32,32,21,21,21,32,false
+1.0.1-incubating,32,1,0,32,32,21,21,21,32,false
+1.0.1-incubating,76,1,0,54,54,21,21,21,54,false
+1.0.1-incubating,72,1,0,51,51,21,21,21,51,false
+1.0.1-incubating,33,1,0,33,33,21,21,21,33,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,4,1,0,2,2,41,41,41,2,false
+1.0.1-incubating,14,1,0,7,7,41,41,41,7,false
+1.0.1-incubating,6,1,0,3,3,41,41,41,3,false
+1.0.1-incubating,35,1,0,35,35,41,41,41,35,false
+1.0.1-incubating,1,1,0,0,0,41,41,41,0,false
+1.0.1-incubating,4,1,0,0,0,41,41,41,0,false
+1.0.1-incubating,12,1,0,6,6,41,41,41,6,false
+1.0.1-incubating,13,1,0,6,6,41,41,41,6,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,16,1,0,8,8,41,41,41,8,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,8,1,0,0,0,41,41,41,0,false
+1.0.1-incubating,20,1,0,10,10,41,41,41,10,false
+1.0.1-incubating,26,1,0,13,13,41,41,41,13,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,28,1,0,14,14,41,41,41,14,false
+1.0.1-incubating,20,1,0,10,10,41,41,41,10,false
+1.0.1-incubating,20,1,0,10,10,41,41,41,10,false
+1.0.1-incubating,32,1,0,16,16,41,41,41,16,false
+1.0.1-incubating,40,1,0,20,20,41,41,41,20,false
+1.0.1-incubating,16,1,0,8,8,41,41,41,8,false
+1.0.1-incubating,18,1,0,9,9,41,41,41,9,false
+1.0.1-incubating,14,1,0,0,0,41,41,41,0,false
+1.0.1-incubating,20,1,0,10,10,41,41,41,10,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,6,1,0,3,3,41,41,41,3,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,2,1,0,1,1,41,41,41,1,false
+1.0.1-incubating,14,1,0,13,13,22,22,22,13,false
+1.0.1-incubating,18,1,0,18,18,22,22,22,18,false
+1.0.1-incubating,2,1,0,2,2,22,22,22,2,false
+1.0.1-incubating,4,1,0,3,3,22,22,22,3,false
+1.0.1-incubating,68,1,0,68,68,22,22,22,68,false

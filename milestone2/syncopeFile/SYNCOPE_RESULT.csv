@@ -1,0 +1,1297 @@
+Dataset,#TrainingRelease,%Training,%DefectiveTraining,%DefectiveTesting,Classifier,Balancing,Feature Selection,Sensitivity,TP,FP,TN,FN,Precision,Recall,AUC,Kappa
+SYNCOPE,1,95.36817,42.278954,11.538462,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,95.36817,42.278954,11.538462,IBk,No Sampling,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,RandomForest,No Sampling,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,4.0,0.0,69.0,6.0,0.0,0.4,0.7,0.5380116959064329
+SYNCOPE,1,95.36817,42.278954,11.538462,IBk,No Sampling,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,RandomForest,No Sampling,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,NaiveBayes,No Sampling,No Selection,Sensitive Learning,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,95.36817,42.278954,11.538462,IBk,No Sampling,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,RandomForest,No Sampling,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,NaiveBayes,No Sampling,Best First,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,95.36817,42.278954,11.538462,IBk,No Sampling,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,RandomForest,No Sampling,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,NaiveBayes,No Sampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,IBk,No Sampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,RandomForest,No Sampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,NaiveBayes,No Sampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,IBk,No Sampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.36817,42.278954,11.538462,RandomForest,No Sampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,IBk,Oversampling,No Selection,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,0.5927536231884057,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,RandomForest,Oversampling,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,4.0,0.0,69.0,6.0,0.0,0.4,0.7,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,IBk,Oversampling,No Selection,Sensitive Threshold,4.0,0.0,69.0,6.0,0.0,0.4,0.7,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,RandomForest,Oversampling,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,NaiveBayes,Oversampling,No Selection,Sensitive Learning,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,IBk,Oversampling,No Selection,Sensitive Learning,4.0,0.0,69.0,6.0,0.0,0.4,0.5927536231884057,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,RandomForest,Oversampling,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,NaiveBayes,Oversampling,Best First,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,95.96064,49.97302,11.538462,IBk,Oversampling,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,RandomForest,Oversampling,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,NaiveBayes,Oversampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,IBk,Oversampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,RandomForest,Oversampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,NaiveBayes,Oversampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,IBk,Oversampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,95.96064,49.97302,11.538462,RandomForest,Oversampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,94.56446,49.963154,11.538462,IBk,Undersampling,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,RandomForest,Undersampling,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,4.0,0.0,69.0,6.0,0.0,0.4,0.7,0.5380116959064329
+SYNCOPE,1,94.56446,49.963154,11.538462,IBk,Undersampling,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,RandomForest,Undersampling,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,NaiveBayes,Undersampling,No Selection,Sensitive Learning,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,94.56446,49.963154,11.538462,IBk,Undersampling,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,RandomForest,Undersampling,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,NaiveBayes,Undersampling,Best First,No Cost Sensitive,4.0,0.0,69.0,6.0,0.0,0.4,1.0,0.5380116959064329
+SYNCOPE,1,94.56446,49.963154,11.538462,IBk,Undersampling,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,RandomForest,Undersampling,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,NaiveBayes,Undersampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,IBk,Undersampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,RandomForest,Undersampling,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,NaiveBayes,Undersampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,IBk,Undersampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,94.56446,49.963154,11.538462,RandomForest,Undersampling,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,NaiveBayes,Smote,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,IBk,Smote,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,RandomForest,Smote,No Selection,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,NaiveBayes,Smote,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,IBk,Smote,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,RandomForest,Smote,No Selection,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,NaiveBayes,Smote,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,IBk,Smote,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,RandomForest,Smote,No Selection,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,NaiveBayes,Smote,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,IBk,Smote,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,RandomForest,Smote,Best First,No Cost Sensitive,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,NaiveBayes,Smote,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,IBk,Smote,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,RandomForest,Smote,Best First,Sensitive Threshold,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,NaiveBayes,Smote,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,IBk,Smote,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,1,96.69911,59.43107,11.538462,RandomForest,Smote,Best First,Sensitive Learning,10.0,0.0,69.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,1.0,0.08665511265164656
+SYNCOPE,2,94.82273,40.89021,18.47826,IBk,No Sampling,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,RandomForest,No Sampling,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,0.5277777777777778,0.08665511265164656
+SYNCOPE,2,94.82273,40.89021,18.47826,IBk,No Sampling,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,RandomForest,No Sampling,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,NaiveBayes,No Sampling,No Selection,Sensitive Learning,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,1.0,0.08665511265164656
+SYNCOPE,2,94.82273,40.89021,18.47826,IBk,No Sampling,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,RandomForest,No Sampling,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,NaiveBayes,No Sampling,Best First,No Cost Sensitive,3.0,0.0,75.0,15.0,0.0,0.16666666666666666,1.0,0.2439024390243905
+SYNCOPE,2,94.82273,40.89021,18.47826,IBk,No Sampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,RandomForest,No Sampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,NaiveBayes,No Sampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,IBk,No Sampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,RandomForest,No Sampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,NaiveBayes,No Sampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,IBk,No Sampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,94.82273,40.89021,18.47826,RandomForest,No Sampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,1.0,0.08665511265164656
+SYNCOPE,2,95.5833,49.974884,18.47826,IBk,Oversampling,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,RandomForest,Oversampling,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,0.5277777777777778,0.08665511265164656
+SYNCOPE,2,95.5833,49.974884,18.47826,IBk,Oversampling,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,RandomForest,Oversampling,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,NaiveBayes,Oversampling,No Selection,Sensitive Learning,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,1.0,0.08665511265164656
+SYNCOPE,2,95.5833,49.974884,18.47826,IBk,Oversampling,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,RandomForest,Oversampling,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,NaiveBayes,Oversampling,Best First,No Cost Sensitive,12.0,0.0,75.0,6.0,0.0,0.6666666666666666,1.0,0.763358778625954
+SYNCOPE,2,95.5833,49.974884,18.47826,IBk,Oversampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,RandomForest,Oversampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,NaiveBayes,Oversampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,IBk,Oversampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,RandomForest,Oversampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,NaiveBayes,Oversampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,IBk,Oversampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,95.5833,49.974884,18.47826,RandomForest,Oversampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,1.0,0.08665511265164656
+SYNCOPE,2,93.737236,49.963688,18.47826,IBk,Undersampling,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,RandomForest,Undersampling,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,0.5277777777777778,0.08665511265164656
+SYNCOPE,2,93.737236,49.963688,18.47826,IBk,Undersampling,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,RandomForest,Undersampling,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,NaiveBayes,Undersampling,No Selection,Sensitive Learning,1.0,0.0,75.0,17.0,0.0,0.05555555555555555,1.0,0.08665511265164656
+SYNCOPE,2,93.737236,49.963688,18.47826,IBk,Undersampling,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,RandomForest,Undersampling,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,NaiveBayes,Undersampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,IBk,Undersampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,RandomForest,Undersampling,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,NaiveBayes,Undersampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,IBk,Undersampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,RandomForest,Undersampling,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,NaiveBayes,Undersampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,IBk,Undersampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,93.737236,49.963688,18.47826,RandomForest,Undersampling,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,NaiveBayes,Smote,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,IBk,Smote,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,RandomForest,Smote,No Selection,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,NaiveBayes,Smote,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,IBk,Smote,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,RandomForest,Smote,No Selection,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,NaiveBayes,Smote,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,IBk,Smote,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,RandomForest,Smote,No Selection,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,NaiveBayes,Smote,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,IBk,Smote,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,RandomForest,Smote,Best First,No Cost Sensitive,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,NaiveBayes,Smote,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,IBk,Smote,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,RandomForest,Smote,Best First,Sensitive Threshold,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,NaiveBayes,Smote,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,IBk,Smote,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,2,96.269264,58.045494,18.47826,RandomForest,Smote,Best First,Sensitive Learning,18.0,0.0,75.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,9.0,4.0,287.0,25.0,0.6923076923076923,0.2647058823529412,0.9882757226601981,0.34507678410117415
+SYNCOPE,3,84.586105,39.76378,10.185185,IBk,No Sampling,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,RandomForest,No Sampling,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,28.0,4.0,287.0,6.0,0.875,0.8235294117647058,0.904891853648676,0.8313790598734045
+SYNCOPE,3,84.586105,39.76378,10.185185,IBk,No Sampling,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,RandomForest,No Sampling,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,NaiveBayes,No Sampling,No Selection,Sensitive Learning,28.0,4.0,287.0,6.0,0.875,0.8235294117647058,0.9882757226601981,0.8313790598734045
+SYNCOPE,3,84.586105,39.76378,10.185185,IBk,No Sampling,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,RandomForest,No Sampling,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,NaiveBayes,No Sampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,IBk,No Sampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,RandomForest,No Sampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,NaiveBayes,No Sampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,IBk,No Sampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,RandomForest,No Sampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,NaiveBayes,No Sampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,IBk,No Sampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,84.586105,39.76378,10.185185,RandomForest,No Sampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,10.0,4.0,287.0,24.0,0.7142857142857143,0.29411764705882354,0.9842328684050939,0.3787547788093941
+SYNCOPE,3,86.85599,49.976646,10.185185,IBk,Oversampling,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,RandomForest,Oversampling,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,26.0,6.0,285.0,8.0,0.8125,0.7647058823529411,0.8720436628259551,0.7639306838227662
+SYNCOPE,3,86.85599,49.976646,10.185185,IBk,Oversampling,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,RandomForest,Oversampling,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,NaiveBayes,Oversampling,No Selection,Sensitive Learning,25.0,6.0,285.0,9.0,0.8064516129032258,0.7352941176470589,0.9842328684050939,0.7436504180470109
+SYNCOPE,3,86.85599,49.976646,10.185185,IBk,Oversampling,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,RandomForest,Oversampling,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,NaiveBayes,Oversampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,IBk,Oversampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,RandomForest,Oversampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,NaiveBayes,Oversampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,IBk,Oversampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,RandomForest,Oversampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,NaiveBayes,Oversampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,IBk,Oversampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,86.85599,49.976646,10.185185,RandomForest,Oversampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,11.0,4.0,287.0,23.0,0.7333333333333333,0.3235294117647059,0.9856478673943805,0.4112713854411275
+SYNCOPE,3,81.34715,49.964615,10.185185,IBk,Undersampling,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,RandomForest,Undersampling,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,30.0,6.0,285.0,4.0,0.8333333333333334,0.8823529411764706,0.9308671922377199,0.8399172495320658
+SYNCOPE,3,81.34715,49.964615,10.185185,IBk,Undersampling,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,RandomForest,Undersampling,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,NaiveBayes,Undersampling,No Selection,Sensitive Learning,30.0,6.0,285.0,4.0,0.8333333333333334,0.8823529411764706,0.9856478673943805,0.8399172495320658
+SYNCOPE,3,81.34715,49.964615,10.185185,IBk,Undersampling,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,RandomForest,Undersampling,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,NaiveBayes,Undersampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,IBk,Undersampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,RandomForest,Undersampling,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,NaiveBayes,Undersampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,IBk,Undersampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,RandomForest,Undersampling,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,NaiveBayes,Undersampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,IBk,Undersampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,81.34715,49.964615,10.185185,RandomForest,Undersampling,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,NaiveBayes,Smote,No Selection,No Cost Sensitive,34.0,3.0,288.0,0.0,0.918918918918919,1.0,0.9982817869415808,0.952575514373267
+SYNCOPE,3,88.46565,56.901405,10.185185,IBk,Smote,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,RandomForest,Smote,No Selection,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,NaiveBayes,Smote,No Selection,Sensitive Threshold,34.0,4.0,287.0,0.0,0.8947368421052632,1.0,0.993127147766323,0.9375480399692542
+SYNCOPE,3,88.46565,56.901405,10.185185,IBk,Smote,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,RandomForest,Smote,No Selection,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,NaiveBayes,Smote,No Selection,Sensitive Learning,34.0,4.0,287.0,0.0,0.8947368421052632,1.0,0.9982817869415808,0.9375480399692542
+SYNCOPE,3,88.46565,56.901405,10.185185,IBk,Smote,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,RandomForest,Smote,No Selection,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,NaiveBayes,Smote,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,IBk,Smote,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,RandomForest,Smote,Best First,No Cost Sensitive,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,NaiveBayes,Smote,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,IBk,Smote,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,RandomForest,Smote,Best First,Sensitive Threshold,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,NaiveBayes,Smote,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,IBk,Smote,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,3,88.46565,56.901405,10.185185,RandomForest,Smote,Best First,Sensitive Learning,34.0,0.0,291.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,35.0,12.0,694.0,4.0,0.7446808510638298,0.8974358974358975,0.9943342776203966,0.8026620753592482
+SYNCOPE,4,73.86723,35.23538,5.107527,IBk,No Sampling,No Selection,No Cost Sensitive,39.0,72.0,634.0,0.0,0.35135135135135137,1.0,0.9503159729788625,0.4796880456291467
+SYNCOPE,4,73.86723,35.23538,5.107527,RandomForest,No Sampling,No Selection,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,38.0,17.0,689.0,1.0,0.6909090909090909,0.9743589743589743,0.97513982712283,0.7960146029814419
+SYNCOPE,4,73.86723,35.23538,5.107527,IBk,No Sampling,No Selection,Sensitive Threshold,39.0,72.0,634.0,0.0,0.35135135135135137,1.0,0.9490084985835694,0.4796880456291467
+SYNCOPE,4,73.86723,35.23538,5.107527,RandomForest,No Sampling,No Selection,Sensitive Threshold,39.0,7.0,699.0,0.0,0.8478260869565217,1.0,0.9950424929178471,0.9127006712757583
+SYNCOPE,4,73.86723,35.23538,5.107527,NaiveBayes,No Sampling,No Selection,Sensitive Learning,38.0,17.0,689.0,1.0,0.6909090909090909,0.9743589743589743,0.9943342776203966,0.7960146029814419
+SYNCOPE,4,73.86723,35.23538,5.107527,IBk,No Sampling,No Selection,Sensitive Learning,39.0,72.0,634.0,0.0,0.35135135135135137,1.0,0.9503159729788625,0.4796880456291467
+SYNCOPE,4,73.86723,35.23538,5.107527,RandomForest,No Sampling,No Selection,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,NaiveBayes,No Sampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,IBk,No Sampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,RandomForest,No Sampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,NaiveBayes,No Sampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,IBk,No Sampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,RandomForest,No Sampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,NaiveBayes,No Sampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,IBk,No Sampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,73.86723,35.23538,5.107527,RandomForest,No Sampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,35.0,9.0,697.0,4.0,0.7954545454545454,0.8974358974358975,0.9955691145492845,0.8341694775953289
+SYNCOPE,4,78.552895,49.98165,5.107527,IBk,Oversampling,No Selection,No Cost Sensitive,39.0,166.0,540.0,0.0,0.1902439024390244,1.0,0.860463427035665,0.25405633632909114
+SYNCOPE,4,78.552895,49.98165,5.107527,RandomForest,Oversampling,No Selection,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,39.0,18.0,688.0,0.0,0.6842105263157895,1.0,0.9872521246458924,0.8000715627515878
+SYNCOPE,4,78.552895,49.98165,5.107527,IBk,Oversampling,No Selection,Sensitive Threshold,39.0,166.0,540.0,0.0,0.1902439024390244,1.0,0.8824362606232294,0.25405633632909114
+SYNCOPE,4,78.552895,49.98165,5.107527,RandomForest,Oversampling,No Selection,Sensitive Threshold,39.0,146.0,560.0,0.0,0.21081081081081082,1.0,0.896600566572238,0.2865201705477206
+SYNCOPE,4,78.552895,49.98165,5.107527,NaiveBayes,Oversampling,No Selection,Sensitive Learning,39.0,18.0,688.0,0.0,0.6842105263157895,1.0,0.9955691145492845,0.8000715627515878
+SYNCOPE,4,78.552895,49.98165,5.107527,IBk,Oversampling,No Selection,Sensitive Learning,39.0,166.0,540.0,0.0,0.1902439024390244,1.0,0.860463427035665,0.25405633632909114
+SYNCOPE,4,78.552895,49.98165,5.107527,RandomForest,Oversampling,No Selection,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,NaiveBayes,Oversampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,IBk,Oversampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,RandomForest,Oversampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,NaiveBayes,Oversampling,Best First,Sensitive Threshold,39.0,1.0,705.0,0.0,0.975,1.0,0.9992917847025495,0.98663317484525
+SYNCOPE,4,78.552895,49.98165,5.107527,IBk,Oversampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,RandomForest,Oversampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,NaiveBayes,Oversampling,Best First,Sensitive Learning,39.0,1.0,705.0,0.0,0.975,1.0,1.0,0.98663317484525
+SYNCOPE,4,78.552895,49.98165,5.107527,IBk,Oversampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,78.552895,49.98165,5.107527,RandomForest,Oversampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,35.0,16.0,690.0,4.0,0.6862745098039216,0.8974358974358975,0.9899760296360863,0.7637620497209541
+SYNCOPE,4,66.5618,49.96624,5.107527,IBk,Undersampling,No Selection,No Cost Sensitive,39.0,139.0,567.0,0.0,0.21910112359550563,1.0,0.9040822256119706,0.29926715883638644
+SYNCOPE,4,66.5618,49.96624,5.107527,RandomForest,Undersampling,No Selection,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,38.0,22.0,684.0,1.0,0.6333333333333333,0.9743589743589743,0.9715987506355779,0.7519363011219689
+SYNCOPE,4,66.5618,49.96624,5.107527,IBk,Undersampling,No Selection,Sensitive Threshold,39.0,139.0,567.0,0.0,0.21910112359550563,1.0,0.9015580736543909,0.29926715883638644
+SYNCOPE,4,66.5618,49.96624,5.107527,RandomForest,Undersampling,No Selection,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,NaiveBayes,Undersampling,No Selection,Sensitive Learning,38.0,22.0,684.0,1.0,0.6333333333333333,0.9743589743589743,0.9893949299048449,0.7519363011219689
+SYNCOPE,4,66.5618,49.96624,5.107527,IBk,Undersampling,No Selection,Sensitive Learning,39.0,139.0,567.0,0.0,0.21910112359550563,1.0,0.9040822256119706,0.29926715883638644
+SYNCOPE,4,66.5618,49.96624,5.107527,RandomForest,Undersampling,No Selection,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,NaiveBayes,Undersampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,IBk,Undersampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,RandomForest,Undersampling,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,NaiveBayes,Undersampling,Best First,Sensitive Threshold,39.0,2.0,704.0,0.0,0.9512195121951219,1.0,0.9985835694050992,0.9735824970745723
+SYNCOPE,4,66.5618,49.96624,5.107527,IBk,Undersampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,RandomForest,Undersampling,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,NaiveBayes,Undersampling,Best First,Sensitive Learning,39.0,2.0,704.0,0.0,0.9512195121951219,1.0,1.0,0.9735824970745723
+SYNCOPE,4,66.5618,49.96624,5.107527,IBk,Undersampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,66.5618,49.96624,5.107527,RandomForest,Undersampling,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,NaiveBayes,Smote,No Selection,No Cost Sensitive,39.0,5.0,701.0,0.0,0.8863636363636364,1.0,1.0,0.9362190298443575
+SYNCOPE,4,79.26421,52.109707,5.107527,IBk,Smote,No Selection,No Cost Sensitive,39.0,89.0,617.0,0.0,0.3046875,1.0,0.9369688385269122,0.42056785311672557
+SYNCOPE,4,79.26421,52.109707,5.107527,RandomForest,Smote,No Selection,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,NaiveBayes,Smote,No Selection,Sensitive Threshold,39.0,8.0,698.0,0.0,0.8297872340425532,1.0,0.9943342776203966,0.9013310376796235
+SYNCOPE,4,79.26421,52.109707,5.107527,IBk,Smote,No Selection,Sensitive Threshold,39.0,89.0,617.0,0.0,0.3046875,1.0,0.9369688385269122,0.42056785311672557
+SYNCOPE,4,79.26421,52.109707,5.107527,RandomForest,Smote,No Selection,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,NaiveBayes,Smote,No Selection,Sensitive Learning,39.0,8.0,698.0,0.0,0.8297872340425532,1.0,1.0,0.9013310376796235
+SYNCOPE,4,79.26421,52.109707,5.107527,IBk,Smote,No Selection,Sensitive Learning,39.0,89.0,617.0,0.0,0.3046875,1.0,0.9369688385269122,0.42056785311672557
+SYNCOPE,4,79.26421,52.109707,5.107527,RandomForest,Smote,No Selection,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,NaiveBayes,Smote,Best First,No Cost Sensitive,38.0,0.0,706.0,1.0,0.0,0.9743589743589743,1.0,0.9863053987978164
+SYNCOPE,4,79.26421,52.109707,5.107527,IBk,Smote,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,RandomForest,Smote,Best First,No Cost Sensitive,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,NaiveBayes,Smote,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,IBk,Smote,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,RandomForest,Smote,Best First,Sensitive Threshold,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,NaiveBayes,Smote,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,IBk,Smote,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,4,79.26421,52.109707,5.107527,RandomForest,Smote,Best First,Sensitive Learning,39.0,0.0,706.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,46.0,0.0,325.0,104.0,0.0,0.30666666666666664,0.9993025641025641,0.3770491803278688
+SYNCOPE,5,85.73149,27.38764,31.434599,IBk,No Sampling,No Selection,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9969846153846154,0.9951194451579759
+SYNCOPE,5,85.73149,27.38764,31.434599,RandomForest,No Sampling,No Selection,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,148.0,1.0,324.0,2.0,0.9932885906040269,0.9866666666666667,0.9917948717948718,0.9853583354739277
+SYNCOPE,5,85.73149,27.38764,31.434599,IBk,No Sampling,No Selection,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,85.73149,27.38764,31.434599,RandomForest,No Sampling,No Selection,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,NaiveBayes,No Sampling,No Selection,Sensitive Learning,148.0,1.0,324.0,2.0,0.9932885906040269,0.9866666666666667,0.9993025641025641,0.9853583354739277
+SYNCOPE,5,85.73149,27.38764,31.434599,IBk,No Sampling,No Selection,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9969846153846154,0.9951194451579759
+SYNCOPE,5,85.73149,27.38764,31.434599,RandomForest,No Sampling,No Selection,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,NaiveBayes,No Sampling,Best First,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,85.73149,27.38764,31.434599,IBk,No Sampling,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,RandomForest,No Sampling,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,NaiveBayes,No Sampling,Best First,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,85.73149,27.38764,31.434599,IBk,No Sampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,RandomForest,No Sampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,NaiveBayes,No Sampling,Best First,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,85.73149,27.38764,31.434599,IBk,No Sampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,85.73149,27.38764,31.434599,RandomForest,No Sampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,114.0,0.0,325.0,36.0,0.0,0.76,1.0,0.8125
+SYNCOPE,5,89.715775,49.987907,31.434599,IBk,Oversampling,No Selection,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9940820512820513,0.9951194451579759
+SYNCOPE,5,89.715775,49.987907,31.434599,RandomForest,Oversampling,No Selection,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,150.0,1.0,324.0,0.0,0.9933774834437086,1.0,0.9984615384615385,0.9951369337087279
+SYNCOPE,5,89.715775,49.987907,31.434599,IBk,Oversampling,No Selection,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,89.715775,49.987907,31.434599,RandomForest,Oversampling,No Selection,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,NaiveBayes,Oversampling,No Selection,Sensitive Learning,150.0,1.0,324.0,0.0,0.9933774834437086,1.0,1.0,0.9951369337087279
+SYNCOPE,5,89.715775,49.987907,31.434599,IBk,Oversampling,No Selection,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9940820512820513,0.9951194451579759
+SYNCOPE,5,89.715775,49.987907,31.434599,RandomForest,Oversampling,No Selection,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,NaiveBayes,Oversampling,Best First,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,89.715775,49.987907,31.434599,IBk,Oversampling,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,RandomForest,Oversampling,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,NaiveBayes,Oversampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,IBk,Oversampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,RandomForest,Oversampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,NaiveBayes,Oversampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,IBk,Oversampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,89.715775,49.987907,31.434599,RandomForest,Oversampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,64.0,1.0,324.0,86.0,0.9846153846153847,0.4266666666666667,0.9977230769230769,0.49984871406959164
+SYNCOPE,5,76.6847,49.967926,31.434599,IBk,Undersampling,No Selection,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9967897435897436,0.9951194451579759
+SYNCOPE,5,76.6847,49.967926,31.434599,RandomForest,Undersampling,No Selection,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,150.0,1.0,324.0,0.0,0.9933774834437086,1.0,0.9984615384615385,0.9951369337087279
+SYNCOPE,5,76.6847,49.967926,31.434599,IBk,Undersampling,No Selection,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,76.6847,49.967926,31.434599,RandomForest,Undersampling,No Selection,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,NaiveBayes,Undersampling,No Selection,Sensitive Learning,150.0,1.0,324.0,0.0,0.9933774834437086,1.0,0.9977230769230769,0.9951369337087279
+SYNCOPE,5,76.6847,49.967926,31.434599,IBk,Undersampling,No Selection,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9967897435897436,0.9951194451579759
+SYNCOPE,5,76.6847,49.967926,31.434599,RandomForest,Undersampling,No Selection,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,NaiveBayes,Undersampling,Best First,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,76.6847,49.967926,31.434599,IBk,Undersampling,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,RandomForest,Undersampling,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,NaiveBayes,Undersampling,Best First,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,76.6847,49.967926,31.434599,IBk,Undersampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,RandomForest,Undersampling,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,NaiveBayes,Undersampling,Best First,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,76.6847,49.967926,31.434599,IBk,Undersampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,76.6847,49.967926,31.434599,RandomForest,Undersampling,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,NaiveBayes,Smote,No Selection,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,IBk,Smote,No Selection,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9969846153846154,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,RandomForest,Smote,No Selection,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,NaiveBayes,Smote,No Selection,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,IBk,Smote,No Selection,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,RandomForest,Smote,No Selection,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,NaiveBayes,Smote,No Selection,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,IBk,Smote,No Selection,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9969846153846154,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,RandomForest,Smote,No Selection,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,NaiveBayes,Smote,Best First,No Cost Sensitive,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,IBk,Smote,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,RandomForest,Smote,Best First,No Cost Sensitive,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,NaiveBayes,Smote,Best First,Sensitive Threshold,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,0.9966666666666667,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,IBk,Smote,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,RandomForest,Smote,Best First,Sensitive Threshold,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,NaiveBayes,Smote,Best First,Sensitive Learning,149.0,0.0,325.0,1.0,0.0,0.9933333333333333,1.0,0.9951194451579759
+SYNCOPE,5,88.444664,42.998898,31.434599,IBk,Smote,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,5,88.444664,42.998898,31.434599,RandomForest,Smote,Best First,Sensitive Learning,150.0,0.0,325.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,87.0,0.0,92.0,3.0,0.0,0.9666666666666667,1.0,0.9670170351576657
+SYNCOPE,6,94.83448,27.98676,49.723755,IBk,No Sampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,RandomForest,No Sampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,IBk,No Sampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,RandomForest,No Sampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,NaiveBayes,No Sampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,IBk,No Sampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,RandomForest,No Sampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,NaiveBayes,No Sampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,IBk,No Sampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,RandomForest,No Sampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,NaiveBayes,No Sampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,IBk,No Sampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,RandomForest,No Sampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,NaiveBayes,No Sampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,IBk,No Sampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,94.83448,27.98676,49.723755,RandomForest,No Sampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,IBk,Oversampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,RandomForest,Oversampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,IBk,Oversampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,RandomForest,Oversampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,NaiveBayes,Oversampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,IBk,Oversampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,RandomForest,Oversampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,NaiveBayes,Oversampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,IBk,Oversampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,RandomForest,Oversampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,NaiveBayes,Oversampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,IBk,Oversampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,RandomForest,Oversampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,NaiveBayes,Oversampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,IBk,Oversampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,96.35522,49.98955,49.723755,RandomForest,Oversampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,IBk,Undersampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,RandomForest,Undersampling,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,IBk,Undersampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,RandomForest,Undersampling,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,NaiveBayes,Undersampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,IBk,Undersampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,RandomForest,Undersampling,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,NaiveBayes,Undersampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,IBk,Undersampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,RandomForest,Undersampling,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,NaiveBayes,Undersampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,IBk,Undersampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,RandomForest,Undersampling,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,NaiveBayes,Undersampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,IBk,Undersampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,91.12745,49.973103,49.723755,RandomForest,Undersampling,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,NaiveBayes,Smote,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,IBk,Smote,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,RandomForest,Smote,No Selection,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,NaiveBayes,Smote,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,IBk,Smote,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,RandomForest,Smote,No Selection,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,NaiveBayes,Smote,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,IBk,Smote,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,RandomForest,Smote,No Selection,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,NaiveBayes,Smote,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,IBk,Smote,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,RandomForest,Smote,Best First,No Cost Sensitive,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,NaiveBayes,Smote,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,IBk,Smote,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,RandomForest,Smote,Best First,Sensitive Threshold,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,NaiveBayes,Smote,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,IBk,Smote,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,6,95.91791,43.733833,49.723755,RandomForest,Smote,Best First,Sensitive Learning,90.0,0.0,92.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,16.0,13.0,713.0,1.0,0.5517241379310345,0.9411764705882353,0.9359909252957381,0.6866112316220779
+SYNCOPE,7,82.52884,29.101286,2.1563342,IBk,No Sampling,No Selection,No Cost Sensitive,17.0,18.0,708.0,0.0,0.4857142857142857,1.0,0.9883325230918814,0.6428456978048398
+SYNCOPE,7,82.52884,29.101286,2.1563342,RandomForest,No Sampling,No Selection,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,16.0,14.0,712.0,1.0,0.5333333333333333,0.9411764705882353,0.9609463620158807,0.6712486357334592
+SYNCOPE,7,82.52884,29.101286,2.1563342,IBk,No Sampling,No Selection,Sensitive Threshold,17.0,18.0,708.0,0.0,0.4857142857142857,1.0,0.987603305785124,0.6428456978048398
+SYNCOPE,7,82.52884,29.101286,2.1563342,RandomForest,No Sampling,No Selection,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,NaiveBayes,No Sampling,No Selection,Sensitive Learning,16.0,14.0,712.0,1.0,0.5333333333333333,0.9411764705882353,0.9356668287149571,0.6712486357334592
+SYNCOPE,7,82.52884,29.101286,2.1563342,IBk,No Sampling,No Selection,Sensitive Learning,17.0,18.0,708.0,0.0,0.4857142857142857,1.0,0.9883325230918814,0.6428456978048398
+SYNCOPE,7,82.52884,29.101286,2.1563342,RandomForest,No Sampling,No Selection,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,NaiveBayes,No Sampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,IBk,No Sampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,RandomForest,No Sampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,NaiveBayes,No Sampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,IBk,No Sampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,RandomForest,No Sampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,NaiveBayes,No Sampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,IBk,No Sampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,82.52884,29.101286,2.1563342,RandomForest,No Sampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,16.0,12.0,714.0,1.0,0.5714285714285714,0.9411764705882353,0.9381785772160104,0.7026444601791715
+SYNCOPE,7,87.00753,49.989937,2.1563342,IBk,Oversampling,No Selection,No Cost Sensitive,17.0,19.0,707.0,0.0,0.4722222222222222,1.0,0.987927402365905,0.6300091731096846
+SYNCOPE,7,87.00753,49.989937,2.1563342,RandomForest,Oversampling,No Selection,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,16.0,14.0,712.0,1.0,0.5333333333333333,0.9411764705882353,0.9609463620158807,0.6712486357334592
+SYNCOPE,7,87.00753,49.989937,2.1563342,IBk,Oversampling,No Selection,Sensitive Threshold,17.0,19.0,707.0,0.0,0.4722222222222222,1.0,0.9869146005509641,0.6300091731096846
+SYNCOPE,7,87.00753,49.989937,2.1563342,RandomForest,Oversampling,No Selection,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,NaiveBayes,Oversampling,No Selection,Sensitive Learning,16.0,14.0,712.0,1.0,0.5333333333333333,0.9411764705882353,0.9381785772160104,0.6712486357334592
+SYNCOPE,7,87.00753,49.989937,2.1563342,IBk,Oversampling,No Selection,Sensitive Learning,17.0,19.0,707.0,0.0,0.4722222222222222,1.0,0.987927402365905,0.6300091731096846
+SYNCOPE,7,87.00753,49.989937,2.1563342,RandomForest,Oversampling,No Selection,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,NaiveBayes,Oversampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,IBk,Oversampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,RandomForest,Oversampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,NaiveBayes,Oversampling,Best First,Sensitive Threshold,17.0,721.0,5.0,0.0,0.023035230352303523,1.0,0.5034435261707989,3.1723934588979036E-4
+SYNCOPE,7,87.00753,49.989937,2.1563342,IBk,Oversampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,RandomForest,Oversampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,NaiveBayes,Oversampling,Best First,Sensitive Learning,17.0,721.0,5.0,0.0,0.023035230352303523,1.0,1.0,3.1723934588979036E-4
+SYNCOPE,7,87.00753,49.989937,2.1563342,IBk,Oversampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,87.00753,49.989937,2.1563342,RandomForest,Oversampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,16.0,13.0,713.0,1.0,0.5517241379310345,0.9411764705882353,0.9364770701669097,0.6866112316220779
+SYNCOPE,7,73.318954,49.97548,2.1563342,IBk,Undersampling,No Selection,No Cost Sensitive,17.0,28.0,698.0,0.0,0.37777777777777777,1.0,0.98185059147626,0.5328722830968212
+SYNCOPE,7,73.318954,49.97548,2.1563342,RandomForest,Undersampling,No Selection,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,16.0,15.0,711.0,1.0,0.5161290322580645,0.9411764705882353,0.9602576567817209,0.6565154579601267
+SYNCOPE,7,73.318954,49.97548,2.1563342,IBk,Undersampling,No Selection,Sensitive Threshold,17.0,28.0,698.0,0.0,0.37777777777777777,1.0,0.9807162534435262,0.5328722830968212
+SYNCOPE,7,73.318954,49.97548,2.1563342,RandomForest,Undersampling,No Selection,Sensitive Threshold,17.0,7.0,719.0,0.0,0.7083333333333334,1.0,0.9951790633608816,0.8245690963672537
+SYNCOPE,7,73.318954,49.97548,2.1563342,NaiveBayes,Undersampling,No Selection,Sensitive Learning,16.0,15.0,711.0,1.0,0.5161290322580645,0.9411764705882353,0.9364770701669097,0.6565154579601267
+SYNCOPE,7,73.318954,49.97548,2.1563342,IBk,Undersampling,No Selection,Sensitive Learning,17.0,28.0,698.0,0.0,0.37777777777777777,1.0,0.98185059147626,0.5328722830968212
+SYNCOPE,7,73.318954,49.97548,2.1563342,RandomForest,Undersampling,No Selection,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,NaiveBayes,Undersampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,IBk,Undersampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,RandomForest,Undersampling,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,NaiveBayes,Undersampling,Best First,Sensitive Threshold,17.0,721.0,5.0,0.0,0.023035230352303523,1.0,0.5034435261707989,3.1723934588979036E-4
+SYNCOPE,7,73.318954,49.97548,2.1563342,IBk,Undersampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,RandomForest,Undersampling,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,NaiveBayes,Undersampling,Best First,Sensitive Learning,17.0,721.0,5.0,0.0,0.023035230352303523,1.0,1.0,3.1723934588979036E-4
+SYNCOPE,7,73.318954,49.97548,2.1563342,IBk,Undersampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,73.318954,49.97548,2.1563342,RandomForest,Undersampling,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,NaiveBayes,Smote,No Selection,No Cost Sensitive,17.0,12.0,714.0,0.0,0.5862068965517241,1.0,0.9986225895316805,0.7313810556760658
+SYNCOPE,7,85.912285,45.082874,2.1563342,IBk,Smote,No Selection,No Cost Sensitive,17.0,18.0,708.0,0.0,0.4857142857142857,1.0,0.987603305785124,0.6428456978048398
+SYNCOPE,7,85.912285,45.082874,2.1563342,RandomForest,Smote,No Selection,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,NaiveBayes,Smote,No Selection,Sensitive Threshold,17.0,13.0,713.0,0.0,0.5666666666666667,1.0,0.9910468319559229,0.7150821509689986
+SYNCOPE,7,85.912285,45.082874,2.1563342,IBk,Smote,No Selection,Sensitive Threshold,17.0,18.0,708.0,0.0,0.4857142857142857,1.0,0.987603305785124,0.6428456978048398
+SYNCOPE,7,85.912285,45.082874,2.1563342,RandomForest,Smote,No Selection,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,NaiveBayes,Smote,No Selection,Sensitive Learning,17.0,13.0,713.0,0.0,0.5666666666666667,1.0,0.9986225895316805,0.7150821509689986
+SYNCOPE,7,85.912285,45.082874,2.1563342,IBk,Smote,No Selection,Sensitive Learning,17.0,18.0,708.0,0.0,0.4857142857142857,1.0,0.987603305785124,0.6428456978048398
+SYNCOPE,7,85.912285,45.082874,2.1563342,RandomForest,Smote,No Selection,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,NaiveBayes,Smote,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,IBk,Smote,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,RandomForest,Smote,Best First,No Cost Sensitive,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,NaiveBayes,Smote,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,IBk,Smote,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,RandomForest,Smote,Best First,Sensitive Threshold,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,NaiveBayes,Smote,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,IBk,Smote,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,7,85.912285,45.082874,2.1563342,RandomForest,Smote,Best First,Sensitive Learning,17.0,0.0,726.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,275.0,13.0,469.0,2.0,0.9548611111111112,0.9927797833935018,0.9954911095465644,0.9577210592573612
+SYNCOPE,8,84.85817,24.411488,36.41161,IBk,No Sampling,No Selection,No Cost Sensitive,268.0,0.0,482.0,9.0,0.0,0.9675090252707581,0.9845297122399149,0.9742404301934889
+SYNCOPE,8,84.85817,24.411488,36.41161,RandomForest,No Sampling,No Selection,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,277.0,26.0,456.0,0.0,0.9141914191419142,1.0,0.9730290456431535,0.9275438944330625
+SYNCOPE,8,84.85817,24.411488,36.41161,IBk,No Sampling,No Selection,Sensitive Threshold,268.0,0.0,482.0,9.0,0.0,0.9675090252707581,0.983754512635379,0.9742404301934889
+SYNCOPE,8,84.85817,24.411488,36.41161,RandomForest,No Sampling,No Selection,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,NaiveBayes,No Sampling,No Selection,Sensitive Learning,277.0,26.0,456.0,0.0,0.9141914191419142,1.0,0.9954911095465644,0.9275438944330625
+SYNCOPE,8,84.85817,24.411488,36.41161,IBk,No Sampling,No Selection,Sensitive Learning,268.0,0.0,482.0,9.0,0.0,0.9675090252707581,0.9845297122399149,0.9742404301934889
+SYNCOPE,8,84.85817,24.411488,36.41161,RandomForest,No Sampling,No Selection,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,NaiveBayes,No Sampling,Best First,No Cost Sensitive,270.0,0.0,482.0,7.0,0.0,0.9747292418772563,1.0,0.9799957077182003
+SYNCOPE,8,84.85817,24.411488,36.41161,IBk,No Sampling,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,RandomForest,No Sampling,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,NaiveBayes,No Sampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,IBk,No Sampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,RandomForest,No Sampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,NaiveBayes,No Sampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,IBk,No Sampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,84.85817,24.411488,36.41161,RandomForest,No Sampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,277.0,19.0,463.0,0.0,0.9358108108108109,1.0,0.9944350405200952,0.946770853711202
+SYNCOPE,8,89.44142,49.992214,36.41161,IBk,Oversampling,No Selection,No Cost Sensitive,269.0,0.0,482.0,8.0,0.0,0.9711191335740073,0.9881847596506733,0.9771202917991771
+SYNCOPE,8,89.44142,49.992214,36.41161,RandomForest,Oversampling,No Selection,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,277.0,35.0,447.0,0.0,0.8878205128205128,1.0,0.9636929460580913,0.9031192218903513
+SYNCOPE,8,89.44142,49.992214,36.41161,IBk,Oversampling,No Selection,Sensitive Threshold,269.0,0.0,482.0,8.0,0.0,0.9711191335740073,0.9855595667870036,0.9771202917991771
+SYNCOPE,8,89.44142,49.992214,36.41161,RandomForest,Oversampling,No Selection,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,NaiveBayes,Oversampling,No Selection,Sensitive Learning,277.0,35.0,447.0,0.0,0.8878205128205128,1.0,0.9944350405200952,0.9031192218903513
+SYNCOPE,8,89.44142,49.992214,36.41161,IBk,Oversampling,No Selection,Sensitive Learning,269.0,0.0,482.0,8.0,0.0,0.9711191335740073,0.9881847596506733,0.9771202917991771
+SYNCOPE,8,89.44142,49.992214,36.41161,RandomForest,Oversampling,No Selection,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,NaiveBayes,Oversampling,Best First,No Cost Sensitive,275.0,0.0,482.0,2.0,0.0,0.9927797833935018,1.0,0.9943064609291196
+SYNCOPE,8,89.44142,49.992214,36.41161,IBk,Oversampling,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,RandomForest,Oversampling,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,NaiveBayes,Oversampling,Best First,Sensitive Threshold,277.0,1.0,481.0,0.0,0.9964028776978417,1.0,0.9989626556016598,0.997159781913162
+SYNCOPE,8,89.44142,49.992214,36.41161,IBk,Oversampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,RandomForest,Oversampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,NaiveBayes,Oversampling,Best First,Sensitive Learning,277.0,1.0,481.0,0.0,0.9964028776978417,1.0,1.0,0.997159781913162
+SYNCOPE,8,89.44142,49.992214,36.41161,IBk,Oversampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,89.44142,49.992214,36.41161,RandomForest,Oversampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,276.0,30.0,452.0,1.0,0.9019607843137255,0.9963898916967509,0.9918210824333029,0.9138046619995386
+SYNCOPE,8,73.225006,49.97588,36.41161,IBk,Undersampling,No Selection,No Cost Sensitive,271.0,1.0,481.0,6.0,0.9963235294117647,0.9783393501805054,0.9890423476189762,0.9800265410540482
+SYNCOPE,8,73.225006,49.97588,36.41161,RandomForest,Undersampling,No Selection,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,277.0,60.0,422.0,0.0,0.8219584569732937,1.0,0.9377593360995851,0.8369658609233589
+SYNCOPE,8,73.225006,49.97588,36.41161,IBk,Undersampling,No Selection,Sensitive Threshold,271.0,1.0,481.0,6.0,0.9963235294117647,0.9783393501805054,0.9881323306919124,0.9800265410540482
+SYNCOPE,8,73.225006,49.97588,36.41161,RandomForest,Undersampling,No Selection,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,NaiveBayes,Undersampling,No Selection,Sensitive Learning,277.0,60.0,422.0,0.0,0.8219584569732937,1.0,0.9918210824333029,0.8369658609233589
+SYNCOPE,8,73.225006,49.97588,36.41161,IBk,Undersampling,No Selection,Sensitive Learning,271.0,1.0,481.0,6.0,0.9963235294117647,0.9783393501805054,0.9890423476189762,0.9800265410540482
+SYNCOPE,8,73.225006,49.97588,36.41161,RandomForest,Undersampling,No Selection,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,NaiveBayes,Undersampling,Best First,No Cost Sensitive,275.0,0.0,482.0,2.0,0.0,0.9927797833935018,1.0,0.9943064609291196
+SYNCOPE,8,73.225006,49.97588,36.41161,IBk,Undersampling,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,RandomForest,Undersampling,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,NaiveBayes,Undersampling,Best First,Sensitive Threshold,277.0,1.0,481.0,0.0,0.9964028776978417,1.0,0.9989626556016598,0.997159781913162
+SYNCOPE,8,73.225006,49.97588,36.41161,IBk,Undersampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,RandomForest,Undersampling,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,NaiveBayes,Undersampling,Best First,Sensitive Learning,277.0,1.0,481.0,0.0,0.9964028776978417,1.0,1.0,0.997159781913162
+SYNCOPE,8,73.225006,49.97588,36.41161,IBk,Undersampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,73.225006,49.97588,36.41161,RandomForest,Undersampling,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,NaiveBayes,Smote,No Selection,No Cost Sensitive,277.0,10.0,472.0,0.0,0.9651567944250871,1.0,1.0,0.9717925657244367
+SYNCOPE,8,87.45656,39.24314,36.41161,IBk,Smote,No Selection,No Cost Sensitive,272.0,0.0,482.0,5.0,0.0,0.9819494584837545,0.9914053956888417,0.9857332436100344
+SYNCOPE,8,87.45656,39.24314,36.41161,RandomForest,Smote,No Selection,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,NaiveBayes,Smote,No Selection,Sensitive Threshold,277.0,13.0,469.0,0.0,0.9551724137931035,1.0,0.9865145228215768,0.9634139558683392
+SYNCOPE,8,87.45656,39.24314,36.41161,IBk,Smote,No Selection,Sensitive Threshold,272.0,0.0,482.0,5.0,0.0,0.9819494584837545,0.9909747292418772,0.9857332436100344
+SYNCOPE,8,87.45656,39.24314,36.41161,RandomForest,Smote,No Selection,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,NaiveBayes,Smote,No Selection,Sensitive Learning,277.0,13.0,469.0,0.0,0.9551724137931035,1.0,1.0,0.9634139558683392
+SYNCOPE,8,87.45656,39.24314,36.41161,IBk,Smote,No Selection,Sensitive Learning,272.0,0.0,482.0,5.0,0.0,0.9819494584837545,0.9914053956888417,0.9857332436100344
+SYNCOPE,8,87.45656,39.24314,36.41161,RandomForest,Smote,No Selection,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,NaiveBayes,Smote,Best First,No Cost Sensitive,266.0,0.0,482.0,11.0,0.0,0.9602888086642599,1.0,0.968467328617344
+SYNCOPE,8,87.45656,39.24314,36.41161,IBk,Smote,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,RandomForest,Smote,Best First,No Cost Sensitive,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,NaiveBayes,Smote,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,IBk,Smote,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,RandomForest,Smote,Best First,Sensitive Threshold,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,NaiveBayes,Smote,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,IBk,Smote,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,8,87.45656,39.24314,36.41161,RandomForest,Smote,Best First,Sensitive Learning,277.0,0.0,482.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9986222642103606,0.9836052805794617
+SYNCOPE,9,92.26092,26.243261,17.380953,IBk,No Sampling,No Selection,No Cost Sensitive,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9942331916233664,0.9916688104802802
+SYNCOPE,9,92.26092,26.243261,17.380953,RandomForest,No Sampling,No Selection,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9971264367816092,0.9836052805794617
+SYNCOPE,9,92.26092,26.243261,17.380953,IBk,No Sampling,No Selection,Sensitive Threshold,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9931506849315068,0.9916688104802802
+SYNCOPE,9,92.26092,26.243261,17.380953,RandomForest,No Sampling,No Selection,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,NaiveBayes,No Sampling,No Selection,Sensitive Learning,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9986222642103606,0.9836052805794617
+SYNCOPE,9,92.26092,26.243261,17.380953,IBk,No Sampling,No Selection,Sensitive Learning,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9942331916233664,0.9916688104802802
+SYNCOPE,9,92.26092,26.243261,17.380953,RandomForest,No Sampling,No Selection,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,NaiveBayes,No Sampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,IBk,No Sampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,RandomForest,No Sampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,NaiveBayes,No Sampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,IBk,No Sampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,RandomForest,No Sampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,NaiveBayes,No Sampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,IBk,No Sampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,92.26092,26.243261,17.380953,RandomForest,No Sampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9986222642103606,0.9836052805794617
+SYNCOPE,9,94.618835,49.99323,17.380953,IBk,Oversampling,No Selection,No Cost Sensitive,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9963194772476776,0.9916688104802802
+SYNCOPE,9,94.618835,49.99323,17.380953,RandomForest,Oversampling,No Selection,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9971264367816092,0.9836052805794617
+SYNCOPE,9,94.618835,49.99323,17.380953,IBk,Oversampling,No Selection,Sensitive Threshold,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9931506849315068,0.9916688104802802
+SYNCOPE,9,94.618835,49.99323,17.380953,RandomForest,Oversampling,No Selection,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,NaiveBayes,Oversampling,No Selection,Sensitive Learning,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9986222642103606,0.9836052805794617
+SYNCOPE,9,94.618835,49.99323,17.380953,IBk,Oversampling,No Selection,Sensitive Learning,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9963194772476776,0.9916688104802802
+SYNCOPE,9,94.618835,49.99323,17.380953,RandomForest,Oversampling,No Selection,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,NaiveBayes,Oversampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,IBk,Oversampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,RandomForest,Oversampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,NaiveBayes,Oversampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,IBk,Oversampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,RandomForest,Oversampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,NaiveBayes,Oversampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,IBk,Oversampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,94.618835,49.99323,17.380953,RandomForest,Oversampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9986222642103606,0.9836052805794617
+SYNCOPE,9,86.21595,49.98097,17.380953,IBk,Undersampling,No Selection,No Cost Sensitive,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9935836876082507,0.9916688104802802
+SYNCOPE,9,86.21595,49.98097,17.380953,RandomForest,Undersampling,No Selection,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,73.0,7.0,341.0,0.0,0.9125,1.0,0.9899425287356322,0.9441146909904612
+SYNCOPE,9,86.21595,49.98097,17.380953,IBk,Undersampling,No Selection,Sensitive Threshold,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9931506849315068,0.9916688104802802
+SYNCOPE,9,86.21595,49.98097,17.380953,RandomForest,Undersampling,No Selection,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,NaiveBayes,Undersampling,No Selection,Sensitive Learning,73.0,6.0,342.0,0.0,0.9240506329113924,1.0,0.9986222642103606,0.9518471920393456
+SYNCOPE,9,86.21595,49.98097,17.380953,IBk,Undersampling,No Selection,Sensitive Learning,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9935836876082507,0.9916688104802802
+SYNCOPE,9,86.21595,49.98097,17.380953,RandomForest,Undersampling,No Selection,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,NaiveBayes,Undersampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,IBk,Undersampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,RandomForest,Undersampling,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,NaiveBayes,Undersampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,IBk,Undersampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,RandomForest,Undersampling,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,NaiveBayes,Undersampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,IBk,Undersampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,86.21595,49.98097,17.380953,RandomForest,Undersampling,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,NaiveBayes,Smote,No Selection,No Cost Sensitive,73.0,1.0,347.0,0.0,0.9864864864864865,1.0,1.0,0.9917585106591233
+SYNCOPE,9,93.76947,41.5757,17.380953,IBk,Smote,No Selection,No Cost Sensitive,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9942331916233664,0.9916688104802802
+SYNCOPE,9,93.76947,41.5757,17.380953,RandomForest,Smote,No Selection,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,NaiveBayes,Smote,No Selection,Sensitive Threshold,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,0.9971264367816092,0.9836052805794617
+SYNCOPE,9,93.76947,41.5757,17.380953,IBk,Smote,No Selection,Sensitive Threshold,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9931506849315068,0.9916688104802802
+SYNCOPE,9,93.76947,41.5757,17.380953,RandomForest,Smote,No Selection,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,NaiveBayes,Smote,No Selection,Sensitive Learning,73.0,2.0,346.0,0.0,0.9733333333333334,1.0,1.0,0.9836052805794617
+SYNCOPE,9,93.76947,41.5757,17.380953,IBk,Smote,No Selection,Sensitive Learning,72.0,0.0,348.0,1.0,0.0,0.9863013698630136,0.9942331916233664,0.9916688104802802
+SYNCOPE,9,93.76947,41.5757,17.380953,RandomForest,Smote,No Selection,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,NaiveBayes,Smote,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,IBk,Smote,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,RandomForest,Smote,Best First,No Cost Sensitive,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,NaiveBayes,Smote,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,IBk,Smote,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,RandomForest,Smote,Best First,Sensitive Threshold,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,NaiveBayes,Smote,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,IBk,Smote,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,9,93.76947,41.5757,17.380953,RandomForest,Smote,Best First,Sensitive Learning,73.0,0.0,348.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,23.0,9.0,251.0,0.0,0.71875,1.0,0.9892976588628762,0.8192719789966649
+SYNCOPE,10,95.061295,25.55269,8.156029,IBk,No Sampling,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,RandomForest,No Sampling,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,23.0,17.0,243.0,0.0,0.575,1.0,0.9673076923076923,0.6991056351241479
+SYNCOPE,10,95.061295,25.55269,8.156029,IBk,No Sampling,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,RandomForest,No Sampling,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,NaiveBayes,No Sampling,No Selection,Sensitive Learning,23.0,17.0,243.0,0.0,0.575,1.0,0.9892976588628762,0.6991056351241479
+SYNCOPE,10,95.061295,25.55269,8.156029,IBk,No Sampling,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,RandomForest,No Sampling,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,NaiveBayes,No Sampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,IBk,No Sampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,RandomForest,No Sampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,NaiveBayes,No Sampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,IBk,No Sampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,RandomForest,No Sampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,NaiveBayes,No Sampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,IBk,No Sampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,95.061295,25.55269,8.156029,RandomForest,No Sampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,23.0,11.0,249.0,0.0,0.6764705882352942,1.0,0.9892976588628762,0.7862977963890984
+SYNCOPE,10,96.628006,49.993813,8.156029,IBk,Oversampling,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,RandomForest,Oversampling,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,23.0,23.0,237.0,0.0,0.5,1.0,0.9557692307692308,0.6261558784676352
+SYNCOPE,10,96.628006,49.993813,8.156029,IBk,Oversampling,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,RandomForest,Oversampling,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,NaiveBayes,Oversampling,No Selection,Sensitive Learning,23.0,23.0,237.0,0.0,0.5,1.0,0.9885451505016722,0.6261558784676352
+SYNCOPE,10,96.628006,49.993813,8.156029,IBk,Oversampling,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,RandomForest,Oversampling,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,NaiveBayes,Oversampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,IBk,Oversampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,RandomForest,Oversampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,NaiveBayes,Oversampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,IBk,Oversampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,RandomForest,Oversampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,NaiveBayes,Oversampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,IBk,Oversampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.628006,49.993813,8.156029,RandomForest,Oversampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,23.0,12.0,248.0,0.0,0.6571428571428571,1.0,0.9894648829431438,0.7706025398540935
+SYNCOPE,10,90.76923,49.981968,8.156029,IBk,Undersampling,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,RandomForest,Undersampling,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,23.0,25.0,235.0,0.0,0.4791666666666667,1.0,0.9519230769230769,0.6044171093094775
+SYNCOPE,10,90.76923,49.981968,8.156029,IBk,Undersampling,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,RandomForest,Undersampling,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,NaiveBayes,Undersampling,No Selection,Sensitive Learning,23.0,25.0,235.0,0.0,0.4791666666666667,1.0,0.9894648829431438,0.6044171093094775
+SYNCOPE,10,90.76923,49.981968,8.156029,IBk,Undersampling,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,RandomForest,Undersampling,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,NaiveBayes,Undersampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,IBk,Undersampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,RandomForest,Undersampling,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,NaiveBayes,Undersampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,IBk,Undersampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,RandomForest,Undersampling,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,NaiveBayes,Undersampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,IBk,Undersampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,90.76923,49.981968,8.156029,RandomForest,Undersampling,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,NaiveBayes,Smote,No Selection,No Cost Sensitive,23.0,3.0,257.0,0.0,0.8846153846153846,1.0,1.0,0.9329966064241183
+SYNCOPE,10,96.02649,40.704327,8.156029,IBk,Smote,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,RandomForest,Smote,No Selection,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,NaiveBayes,Smote,No Selection,Sensitive Threshold,23.0,6.0,254.0,0.0,0.7931034482758621,1.0,0.9884615384615385,0.8731131370497681
+SYNCOPE,10,96.02649,40.704327,8.156029,IBk,Smote,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,RandomForest,Smote,No Selection,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,NaiveBayes,Smote,No Selection,Sensitive Learning,23.0,6.0,254.0,0.0,0.7931034482758621,1.0,1.0,0.8731131370497681
+SYNCOPE,10,96.02649,40.704327,8.156029,IBk,Smote,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,RandomForest,Smote,No Selection,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,NaiveBayes,Smote,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,IBk,Smote,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,RandomForest,Smote,Best First,No Cost Sensitive,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,NaiveBayes,Smote,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,IBk,Smote,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,RandomForest,Smote,Best First,Sensitive Threshold,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,NaiveBayes,Smote,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,IBk,Smote,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,10,96.02649,40.704327,8.156029,RandomForest,Smote,Best First,Sensitive Learning,23.0,0.0,260.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,IBk,No Sampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,RandomForest,No Sampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,16.0,1.0,86.0,0.0,0.9411764705882353,1.0,0.9942528735632183,0.963922942206655
+SYNCOPE,11,98.24531,24.689196,14.705883,IBk,No Sampling,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,RandomForest,No Sampling,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,NaiveBayes,No Sampling,No Selection,Sensitive Learning,16.0,1.0,86.0,0.0,0.9411764705882353,1.0,1.0,0.963922942206655
+SYNCOPE,11,98.24531,24.689196,14.705883,IBk,No Sampling,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,RandomForest,No Sampling,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,NaiveBayes,No Sampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,IBk,No Sampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,RandomForest,No Sampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,NaiveBayes,No Sampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,IBk,No Sampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,RandomForest,No Sampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,NaiveBayes,No Sampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,IBk,No Sampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.24531,24.689196,14.705883,RandomForest,No Sampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,IBk,Oversampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,RandomForest,Oversampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,16.0,5.0,82.0,0.0,0.7619047619047619,1.0,0.9712643678160919,0.8359350111500479
+SYNCOPE,11,98.82799,49.994186,14.705883,IBk,Oversampling,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,RandomForest,Oversampling,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,NaiveBayes,Oversampling,No Selection,Sensitive Learning,16.0,5.0,82.0,0.0,0.7619047619047619,1.0,1.0,0.8359350111500479
+SYNCOPE,11,98.82799,49.994186,14.705883,IBk,Oversampling,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,RandomForest,Oversampling,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,NaiveBayes,Oversampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,IBk,Oversampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,RandomForest,Oversampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,NaiveBayes,Oversampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,IBk,Oversampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,RandomForest,Oversampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,NaiveBayes,Oversampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,IBk,Oversampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.82799,49.994186,14.705883,RandomForest,Oversampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,IBk,Undersampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,RandomForest,Undersampling,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,16.0,4.0,83.0,0.0,0.8,1.0,0.9770114942528736,0.865710560625815
+SYNCOPE,11,96.50804,49.982265,14.705883,IBk,Undersampling,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,RandomForest,Undersampling,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,NaiveBayes,Undersampling,No Selection,Sensitive Learning,16.0,4.0,83.0,0.0,0.8,1.0,1.0,0.865710560625815
+SYNCOPE,11,96.50804,49.982265,14.705883,IBk,Undersampling,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,RandomForest,Undersampling,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,NaiveBayes,Undersampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,IBk,Undersampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,RandomForest,Undersampling,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,NaiveBayes,Undersampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,IBk,Undersampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,RandomForest,Undersampling,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,NaiveBayes,Undersampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,IBk,Undersampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,96.50804,49.982265,14.705883,RandomForest,Undersampling,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,NaiveBayes,Smote,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,IBk,Smote,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,RandomForest,Smote,No Selection,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,NaiveBayes,Smote,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,IBk,Smote,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,RandomForest,Smote,No Selection,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,NaiveBayes,Smote,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,IBk,Smote,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,RandomForest,Smote,No Selection,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,NaiveBayes,Smote,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,IBk,Smote,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,RandomForest,Smote,Best First,No Cost Sensitive,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,NaiveBayes,Smote,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,IBk,Smote,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,RandomForest,Smote,Best First,Sensitive Threshold,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,NaiveBayes,Smote,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,IBk,Smote,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,11,98.587845,39.60118,14.705883,RandomForest,Smote,Best First,Sensitive Learning,16.0,0.0,87.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,56.0,2.0,81.0,0.0,0.9655172413793104,1.0,0.9905335628227194,0.9702673796791443
+SYNCOPE,12,97.68145,24.527004,40.57971,IBk,No Sampling,No Selection,No Cost Sensitive,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9842943201376936,0.9699199307509196
+SYNCOPE,12,97.68145,24.527004,40.57971,RandomForest,No Sampling,No Selection,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,56.0,3.0,80.0,0.0,0.9491525423728814,1.0,0.9819277108433735,0.9555294870427643
+SYNCOPE,12,97.68145,24.527004,40.57971,IBk,No Sampling,No Selection,Sensitive Threshold,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9821428571428571,0.9699199307509196
+SYNCOPE,12,97.68145,24.527004,40.57971,RandomForest,No Sampling,No Selection,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,NaiveBayes,No Sampling,No Selection,Sensitive Learning,56.0,3.0,80.0,0.0,0.9491525423728814,1.0,0.9905335628227194,0.9555294870427643
+SYNCOPE,12,97.68145,24.527004,40.57971,IBk,No Sampling,No Selection,Sensitive Learning,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9842943201376936,0.9699199307509196
+SYNCOPE,12,97.68145,24.527004,40.57971,RandomForest,No Sampling,No Selection,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,NaiveBayes,No Sampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,IBk,No Sampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,RandomForest,No Sampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,NaiveBayes,No Sampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,IBk,No Sampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,RandomForest,No Sampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,NaiveBayes,No Sampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,IBk,No Sampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,97.68145,24.527004,40.57971,RandomForest,No Sampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,56.0,3.0,80.0,0.0,0.9491525423728814,1.0,0.9838640275387264,0.9555294870427643
+SYNCOPE,12,98.45205,49.994305,40.57971,IBk,Oversampling,No Selection,No Cost Sensitive,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9784853700516352,0.9699199307509196
+SYNCOPE,12,98.45205,49.994305,40.57971,RandomForest,Oversampling,No Selection,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,56.0,7.0,76.0,0.0,0.8888888888888888,1.0,0.9578313253012049,0.8974169741697416
+SYNCOPE,12,98.45205,49.994305,40.57971,IBk,Oversampling,No Selection,Sensitive Threshold,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9821428571428571,0.9699199307509196
+SYNCOPE,12,98.45205,49.994305,40.57971,RandomForest,Oversampling,No Selection,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,NaiveBayes,Oversampling,No Selection,Sensitive Learning,56.0,7.0,76.0,0.0,0.8888888888888888,1.0,0.9838640275387264,0.8974169741697416
+SYNCOPE,12,98.45205,49.994305,40.57971,IBk,Oversampling,No Selection,Sensitive Learning,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9784853700516352,0.9699199307509196
+SYNCOPE,12,98.45205,49.994305,40.57971,RandomForest,Oversampling,No Selection,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,NaiveBayes,Oversampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,IBk,Oversampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,RandomForest,Oversampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,NaiveBayes,Oversampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,IBk,Oversampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,RandomForest,Oversampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,NaiveBayes,Oversampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,IBk,Oversampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.45205,49.994305,40.57971,RandomForest,Oversampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,56.0,3.0,80.0,0.0,0.9491525423728814,1.0,0.9838640275387264,0.9555294870427643
+SYNCOPE,12,95.38307,49.98246,40.57971,IBk,Undersampling,No Selection,No Cost Sensitive,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9849397590361446,0.9699199307509196
+SYNCOPE,12,95.38307,49.98246,40.57971,RandomForest,Undersampling,No Selection,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,56.0,4.0,79.0,0.0,0.9333333333333333,1.0,0.9759036144578314,0.9408762228838791
+SYNCOPE,12,95.38307,49.98246,40.57971,IBk,Undersampling,No Selection,Sensitive Threshold,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9821428571428571,0.9699199307509196
+SYNCOPE,12,95.38307,49.98246,40.57971,RandomForest,Undersampling,No Selection,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,NaiveBayes,Undersampling,No Selection,Sensitive Learning,56.0,4.0,79.0,0.0,0.9333333333333333,1.0,0.9838640275387264,0.9408762228838791
+SYNCOPE,12,95.38307,49.98246,40.57971,IBk,Undersampling,No Selection,Sensitive Learning,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9849397590361446,0.9699199307509196
+SYNCOPE,12,95.38307,49.98246,40.57971,RandomForest,Undersampling,No Selection,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,NaiveBayes,Undersampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,IBk,Undersampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,RandomForest,Undersampling,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,NaiveBayes,Undersampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,IBk,Undersampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,RandomForest,Undersampling,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,NaiveBayes,Undersampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,IBk,Undersampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,95.38307,49.98246,40.57971,RandomForest,Undersampling,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,NaiveBayes,Smote,No Selection,No Cost Sensitive,56.0,1.0,82.0,0.0,0.9824561403508771,1.0,1.0,0.9850906360613537
+SYNCOPE,12,98.12958,39.392265,40.57971,IBk,Smote,No Selection,No Cost Sensitive,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9842943201376936,0.9699199307509196
+SYNCOPE,12,98.12958,39.392265,40.57971,RandomForest,Smote,No Selection,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,NaiveBayes,Smote,No Selection,Sensitive Threshold,56.0,2.0,81.0,0.0,0.9655172413793104,1.0,0.9879518072289156,0.9702673796791443
+SYNCOPE,12,98.12958,39.392265,40.57971,IBk,Smote,No Selection,Sensitive Threshold,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9821428571428571,0.9699199307509196
+SYNCOPE,12,98.12958,39.392265,40.57971,RandomForest,Smote,No Selection,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,NaiveBayes,Smote,No Selection,Sensitive Learning,56.0,2.0,81.0,0.0,0.9655172413793104,1.0,1.0,0.9702673796791443
+SYNCOPE,12,98.12958,39.392265,40.57971,IBk,Smote,No Selection,Sensitive Learning,54.0,0.0,83.0,2.0,0.0,0.9642857142857143,0.9842943201376936,0.9699199307509196
+SYNCOPE,12,98.12958,39.392265,40.57971,RandomForest,Smote,No Selection,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,NaiveBayes,Smote,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,IBk,Smote,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,RandomForest,Smote,Best First,No Cost Sensitive,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,NaiveBayes,Smote,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,IBk,Smote,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,RandomForest,Smote,Best First,Sensitive Threshold,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,NaiveBayes,Smote,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,IBk,Smote,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,12,98.12958,39.392265,40.57971,RandomForest,Smote,Best First,Sensitive Learning,56.0,0.0,83.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,35.0,32.0,1355.0,2.0,0.5223880597014925,0.9459459459459459,0.9485570646349305,0.6617529936145542
+SYNCOPE,13,80.7077,24.89501,2.5298665,IBk,No Sampling,No Selection,No Cost Sensitive,31.0,0.0,1387.0,6.0,0.0,0.8378378378378378,0.9332995576686997,0.9096236434026532
+SYNCOPE,13,80.7077,24.89501,2.5298665,RandomForest,No Sampling,No Selection,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,35.0,41.0,1346.0,2.0,0.4605263157894737,0.9459459459459459,0.9581928720356983,0.6056874967801769
+SYNCOPE,13,80.7077,24.89501,2.5298665,IBk,No Sampling,No Selection,Sensitive Threshold,31.0,0.0,1387.0,6.0,0.0,0.8378378378378378,0.918918918918919,0.9096236434026532
+SYNCOPE,13,80.7077,24.89501,2.5298665,RandomForest,No Sampling,No Selection,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,NaiveBayes,No Sampling,No Selection,Sensitive Learning,35.0,41.0,1346.0,2.0,0.4605263157894737,0.9459459459459459,0.9485570646349305,0.6056874967801769
+SYNCOPE,13,80.7077,24.89501,2.5298665,IBk,No Sampling,No Selection,Sensitive Learning,31.0,0.0,1387.0,6.0,0.0,0.8378378378378378,0.9332995576686997,0.9096236434026532
+SYNCOPE,13,80.7077,24.89501,2.5298665,RandomForest,No Sampling,No Selection,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,NaiveBayes,No Sampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,IBk,No Sampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,RandomForest,No Sampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,NaiveBayes,No Sampling,Best First,Sensitive Threshold,37.0,5.0,1382.0,0.0,0.8809523809523809,1.0,0.998197548666186,0.9349105934837455
+SYNCOPE,13,80.7077,24.89501,2.5298665,IBk,No Sampling,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,RandomForest,No Sampling,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,NaiveBayes,No Sampling,Best First,Sensitive Learning,37.0,5.0,1382.0,0.0,0.8809523809523809,1.0,1.0,0.9349105934837455
+SYNCOPE,13,80.7077,24.89501,2.5298665,IBk,No Sampling,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,80.7077,24.89501,2.5298665,RandomForest,No Sampling,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,34.0,31.0,1356.0,3.0,0.5230769230769231,0.918918918918919,0.9198152730957345,0.6552500035602902
+SYNCOPE,13,86.269775,49.994408,2.5298665,IBk,Oversampling,No Selection,No Cost Sensitive,32.0,0.0,1387.0,5.0,0.0,0.8648648648648649,0.9240437264950603,0.9257467044885695
+SYNCOPE,13,86.269775,49.994408,2.5298665,RandomForest,Oversampling,No Selection,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,34.0,64.0,1323.0,3.0,0.3469387755102041,0.918918918918919,0.9363880823866404,0.4842476268730947
+SYNCOPE,13,86.269775,49.994408,2.5298665,IBk,Oversampling,No Selection,Sensitive Threshold,32.0,0.0,1387.0,5.0,0.0,0.8648648648648649,0.9324324324324325,0.9257467044885695
+SYNCOPE,13,86.269775,49.994408,2.5298665,RandomForest,Oversampling,No Selection,Sensitive Threshold,37.0,8.0,1379.0,0.0,0.8222222222222222,1.0,0.9971160778658976,0.8995750982915776
+SYNCOPE,13,86.269775,49.994408,2.5298665,NaiveBayes,Oversampling,No Selection,Sensitive Learning,34.0,64.0,1323.0,3.0,0.3469387755102041,0.918918918918919,0.9198152730957345,0.4842476268730947
+SYNCOPE,13,86.269775,49.994408,2.5298665,IBk,Oversampling,No Selection,Sensitive Learning,32.0,0.0,1387.0,5.0,0.0,0.8648648648648649,0.9240437264950603,0.9257467044885695
+SYNCOPE,13,86.269775,49.994408,2.5298665,RandomForest,Oversampling,No Selection,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,NaiveBayes,Oversampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,IBk,Oversampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,RandomForest,Oversampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,NaiveBayes,Oversampling,Best First,Sensitive Threshold,37.0,495.0,892.0,0.0,0.06954887218045112,1.0,0.8215573179524153,0.08562592750179024
+SYNCOPE,13,86.269775,49.994408,2.5298665,IBk,Oversampling,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,RandomForest,Oversampling,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,NaiveBayes,Oversampling,Best First,Sensitive Learning,37.0,495.0,892.0,0.0,0.06954887218045112,1.0,1.0,0.08562592750179024
+SYNCOPE,13,86.269775,49.994408,2.5298665,IBk,Oversampling,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,86.269775,49.994408,2.5298665,RandomForest,Oversampling,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,36.0,37.0,1350.0,1.0,0.4931506849315068,0.972972972972973,0.9794715407548861,0.6422063238075082
+SYNCOPE,13,67.555855,49.983128,2.5298665,IBk,Undersampling,No Selection,No Cost Sensitive,32.0,2.0,1385.0,5.0,0.9411764705882353,0.8648648648648649,0.9387751125314211,0.8988923601249633
+SYNCOPE,13,67.555855,49.983128,2.5298665,RandomForest,Undersampling,No Selection,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,37.0,65.0,1322.0,0.0,0.3627450980392157,1.0,0.9765681326604182,0.5138349055612752
+SYNCOPE,13,67.555855,49.983128,2.5298665,IBk,Undersampling,No Selection,Sensitive Threshold,32.0,2.0,1385.0,5.0,0.9411764705882353,0.8648648648648649,0.9317114518989068,0.8988923601249633
+SYNCOPE,13,67.555855,49.983128,2.5298665,RandomForest,Undersampling,No Selection,Sensitive Threshold,37.0,15.0,1372.0,0.0,0.7115384615384616,1.0,0.994592645998558,0.8261831911984905
+SYNCOPE,13,67.555855,49.983128,2.5298665,NaiveBayes,Undersampling,No Selection,Sensitive Learning,37.0,65.0,1322.0,0.0,0.3627450980392157,1.0,0.9794617977747033,0.5138349055612752
+SYNCOPE,13,67.555855,49.983128,2.5298665,IBk,Undersampling,No Selection,Sensitive Learning,32.0,2.0,1385.0,5.0,0.9411764705882353,0.8648648648648649,0.9387751125314211,0.8988923601249633
+SYNCOPE,13,67.555855,49.983128,2.5298665,RandomForest,Undersampling,No Selection,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,NaiveBayes,Undersampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,IBk,Undersampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,RandomForest,Undersampling,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,NaiveBayes,Undersampling,Best First,Sensitive Threshold,37.0,495.0,892.0,0.0,0.06954887218045112,1.0,0.8215573179524153,0.08562592750179024
+SYNCOPE,13,67.555855,49.983128,2.5298665,IBk,Undersampling,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,RandomForest,Undersampling,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,NaiveBayes,Undersampling,Best First,Sensitive Learning,37.0,495.0,892.0,0.0,0.06954887218045112,1.0,1.0,0.08562592750179024
+SYNCOPE,13,67.555855,49.983128,2.5298665,IBk,Undersampling,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,67.555855,49.983128,2.5298665,RandomForest,Undersampling,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,NaiveBayes,Smote,No Selection,No Cost Sensitive,37.0,22.0,1365.0,0.0,0.6271186440677966,1.0,0.9978370583994232,0.7632728316885549
+SYNCOPE,13,83.935425,39.8655,2.5298665,IBk,Smote,No Selection,No Cost Sensitive,31.0,0.0,1387.0,6.0,0.0,0.8378378378378378,0.9332995576686997,0.9096236434026532
+SYNCOPE,13,83.935425,39.8655,2.5298665,RandomForest,Smote,No Selection,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,NaiveBayes,Smote,No Selection,Sensitive Threshold,37.0,28.0,1359.0,0.0,0.5692307692307692,1.0,0.9899062725306417,0.7160882382261211
+SYNCOPE,13,83.935425,39.8655,2.5298665,IBk,Smote,No Selection,Sensitive Threshold,31.0,0.0,1387.0,6.0,0.0,0.8378378378378378,0.918918918918919,0.9096236434026532
+SYNCOPE,13,83.935425,39.8655,2.5298665,RandomForest,Smote,No Selection,Sensitive Threshold,37.0,10.0,1377.0,0.0,0.7872340425531915,1.0,0.996395097332372,0.8773872462070977
+SYNCOPE,13,83.935425,39.8655,2.5298665,NaiveBayes,Smote,No Selection,Sensitive Learning,37.0,28.0,1359.0,0.0,0.5692307692307692,1.0,0.9974765681326604,0.7160882382261211
+SYNCOPE,13,83.935425,39.8655,2.5298665,IBk,Smote,No Selection,Sensitive Learning,31.0,0.0,1387.0,6.0,0.0,0.8378378378378378,0.9332995576686997,0.9096236434026532
+SYNCOPE,13,83.935425,39.8655,2.5298665,RandomForest,Smote,No Selection,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,NaiveBayes,Smote,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,IBk,Smote,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,RandomForest,Smote,Best First,No Cost Sensitive,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,NaiveBayes,Smote,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,IBk,Smote,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,RandomForest,Smote,Best First,Sensitive Threshold,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,NaiveBayes,Smote,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,IBk,Smote,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,13,83.935425,39.8655,2.5298665,RandomForest,Smote,Best First,Sensitive Learning,37.0,0.0,1387.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,18.0,981.0,1097.0,6.0,0.018018018018018018,0.75,0.4921298524222008,0.013184969135185874
+SYNCOPE,14,77.83288,20.591026,1.1423131,IBk,No Sampling,No Selection,No Cost Sensitive,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.8964850016041065,0.6972344920299597
+SYNCOPE,14,77.83288,20.591026,1.1423131,RandomForest,No Sampling,No Selection,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,19.0,988.0,1090.0,5.0,0.018867924528301886,0.7916666666666666,0.6581047481552775,0.014885601743607054
+SYNCOPE,14,77.83288,20.591026,1.1423131,IBk,No Sampling,No Selection,Sensitive Threshold,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.791185434712865,0.6972344920299597
+SYNCOPE,14,77.83288,20.591026,1.1423131,RandomForest,No Sampling,No Selection,Sensitive Threshold,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.7526467757459095,0.0227924763121051
+SYNCOPE,14,77.83288,20.591026,1.1423131,NaiveBayes,No Sampling,No Selection,Sensitive Learning,19.0,988.0,1090.0,5.0,0.018867924528301886,0.7916666666666666,0.49210980109079244,0.014885601743607054
+SYNCOPE,14,77.83288,20.591026,1.1423131,IBk,No Sampling,No Selection,Sensitive Learning,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.8964850016041065,0.6972344920299597
+SYNCOPE,14,77.83288,20.591026,1.1423131,RandomForest,No Sampling,No Selection,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,NaiveBayes,No Sampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,IBk,No Sampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,RandomForest,No Sampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,NaiveBayes,No Sampling,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,IBk,No Sampling,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,RandomForest,No Sampling,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,NaiveBayes,No Sampling,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,IBk,No Sampling,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,77.83288,20.591026,1.1423131,RandomForest,No Sampling,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,19.0,972.0,1106.0,5.0,0.01917255297679112,0.7916666666666666,0.494265319217196,0.01548829748576458
+SYNCOPE,14,84.7952,49.99573,1.1423131,IBk,Oversampling,No Selection,No Cost Sensitive,13.0,2.0,2076.0,11.0,0.8666666666666667,0.5416666666666666,0.8505875040102663,0.6637131113244209
+SYNCOPE,14,84.7952,49.99573,1.1423131,RandomForest,Oversampling,No Selection,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,19.0,980.0,1098.0,5.0,0.01901901901901902,0.7916666666666666,0.6600296759704845,0.015184594324374957
+SYNCOPE,14,84.7952,49.99573,1.1423131,IBk,Oversampling,No Selection,Sensitive Threshold,13.0,2.0,2076.0,11.0,0.8666666666666667,0.5416666666666666,0.7703521013795316,0.6637131113244209
+SYNCOPE,14,84.7952,49.99573,1.1423131,RandomForest,Oversampling,No Selection,Sensitive Threshold,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.7526467757459095,0.0227924763121051
+SYNCOPE,14,84.7952,49.99573,1.1423131,NaiveBayes,Oversampling,No Selection,Sensitive Learning,19.0,980.0,1098.0,5.0,0.01901901901901902,0.7916666666666666,0.494265319217196,0.015184594324374957
+SYNCOPE,14,84.7952,49.99573,1.1423131,IBk,Oversampling,No Selection,Sensitive Learning,13.0,2.0,2076.0,11.0,0.8666666666666667,0.5416666666666666,0.8505875040102663,0.6637131113244209
+SYNCOPE,14,84.7952,49.99573,1.1423131,RandomForest,Oversampling,No Selection,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,NaiveBayes,Oversampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,IBk,Oversampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,RandomForest,Oversampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,NaiveBayes,Oversampling,Best First,Sensitive Threshold,24.0,1.0,2077.0,0.0,0.96,1.0,0.9997593840230992,0.9793512642684509
+SYNCOPE,14,84.7952,49.99573,1.1423131,IBk,Oversampling,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,RandomForest,Oversampling,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,NaiveBayes,Oversampling,Best First,Sensitive Learning,24.0,1.0,2077.0,0.0,0.96,1.0,1.0,0.9793512642684509
+SYNCOPE,14,84.7952,49.99573,1.1423131,IBk,Oversampling,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,84.7952,49.99573,1.1423131,RandomForest,Oversampling,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,59.108604,49.983536,1.1423131,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,19.0,1000.0,1078.0,5.0,0.018645731108930325,0.7916666666666666,0.491247593840231,0.014445708228791185
+SYNCOPE,14,59.108604,49.983536,1.1423131,IBk,Undersampling,No Selection,No Cost Sensitive,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.8501965030478024,0.6972344920299597
+SYNCOPE,14,59.108604,49.983536,1.1423131,RandomForest,Undersampling,No Selection,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,59.108604,49.983536,1.1423131,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,22.0,1005.0,1073.0,2.0,0.021421616358325218,0.9166666666666666,0.7165142765479627,0.019997166543358803
+SYNCOPE,14,59.108604,49.983536,1.1423131,IBk,Undersampling,No Selection,Sensitive Threshold,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.791185434712865,0.6972344920299597
+SYNCOPE,14,59.108604,49.983536,1.1423131,RandomForest,Undersampling,No Selection,Sensitive Threshold,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.7526467757459095,0.0227924763121051
+SYNCOPE,14,59.108604,49.983536,1.1423131,NaiveBayes,Undersampling,No Selection,Sensitive Learning,22.0,1005.0,1073.0,2.0,0.021421616358325218,0.9166666666666666,0.4912074911774142,0.019997166543358803
+SYNCOPE,14,59.108604,49.983536,1.1423131,IBk,Undersampling,No Selection,Sensitive Learning,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.8501965030478024,0.6972344920299597
+SYNCOPE,14,59.108604,49.983536,1.1423131,RandomForest,Undersampling,No Selection,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,59.108604,49.983536,1.1423131,NaiveBayes,Undersampling,Best First,No Cost Sensitive,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.6186637792749439,0.0227924763121051
+SYNCOPE,14,59.108604,49.983536,1.1423131,IBk,Undersampling,Best First,No Cost Sensitive,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.8866297722168752,0.0227924763121051
+SYNCOPE,14,59.108604,49.983536,1.1423131,RandomForest,Undersampling,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,59.108604,49.983536,1.1423131,NaiveBayes,Undersampling,Best First,Sensitive Threshold,24.0,1713.0,365.0,0.0,0.013816925734024179,1.0,0.5878248315688162,0.00484212516230239
+SYNCOPE,14,59.108604,49.983536,1.1423131,IBk,Undersampling,Best First,Sensitive Threshold,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.7526467757459095,0.0227924763121051
+SYNCOPE,14,59.108604,49.983536,1.1423131,RandomForest,Undersampling,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,59.108604,49.983536,1.1423131,NaiveBayes,Undersampling,Best First,Sensitive Learning,24.0,1713.0,365.0,0.0,0.013816925734024179,1.0,0.6186637792749439,0.00484212516230239
+SYNCOPE,14,59.108604,49.983536,1.1423131,IBk,Undersampling,Best First,Sensitive Learning,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.8866297722168752,0.0227924763121051
+SYNCOPE,14,59.108604,49.983536,1.1423131,RandomForest,Undersampling,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,NaiveBayes,Smote,No Selection,No Cost Sensitive,24.0,971.0,1107.0,0.0,0.024120603015075376,1.0,0.7618904395251844,0.02537320132290589
+SYNCOPE,14,80.89479,34.15018,1.1423131,IBk,Smote,No Selection,No Cost Sensitive,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.8964850016041065,0.6972344920299597
+SYNCOPE,14,80.89479,34.15018,1.1423131,RandomForest,Smote,No Selection,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,NaiveBayes,Smote,No Selection,Sensitive Threshold,24.0,977.0,1101.0,0.0,0.023976023976023976,1.0,0.7649181905678537,0.025088036944659997
+SYNCOPE,14,80.89479,34.15018,1.1423131,IBk,Smote,No Selection,Sensitive Threshold,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.791185434712865,0.6972344920299597
+SYNCOPE,14,80.89479,34.15018,1.1423131,RandomForest,Smote,No Selection,Sensitive Threshold,24.0,1028.0,1050.0,0.0,0.022813688212927757,1.0,0.7526467757459095,0.0227924763121051
+SYNCOPE,14,80.89479,34.15018,1.1423131,NaiveBayes,Smote,No Selection,Sensitive Learning,24.0,977.0,1101.0,0.0,0.023976023976023976,1.0,0.7618904395251844,0.025088036944659997
+SYNCOPE,14,80.89479,34.15018,1.1423131,IBk,Smote,No Selection,Sensitive Learning,14.0,2.0,2076.0,10.0,0.875,0.5833333333333334,0.8964850016041065,0.6972344920299597
+SYNCOPE,14,80.89479,34.15018,1.1423131,RandomForest,Smote,No Selection,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,NaiveBayes,Smote,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,IBk,Smote,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,RandomForest,Smote,Best First,No Cost Sensitive,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,NaiveBayes,Smote,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,IBk,Smote,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,RandomForest,Smote,Best First,Sensitive Threshold,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,NaiveBayes,Smote,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,IBk,Smote,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,14,80.89479,34.15018,1.1423131,RandomForest,Smote,Best First,Sensitive Learning,24.0,0.0,2078.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,22.0,5.0,838.0,0.0,0.8148148148148148,1.0,0.9971422409144829,0.8950166274243261
+SYNCOPE,15,91.64652,16.278088,2.5462964,IBk,No Sampling,No Selection,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,RandomForest,No Sampling,No Selection,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,22.0,91.0,752.0,0.0,0.19469026548672566,1.0,0.9460260972716489,0.29594912479987134
+SYNCOPE,15,91.64652,16.278088,2.5462964,IBk,No Sampling,No Selection,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,RandomForest,No Sampling,No Selection,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,NaiveBayes,No Sampling,No Selection,Sensitive Learning,22.0,91.0,752.0,0.0,0.19469026548672566,1.0,0.9971422409144829,0.29594912479987134
+SYNCOPE,15,91.64652,16.278088,2.5462964,IBk,No Sampling,No Selection,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,RandomForest,No Sampling,No Selection,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,NaiveBayes,No Sampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,IBk,No Sampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,RandomForest,No Sampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,NaiveBayes,No Sampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,IBk,No Sampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,RandomForest,No Sampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,NaiveBayes,No Sampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,IBk,No Sampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,91.64652,16.278088,2.5462964,RandomForest,No Sampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,22.0,22.0,821.0,0.0,0.5,1.0,0.9970344009489917,0.6549660949341847
+SYNCOPE,15,94.83778,49.99685,2.5462964,IBk,Oversampling,No Selection,No Cost Sensitive,22.0,1.0,842.0,0.0,0.9565217391304348,1.0,0.9988946403537151,0.9771846068630802
+SYNCOPE,15,94.83778,49.99685,2.5462964,RandomForest,Oversampling,No Selection,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,22.0,546.0,297.0,0.0,0.03873239436619718,1.0,0.6761565836298933,0.02692445576255053
+SYNCOPE,15,94.83778,49.99685,2.5462964,IBk,Oversampling,No Selection,Sensitive Threshold,22.0,1.0,842.0,0.0,0.9565217391304348,1.0,0.9994068801897983,0.9771846068630802
+SYNCOPE,15,94.83778,49.99685,2.5462964,RandomForest,Oversampling,No Selection,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,NaiveBayes,Oversampling,No Selection,Sensitive Learning,22.0,546.0,297.0,0.0,0.03873239436619718,1.0,0.9970344009489917,0.02692445576255053
+SYNCOPE,15,94.83778,49.99685,2.5462964,IBk,Oversampling,No Selection,Sensitive Learning,22.0,1.0,842.0,0.0,0.9565217391304348,1.0,0.9988946403537151,0.9771846068630802
+SYNCOPE,15,94.83778,49.99685,2.5462964,RandomForest,Oversampling,No Selection,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,NaiveBayes,Oversampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,IBk,Oversampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,RandomForest,Oversampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,NaiveBayes,Oversampling,Best First,Sensitive Threshold,22.0,17.0,826.0,0.0,0.5641025641025641,1.0,0.9899169632265717,0.7119434269035626
+SYNCOPE,15,94.83778,49.99685,2.5462964,IBk,Oversampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,RandomForest,Oversampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,NaiveBayes,Oversampling,Best First,Sensitive Learning,22.0,17.0,826.0,0.0,0.5641025641025641,1.0,1.0,0.7119434269035626
+SYNCOPE,15,94.83778,49.99685,2.5462964,IBk,Oversampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,94.83778,49.99685,2.5462964,RandomForest,Oversampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,22.0,23.0,820.0,0.0,0.4888888888888889,1.0,0.9967917610266365,0.6445734702992403
+SYNCOPE,15,78.12104,49.983795,2.5462964,IBk,Undersampling,No Selection,No Cost Sensitive,22.0,2.0,841.0,0.0,0.9166666666666666,1.0,0.9989216003450879,0.9553363969639077
+SYNCOPE,15,78.12104,49.983795,2.5462964,RandomForest,Undersampling,No Selection,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,22.0,514.0,329.0,0.0,0.041044776119402986,1.0,0.6951364175563464,0.03153221836431518
+SYNCOPE,15,78.12104,49.983795,2.5462964,IBk,Undersampling,No Selection,Sensitive Threshold,22.0,2.0,841.0,0.0,0.9166666666666666,1.0,0.9988137603795967,0.9553363969639077
+SYNCOPE,15,78.12104,49.983795,2.5462964,RandomForest,Undersampling,No Selection,Sensitive Threshold,22.0,1.0,842.0,0.0,0.9565217391304348,1.0,0.9994068801897983,0.9771846068630802
+SYNCOPE,15,78.12104,49.983795,2.5462964,NaiveBayes,Undersampling,No Selection,Sensitive Learning,22.0,514.0,329.0,0.0,0.041044776119402986,1.0,0.9967917610266365,0.03153221836431518
+SYNCOPE,15,78.12104,49.983795,2.5462964,IBk,Undersampling,No Selection,Sensitive Learning,22.0,2.0,841.0,0.0,0.9166666666666666,1.0,0.9989216003450879,0.9553363969639077
+SYNCOPE,15,78.12104,49.983795,2.5462964,RandomForest,Undersampling,No Selection,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,NaiveBayes,Undersampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,IBk,Undersampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,RandomForest,Undersampling,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,NaiveBayes,Undersampling,Best First,Sensitive Threshold,22.0,17.0,826.0,0.0,0.5641025641025641,1.0,0.9899169632265717,0.7119434269035626
+SYNCOPE,15,78.12104,49.983795,2.5462964,IBk,Undersampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,RandomForest,Undersampling,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,NaiveBayes,Undersampling,Best First,Sensitive Learning,22.0,17.0,826.0,0.0,0.5641025641025641,1.0,1.0,0.7119434269035626
+SYNCOPE,15,78.12104,49.983795,2.5462964,IBk,Undersampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,78.12104,49.983795,2.5462964,RandomForest,Undersampling,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,NaiveBayes,Smote,No Selection,No Cost Sensitive,22.0,4.0,839.0,0.0,0.8461538461538461,1.0,1.0,0.9143055280364574
+SYNCOPE,15,92.73094,27.998549,2.5462964,IBk,Smote,No Selection,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,RandomForest,Smote,No Selection,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,NaiveBayes,Smote,No Selection,Sensitive Threshold,22.0,4.0,839.0,0.0,0.8461538461538461,1.0,0.9976275207591934,0.9143055280364574
+SYNCOPE,15,92.73094,27.998549,2.5462964,IBk,Smote,No Selection,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,RandomForest,Smote,No Selection,Sensitive Threshold,22.0,1.0,842.0,0.0,0.9565217391304348,1.0,0.9994068801897983,0.9771846068630802
+SYNCOPE,15,92.73094,27.998549,2.5462964,NaiveBayes,Smote,No Selection,Sensitive Learning,22.0,4.0,839.0,0.0,0.8461538461538461,1.0,1.0,0.9143055280364574
+SYNCOPE,15,92.73094,27.998549,2.5462964,IBk,Smote,No Selection,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,RandomForest,Smote,No Selection,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,NaiveBayes,Smote,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,IBk,Smote,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,RandomForest,Smote,Best First,No Cost Sensitive,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,NaiveBayes,Smote,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,IBk,Smote,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,RandomForest,Smote,Best First,Sensitive Threshold,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,NaiveBayes,Smote,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,IBk,Smote,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,15,92.73094,27.998549,2.5462964,RandomForest,Smote,Best First,Sensitive Learning,22.0,0.0,843.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,61.0,31.0,734.0,0.0,0.6630434782608695,1.0,0.9915568413157613,0.7776369036247116
+SYNCOPE,16,92.61348,15.129544,7.393939,IBk,No Sampling,No Selection,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,RandomForest,No Sampling,No Selection,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,61.0,101.0,664.0,0.0,0.3765432098765432,1.0,0.9339869281045752,0.49264750599024504
+SYNCOPE,16,92.61348,15.129544,7.393939,IBk,No Sampling,No Selection,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,RandomForest,No Sampling,No Selection,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,NaiveBayes,No Sampling,No Selection,Sensitive Learning,61.0,101.0,664.0,0.0,0.3765432098765432,1.0,0.9915568413157613,0.49264750599024504
+SYNCOPE,16,92.61348,15.129544,7.393939,IBk,No Sampling,No Selection,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,RandomForest,No Sampling,No Selection,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,NaiveBayes,No Sampling,Best First,No Cost Sensitive,61.0,3.0,762.0,0.0,0.953125,1.0,1.0,0.9740365876658073
+SYNCOPE,16,92.61348,15.129544,7.393939,IBk,No Sampling,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,RandomForest,No Sampling,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,NaiveBayes,No Sampling,Best First,Sensitive Threshold,61.0,18.0,747.0,0.0,0.7721518987341772,1.0,0.9882352941176471,0.8597384955000849
+SYNCOPE,16,92.61348,15.129544,7.393939,IBk,No Sampling,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,RandomForest,No Sampling,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,NaiveBayes,No Sampling,Best First,Sensitive Learning,61.0,18.0,747.0,0.0,0.7721518987341772,1.0,1.0,0.8597384955000849
+SYNCOPE,16,92.61348,15.129544,7.393939,IBk,No Sampling,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,92.61348,15.129544,7.393939,RandomForest,No Sampling,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,61.0,79.0,686.0,0.0,0.4357142857142857,1.0,0.9915996999892853,0.5618949149356142
+SYNCOPE,16,95.512405,49.997154,7.393939,IBk,Oversampling,No Selection,No Cost Sensitive,61.0,3.0,762.0,0.0,0.953125,1.0,0.9993571198971392,0.9740365876658073
+SYNCOPE,16,95.512405,49.997154,7.393939,RandomForest,Oversampling,No Selection,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,61.0,684.0,81.0,0.0,0.08187919463087248,1.0,0.5529411764705883,0.01719009299558503
+SYNCOPE,16,95.512405,49.997154,7.393939,IBk,Oversampling,No Selection,Sensitive Threshold,61.0,3.0,762.0,0.0,0.953125,1.0,0.9980392156862745,0.9740365876658073
+SYNCOPE,16,95.512405,49.997154,7.393939,RandomForest,Oversampling,No Selection,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,NaiveBayes,Oversampling,No Selection,Sensitive Learning,61.0,684.0,81.0,0.0,0.08187919463087248,1.0,0.9915996999892853,0.01719009299558503
+SYNCOPE,16,95.512405,49.997154,7.393939,IBk,Oversampling,No Selection,Sensitive Learning,61.0,3.0,762.0,0.0,0.953125,1.0,0.9993571198971392,0.9740365876658073
+SYNCOPE,16,95.512405,49.997154,7.393939,RandomForest,Oversampling,No Selection,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,NaiveBayes,Oversampling,Best First,No Cost Sensitive,61.0,3.0,762.0,0.0,0.953125,1.0,1.0,0.9740365876658073
+SYNCOPE,16,95.512405,49.997154,7.393939,IBk,Oversampling,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,RandomForest,Oversampling,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,NaiveBayes,Oversampling,Best First,Sensitive Threshold,61.0,70.0,695.0,0.0,0.46564885496183206,1.0,0.954248366013072,0.5945585863543932
+SYNCOPE,16,95.512405,49.997154,7.393939,IBk,Oversampling,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,RandomForest,Oversampling,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,NaiveBayes,Oversampling,Best First,Sensitive Learning,61.0,70.0,695.0,0.0,0.46564885496183206,1.0,1.0,0.5945585863543932
+SYNCOPE,16,95.512405,49.997154,7.393939,IBk,Oversampling,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,95.512405,49.997154,7.393939,RandomForest,Oversampling,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,61.0,70.0,695.0,0.0,0.46564885496183206,1.0,0.9926068788171006,0.5945585863543932
+SYNCOPE,16,79.135056,49.98402,7.393939,IBk,Undersampling,No Selection,No Cost Sensitive,61.0,4.0,761.0,0.0,0.9384615384615385,1.0,0.997642772956177,0.9656355958646222
+SYNCOPE,16,79.135056,49.98402,7.393939,RandomForest,Undersampling,No Selection,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,61.0,692.0,73.0,0.0,0.08100929614873838,1.0,0.5477124183006536,0.01534199945563982
+SYNCOPE,16,79.135056,49.98402,7.393939,IBk,Undersampling,No Selection,Sensitive Threshold,61.0,4.0,761.0,0.0,0.9384615384615385,1.0,0.9973856209150327,0.9656355958646222
+SYNCOPE,16,79.135056,49.98402,7.393939,RandomForest,Undersampling,No Selection,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,NaiveBayes,Undersampling,No Selection,Sensitive Learning,61.0,692.0,73.0,0.0,0.08100929614873838,1.0,0.9926068788171006,0.01534199945563982
+SYNCOPE,16,79.135056,49.98402,7.393939,IBk,Undersampling,No Selection,Sensitive Learning,61.0,4.0,761.0,0.0,0.9384615384615385,1.0,0.997642772956177,0.9656355958646222
+SYNCOPE,16,79.135056,49.98402,7.393939,RandomForest,Undersampling,No Selection,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,NaiveBayes,Undersampling,Best First,No Cost Sensitive,61.0,3.0,762.0,0.0,0.953125,1.0,1.0,0.9740365876658073
+SYNCOPE,16,79.135056,49.98402,7.393939,IBk,Undersampling,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,RandomForest,Undersampling,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,NaiveBayes,Undersampling,Best First,Sensitive Threshold,61.0,18.0,747.0,0.0,0.7721518987341772,1.0,0.9882352941176471,0.8597384955000849
+SYNCOPE,16,79.135056,49.98402,7.393939,IBk,Undersampling,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,RandomForest,Undersampling,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,NaiveBayes,Undersampling,Best First,Sensitive Learning,61.0,18.0,747.0,0.0,0.7721518987341772,1.0,1.0,0.8597384955000849
+SYNCOPE,16,79.135056,49.98402,7.393939,IBk,Undersampling,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,79.135056,49.98402,7.393939,RandomForest,Undersampling,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,NaiveBayes,Smote,No Selection,No Cost Sensitive,61.0,10.0,755.0,0.0,0.8591549295774648,1.0,0.9986928104575163,0.9177044933745142
+SYNCOPE,16,93.52128,26.282644,7.393939,IBk,Smote,No Selection,No Cost Sensitive,61.0,2.0,763.0,0.0,0.9682539682539683,1.0,0.9988213864780885,0.9825624353480122
+SYNCOPE,16,93.52128,26.282644,7.393939,RandomForest,Smote,No Selection,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,NaiveBayes,Smote,No Selection,Sensitive Threshold,61.0,19.0,746.0,0.0,0.7625,1.0,0.9875816993464053,0.8529229846494104
+SYNCOPE,16,93.52128,26.282644,7.393939,IBk,Smote,No Selection,Sensitive Threshold,61.0,2.0,763.0,0.0,0.9682539682539683,1.0,0.9986928104575163,0.9825624353480122
+SYNCOPE,16,93.52128,26.282644,7.393939,RandomForest,Smote,No Selection,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,NaiveBayes,Smote,No Selection,Sensitive Learning,61.0,19.0,746.0,0.0,0.7625,1.0,0.9986928104575163,0.8529229846494104
+SYNCOPE,16,93.52128,26.282644,7.393939,IBk,Smote,No Selection,Sensitive Learning,61.0,2.0,763.0,0.0,0.9682539682539683,1.0,0.9988213864780885,0.9825624353480122
+SYNCOPE,16,93.52128,26.282644,7.393939,RandomForest,Smote,No Selection,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,NaiveBayes,Smote,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,IBk,Smote,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,RandomForest,Smote,Best First,No Cost Sensitive,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,NaiveBayes,Smote,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,IBk,Smote,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,RandomForest,Smote,Best First,Sensitive Threshold,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,NaiveBayes,Smote,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,IBk,Smote,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,16,93.52128,26.282644,7.393939,RandomForest,Smote,Best First,Sensitive Learning,61.0,0.0,765.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,74.0,246.0,730.0,0.0,0.23125,1.0,0.9567041426672575,0.2949172899492274
+SYNCOPE,17,91.41501,14.556849,7.054337,IBk,No Sampling,No Selection,No Cost Sensitive,74.0,27.0,949.0,0.0,0.7326732673267327,1.0,0.9856072773593265,0.8320517529413161
+SYNCOPE,17,91.41501,14.556849,7.054337,RandomForest,No Sampling,No Selection,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,74.0,444.0,532.0,0.0,0.14285714285714285,1.0,0.7725409836065574,0.1444866920152092
+SYNCOPE,17,91.41501,14.556849,7.054337,IBk,No Sampling,No Selection,Sensitive Threshold,74.0,27.0,949.0,0.0,0.7326732673267327,1.0,0.9861680327868853,0.8320517529413161
+SYNCOPE,17,91.41501,14.556849,7.054337,RandomForest,No Sampling,No Selection,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,NaiveBayes,No Sampling,No Selection,Sensitive Learning,74.0,444.0,532.0,0.0,0.14285714285714285,1.0,0.9567041426672575,0.1444866920152092
+SYNCOPE,17,91.41501,14.556849,7.054337,IBk,No Sampling,No Selection,Sensitive Learning,74.0,27.0,949.0,0.0,0.7326732673267327,1.0,0.9856072773593265,0.8320517529413161
+SYNCOPE,17,91.41501,14.556849,7.054337,RandomForest,No Sampling,No Selection,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,NaiveBayes,No Sampling,Best First,No Cost Sensitive,74.0,109.0,867.0,0.0,0.40437158469945356,1.0,0.9743298626495348,0.5285583648451597
+SYNCOPE,17,91.41501,14.556849,7.054337,IBk,No Sampling,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,RandomForest,No Sampling,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,NaiveBayes,No Sampling,Best First,Sensitive Threshold,74.0,232.0,744.0,0.0,0.24183006535947713,1.0,0.8811475409836066,0.31130411181978573
+SYNCOPE,17,91.41501,14.556849,7.054337,IBk,No Sampling,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,RandomForest,No Sampling,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,NaiveBayes,No Sampling,Best First,Sensitive Learning,74.0,232.0,744.0,0.0,0.24183006535947713,1.0,0.9743298626495348,0.31130411181978573
+SYNCOPE,17,91.41501,14.556849,7.054337,IBk,No Sampling,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,91.41501,14.556849,7.054337,RandomForest,No Sampling,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,74.0,441.0,535.0,0.0,0.1436893203883495,1.0,0.9511242800177226,0.1460265938808254
+SYNCOPE,17,94.79094,49.99738,7.054337,IBk,Oversampling,No Selection,No Cost Sensitive,74.0,36.0,940.0,0.0,0.6727272727272727,1.0,0.982900420912716,0.7863441103323537
+SYNCOPE,17,94.79094,49.99738,7.054337,RandomForest,Oversampling,No Selection,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,74.0,950.0,26.0,0.0,0.072265625,1.0,0.5133196721311475,0.003842819878803361
+SYNCOPE,17,94.79094,49.99738,7.054337,IBk,Oversampling,No Selection,Sensitive Threshold,74.0,36.0,940.0,0.0,0.6727272727272727,1.0,0.9815573770491803,0.7863441103323537
+SYNCOPE,17,94.79094,49.99738,7.054337,RandomForest,Oversampling,No Selection,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,NaiveBayes,Oversampling,No Selection,Sensitive Learning,74.0,950.0,26.0,0.0,0.072265625,1.0,0.9511381258307487,0.003842819878803361
+SYNCOPE,17,94.79094,49.99738,7.054337,IBk,Oversampling,No Selection,Sensitive Learning,74.0,36.0,940.0,0.0,0.6727272727272727,1.0,0.982900420912716,0.7863441103323537
+SYNCOPE,17,94.79094,49.99738,7.054337,RandomForest,Oversampling,No Selection,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,NaiveBayes,Oversampling,Best First,No Cost Sensitive,74.0,232.0,744.0,0.0,0.24183006535947713,1.0,0.9701899645547186,0.31130411181978573
+SYNCOPE,17,94.79094,49.99738,7.054337,IBk,Oversampling,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,RandomForest,Oversampling,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,NaiveBayes,Oversampling,Best First,Sensitive Threshold,74.0,435.0,541.0,0.0,0.14538310412573674,1.0,0.7771516393442623,0.14915297177069334
+SYNCOPE,17,94.79094,49.99738,7.054337,IBk,Oversampling,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,RandomForest,Oversampling,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,NaiveBayes,Oversampling,Best First,Sensitive Learning,74.0,435.0,541.0,0.0,0.14538310412573674,1.0,0.9701899645547186,0.14915297177069334
+SYNCOPE,17,94.79094,49.99738,7.054337,IBk,Oversampling,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,94.79094,49.99738,7.054337,RandomForest,Oversampling,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,74.0,443.0,533.0,0.0,0.14313346228239845,1.0,0.9375623061586177,0.14499829054801716
+SYNCOPE,17,75.60465,49.98462,7.054337,IBk,Undersampling,No Selection,No Cost Sensitive,74.0,54.0,922.0,0.0,0.578125,1.0,0.9727099025254763,0.7064548862059685
+SYNCOPE,17,75.60465,49.98462,7.054337,RandomForest,Undersampling,No Selection,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,74.0,949.0,27.0,0.0,0.07233626588465299,1.0,0.5138319672131147,0.003994218578513983
+SYNCOPE,17,75.60465,49.98462,7.054337,IBk,Undersampling,No Selection,Sensitive Threshold,74.0,54.0,922.0,0.0,0.578125,1.0,0.9723360655737705,0.7064548862059685
+SYNCOPE,17,75.60465,49.98462,7.054337,RandomForest,Undersampling,No Selection,Sensitive Threshold,74.0,37.0,939.0,0.0,0.6666666666666666,1.0,0.9810450819672131,0.7815230961298374
+SYNCOPE,17,75.60465,49.98462,7.054337,NaiveBayes,Undersampling,No Selection,Sensitive Learning,74.0,949.0,27.0,0.0,0.07233626588465299,1.0,0.9375623061586177,0.003994218578513983
+SYNCOPE,17,75.60465,49.98462,7.054337,IBk,Undersampling,No Selection,Sensitive Learning,74.0,54.0,922.0,0.0,0.578125,1.0,0.9727099025254763,0.7064548862059685
+SYNCOPE,17,75.60465,49.98462,7.054337,RandomForest,Undersampling,No Selection,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,NaiveBayes,Undersampling,Best First,No Cost Sensitive,74.0,232.0,744.0,0.0,0.24183006535947713,1.0,0.9499335400974745,0.31130411181978573
+SYNCOPE,17,75.60465,49.98462,7.054337,IBk,Undersampling,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,RandomForest,Undersampling,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,NaiveBayes,Undersampling,Best First,Sensitive Threshold,74.0,435.0,541.0,0.0,0.14538310412573674,1.0,0.7771516393442623,0.14915297177069334
+SYNCOPE,17,75.60465,49.98462,7.054337,IBk,Undersampling,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,RandomForest,Undersampling,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,NaiveBayes,Undersampling,Best First,Sensitive Learning,74.0,435.0,541.0,0.0,0.14538310412573674,1.0,0.9499335400974745,0.14915297177069334
+SYNCOPE,17,75.60465,49.98462,7.054337,IBk,Undersampling,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,75.60465,49.98462,7.054337,RandomForest,Undersampling,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,NaiveBayes,Smote,No Selection,No Cost Sensitive,74.0,121.0,855.0,0.0,0.37948717948717947,1.0,0.9994877049180327,0.49899443984384234
+SYNCOPE,17,92.42326,25.414192,7.054337,IBk,Smote,No Selection,No Cost Sensitive,74.0,27.0,949.0,0.0,0.7326732673267327,1.0,0.9853788214443953,0.8320517529413161
+SYNCOPE,17,92.42326,25.414192,7.054337,RandomForest,Smote,No Selection,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,NaiveBayes,Smote,No Selection,Sensitive Threshold,74.0,175.0,801.0,0.0,0.2971887550200803,1.0,0.9103483606557377,0.39215608439354555
+SYNCOPE,17,92.42326,25.414192,7.054337,IBk,Smote,No Selection,Sensitive Threshold,74.0,27.0,949.0,0.0,0.7326732673267327,1.0,0.9861680327868853,0.8320517529413161
+SYNCOPE,17,92.42326,25.414192,7.054337,RandomForest,Smote,No Selection,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,NaiveBayes,Smote,No Selection,Sensitive Learning,74.0,175.0,801.0,0.0,0.2971887550200803,1.0,0.9994877049180327,0.39215608439354555
+SYNCOPE,17,92.42326,25.414192,7.054337,IBk,Smote,No Selection,Sensitive Learning,74.0,27.0,949.0,0.0,0.7326732673267327,1.0,0.9853788214443953,0.8320517529413161
+SYNCOPE,17,92.42326,25.414192,7.054337,RandomForest,Smote,No Selection,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,NaiveBayes,Smote,Best First,No Cost Sensitive,74.0,50.0,926.0,0.0,0.5967741935483871,1.0,1.0,0.7230253022980982
+SYNCOPE,17,92.42326,25.414192,7.054337,IBk,Smote,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,RandomForest,Smote,Best First,No Cost Sensitive,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,NaiveBayes,Smote,Best First,Sensitive Threshold,74.0,74.0,902.0,0.0,0.5,1.0,0.9620901639344263,0.6320953048353188
+SYNCOPE,17,92.42326,25.414192,7.054337,IBk,Smote,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,RandomForest,Smote,Best First,Sensitive Threshold,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,NaiveBayes,Smote,Best First,Sensitive Learning,74.0,74.0,902.0,0.0,0.5,1.0,1.0,0.6320953048353188
+SYNCOPE,17,92.42326,25.414192,7.054337,IBk,Smote,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,17,92.42326,25.414192,7.054337,RandomForest,Smote,Best First,Sensitive Learning,74.0,0.0,976.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,NaiveBayes,No Sampling,No Selection,No Cost Sensitive,61.0,27.0,619.0,0.0,0.6931818181818182,1.0,0.9863218799167639,0.7982284608961283
+SYNCOPE,18,94.53814,13.91162,8.640226,IBk,No Sampling,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,RandomForest,No Sampling,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,NaiveBayes,No Sampling,No Selection,Sensitive Threshold,61.0,100.0,546.0,0.0,0.37888198757763975,1.0,0.9226006191950464,0.4851141924959217
+SYNCOPE,18,94.53814,13.91162,8.640226,IBk,No Sampling,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,RandomForest,No Sampling,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,NaiveBayes,No Sampling,No Selection,Sensitive Learning,61.0,100.0,546.0,0.0,0.37888198757763975,1.0,0.9863218799167639,0.4851141924959217
+SYNCOPE,18,94.53814,13.91162,8.640226,IBk,No Sampling,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,RandomForest,No Sampling,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,NaiveBayes,No Sampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,IBk,No Sampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,RandomForest,No Sampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,NaiveBayes,No Sampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,IBk,No Sampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,RandomForest,No Sampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,NaiveBayes,No Sampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,IBk,No Sampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,94.53814,13.91162,8.640226,RandomForest,No Sampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,NaiveBayes,Oversampling,No Selection,No Cost Sensitive,61.0,46.0,600.0,0.0,0.5700934579439252,1.0,0.9866517789169162,0.6923819072662264
+SYNCOPE,18,96.75327,49.997623,8.640226,IBk,Oversampling,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,RandomForest,Oversampling,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,NaiveBayes,Oversampling,No Selection,Sensitive Threshold,61.0,624.0,22.0,0.0,0.08905109489051095,1.0,0.5170278637770898,0.006047060731955698
+SYNCOPE,18,96.75327,49.997623,8.640226,IBk,Oversampling,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,RandomForest,Oversampling,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,NaiveBayes,Oversampling,No Selection,Sensitive Learning,61.0,624.0,22.0,0.0,0.08905109489051095,1.0,0.9866517789169162,0.006047060731955698
+SYNCOPE,18,96.75327,49.997623,8.640226,IBk,Oversampling,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,RandomForest,Oversampling,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,NaiveBayes,Oversampling,Best First,No Cost Sensitive,61.0,17.0,629.0,0.0,0.782051282051282,1.0,0.9947216159975638,0.8645853284811336
+SYNCOPE,18,96.75327,49.997623,8.640226,IBk,Oversampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,RandomForest,Oversampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,NaiveBayes,Oversampling,Best First,Sensitive Threshold,61.0,36.0,610.0,0.0,0.6288659793814433,1.0,0.9721362229102167,0.7451537968599808
+SYNCOPE,18,96.75327,49.997623,8.640226,IBk,Oversampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,RandomForest,Oversampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,NaiveBayes,Oversampling,Best First,Sensitive Learning,61.0,36.0,610.0,0.0,0.6288659793814433,1.0,0.9947216159975638,0.7451537968599808
+SYNCOPE,18,96.75327,49.997623,8.640226,IBk,Oversampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,96.75327,49.997623,8.640226,RandomForest,Oversampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,NaiveBayes,Undersampling,No Selection,No Cost Sensitive,61.0,101.0,545.0,0.0,0.3765432098765432,1.0,0.9920570471501802,0.4821714758116563
+SYNCOPE,18,82.80146,49.98529,8.640226,IBk,Undersampling,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,RandomForest,Undersampling,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,NaiveBayes,Undersampling,No Selection,Sensitive Threshold,61.0,631.0,15.0,0.0,0.08815028901734104,1.0,0.5116099071207431,0.00408530473471192
+SYNCOPE,18,82.80146,49.98529,8.640226,IBk,Undersampling,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,RandomForest,Undersampling,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,NaiveBayes,Undersampling,No Selection,Sensitive Learning,61.0,631.0,15.0,0.0,0.08815028901734104,1.0,0.9920570471501802,0.00408530473471192
+SYNCOPE,18,82.80146,49.98529,8.640226,IBk,Undersampling,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,RandomForest,Undersampling,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,NaiveBayes,Undersampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,IBk,Undersampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,RandomForest,Undersampling,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,NaiveBayes,Undersampling,Best First,Sensitive Threshold,61.0,646.0,0.0,0.0,0.08628005657708628,1.0,0.5,0.0
+SYNCOPE,18,82.80146,49.98529,8.640226,IBk,Undersampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,RandomForest,Undersampling,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,NaiveBayes,Undersampling,Best First,Sensitive Learning,61.0,646.0,0.0,0.0,0.08628005657708628,1.0,1.0,0.0
+SYNCOPE,18,82.80146,49.98529,8.640226,IBk,Undersampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,82.80146,49.98529,8.640226,RandomForest,Undersampling,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,NaiveBayes,Smote,No Selection,No Cost Sensitive,61.0,18.0,628.0,0.0,0.7721518987341772,1.0,1.0,0.8575585950616732
+SYNCOPE,18,95.17297,24.425287,8.640226,IBk,Smote,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,RandomForest,Smote,No Selection,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,NaiveBayes,Smote,No Selection,Sensitive Threshold,61.0,26.0,620.0,0.0,0.7011494252873564,1.0,0.9798761609907121,0.80449256556976
+SYNCOPE,18,95.17297,24.425287,8.640226,IBk,Smote,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,RandomForest,Smote,No Selection,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,NaiveBayes,Smote,No Selection,Sensitive Learning,61.0,26.0,620.0,0.0,0.7011494252873564,1.0,1.0,0.80449256556976
+SYNCOPE,18,95.17297,24.425287,8.640226,IBk,Smote,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,RandomForest,Smote,No Selection,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,NaiveBayes,Smote,Best First,No Cost Sensitive,61.0,5.0,641.0,0.0,0.9242424242424242,1.0,1.0,0.9567515323537686
+SYNCOPE,18,95.17297,24.425287,8.640226,IBk,Smote,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,RandomForest,Smote,Best First,No Cost Sensitive,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,NaiveBayes,Smote,Best First,Sensitive Threshold,61.0,7.0,639.0,0.0,0.8970588235294118,1.0,0.9945820433436533,0.9403066086096469
+SYNCOPE,18,95.17297,24.425287,8.640226,IBk,Smote,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,RandomForest,Smote,Best First,Sensitive Threshold,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,NaiveBayes,Smote,Best First,Sensitive Learning,61.0,7.0,639.0,0.0,0.8970588235294118,1.0,1.0,0.9403066086096469
+SYNCOPE,18,95.17297,24.425287,8.640226,IBk,Smote,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
+SYNCOPE,18,95.17297,24.425287,8.640226,RandomForest,Smote,Best First,Sensitive Learning,61.0,0.0,646.0,0.0,0.0,1.0,1.0,1.0
