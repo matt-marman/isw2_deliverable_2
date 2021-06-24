@@ -48,10 +48,6 @@ public class MetricController {
 		
 		float percentageTraining = totalInstancesTraining/(totalInstancesTraining + totalInstancesTesting) * 100;
 
-		double precision = 0;
-		
-		if(fp != 0) precision = eval.precision(0);
-
 		//write the result .csv file
 		try {
 			csvResult.append(projectEntity.getProjectName() + "," 
@@ -64,7 +60,7 @@ public class MetricController {
 							+ metricEntity.getFeatureSelection() + ","  
 							+ metricEntity.getSensitivity() + "," 
 							+ tp + "," + fp + "," + tn + ","  + fn + "," 
-							+ precision + "," 
+							+ eval.precision(0) + "," 
 							+ eval.recall(0) +  "," 
 							+ eval.areaUnderROC(0) + "," 
 							+ eval.kappa() + 

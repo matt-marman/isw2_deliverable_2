@@ -16,7 +16,7 @@ import weka.classifiers.trees.RandomForest;
 import weka.classifiers.bayes.NaiveBayes;
 import weka.core.converters.ConverterUtils.DataSource;
 import weka.classifiers.lazy.IBk;
- 
+
 /**
  * The aim of this project is to provide a .csv file 
  * that contains all combinations for:
@@ -41,7 +41,7 @@ public class MainController{
 	 * true = Syncope project
 	 */
 	
-	private static boolean projectSelection = true;
+	private static boolean projectSelection = false;
 		
 	private static FileWriter csvResult;
 	
