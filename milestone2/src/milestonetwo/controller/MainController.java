@@ -41,7 +41,7 @@ public class MainController{
 	 * true = Syncope project
 	 */
 	
-	private static boolean projectSelection = false;
+	private static boolean projectSelection = true;
 		
 	private static FileWriter csvResult;
 	
@@ -239,6 +239,10 @@ public class MainController{
 		IBk ibk = new IBk();
 		RandomForest randomForest = new RandomForest();
 		
+		MetricController metricController = new MetricController();	
+		int [] compositionDefectiveTraining = compositionDefectiveTraining = metricController.calculateNumDefective(training);
+		metricEntity.setCompositionDefectiveTrainingToWrite(compositionDefectiveTraining);
+
 		//use balancing
 		for (int balancingSelectionIndex = 0; balancingSelectionIndex < 4; balancingSelectionIndex++) {
 				
@@ -250,8 +254,7 @@ public class MainController{
 			 * set the PercentageMajorityClass on defective
 			 */	
 			
-			MetricController metricController = new MetricController();	
-			int [] compositionDefectiveTraining = metricController.calculateNumDefective(training);
+			compositionDefectiveTraining = metricController.calculateNumDefective(training);
 			
 			float percentageDefectiveTraining = (compositionDefectiveTraining[0] / (float)training.numInstances()) * 100;
 			
@@ -266,7 +269,7 @@ public class MainController{
 						
 			//calculate %Defective in training and testing set
 			compositionDefectiveTraining = metricController.calculateNumDefective(trainingSetBalancing);
-			int [] compositionDefectiveTesting= metricController.calculateNumDefective(testing);
+			int [] compositionDefectiveTesting = metricController.calculateNumDefective(testing);
 					
 			metricEntity.setCompositionDefectiveTesting(compositionDefectiveTesting);
 			metricEntity.setCompositionDefectiveTraining(compositionDefectiveTraining);

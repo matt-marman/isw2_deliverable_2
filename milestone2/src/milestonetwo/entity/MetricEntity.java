@@ -8,6 +8,8 @@ public class MetricEntity {
 	private static float percentageMajorityClass;
 	private static int [] compositionDefectiveTraining;
 	private static int [] compositionDefectiveTesting;
+	private static int[] compositionDefectiveTrainingToWrite;
+
 	
 	public String getBalancing() {
 		return balancing;
@@ -45,6 +47,15 @@ public class MetricEntity {
 	public static void setCompositionDefectiveTesting(int [] compositionDefectiveTesting) {
 		MetricEntity.compositionDefectiveTesting = compositionDefectiveTesting;
 	}
+	
+	public static int [] getCompositionDefectiveTrainingToWrite() {
+		return compositionDefectiveTrainingToWrite;
+	}
+	public static void setCompositionDefectiveTrainingToWrite(int [] compositionDefectiveTrainingToWrite) {
+		MetricEntity.compositionDefectiveTrainingToWrite = compositionDefectiveTrainingToWrite;
+	}
+	
+	
 	
 	
 

@@ -1,6 +1,8 @@
 package milestonetwo.controller;
 
 import milestonetwo.entity.MetricEntity;
+import weka.classifiers.AbstractClassifier;
+import weka.classifiers.Classifier;
 import weka.classifiers.meta.FilteredClassifier;
 import weka.core.Instances;
 import weka.filters.Filter;
@@ -128,7 +130,7 @@ public class BalancingController {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
+				
 		FilteredClassifier filteredClassifier = new FilteredClassifier();
 		filteredClassifier.setFilter(smote);
 				

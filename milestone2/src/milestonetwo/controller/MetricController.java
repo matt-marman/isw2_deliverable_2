@@ -35,7 +35,7 @@ public class MetricController {
 		double fp = eval.numFalsePositives(0);
 		double fn = eval.numFalseNegatives(0);
 		
-		int [] compositionDefectiveTraining = metricEntity.getCompositionDefectiveTraining();
+		int [] compositionDefectiveTraining = metricEntity.getCompositionDefectiveTrainingToWrite();
 		int [] compositionDefectiveTesting = metricEntity.getCompositionDefectiveTesting();
 		
 		float totalInstancesTraining = compositionDefectiveTraining[0] + compositionDefectiveTraining[1];
