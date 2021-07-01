@@ -978,19 +978,20 @@ NnewDirectoryStream(Ljava/nio/file/Path;Ljava/nio/file/DirectoryStream$Filter;)
 nwriteString(Ljava/nio/file/Path;Ljava/lang/CharSequence;Ljava/nio/charset/Charset;[Ljava/nio/file/OpenOption;)–java.nio.file.Files#writeString(Ljava/nio/file/Path;Ljava/lang/CharSequence;Ljava/nio/charset/Charset;[Ljava/nio/file/OpenOption;)Ljava/nio/file/Path;y
 0copy(Ljava/nio/file/Path;Ljava/io/OutputStream;)Ejava.nio.file.Files#copy(Ljava/nio/file/Path;Ljava/io/OutputStream;)Jæ
 PreadAttributes(Ljava/nio/file/Path;Ljava/lang/Class;[Ljava/nio/file/LinkOption;)‘java.nio.file.Files#readAttributes(Ljava/nio/file/Path;Ljava/lang/Class;[Ljava/nio/file/LinkOption;)Ljava/nio/file/attribute/BasicFileAttributes;ï
-asetAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)‰java.nio.file.Files#setAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)Ljava/nio/file/Path;·
-
- milestonetwo.entity.MetricEntityjava.lang.Object^
+asetAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)‰java.nio.file.Files#setAttribute(Ljava/nio/file/Path;Ljava/lang/String;Ljava/lang/Object;[Ljava/nio/file/LinkOption;)Ljava/nio/file/Path;¬
+ milestonetwo.entity.MetricEntityjava.lang.Objectt
+'setFeatureSelection(Ljava/lang/String;)Imilestonetwo.entity.MetricEntity#setFeatureSelection(Ljava/lang/String;)Vl
+#setCompositionDefectiveTraining([I)Emilestonetwo.entity.MetricEntity#setCompositionDefectiveTraining([I)Va
+getFeatureSelection()Hmilestonetwo.entity.MetricEntity#getFeatureSelection()Ljava/lang/String;j
+"setCompositionDefectiveTesting([I)Dmilestonetwo.entity.MetricEntity#setCompositionDefectiveTesting([I)Vg
+ getCompositionDefectiveTesting()Cmilestonetwo.entity.MetricEntity#getCompositionDefectiveTesting()[Ij
+"setSensitivity(Ljava/lang/String;)Dmilestonetwo.entity.MetricEntity#setSensitivity(Ljava/lang/String;)V^
 getPercentageMajorityClass()>milestonetwo.entity.MetricEntity#getPercentageMajorityClass()Fi
 !getCompositionDefectiveTraining()Dmilestonetwo.entity.MetricEntity#getCompositionDefectiveTraining()[I`
 setPercentageMajorityClass(F)?milestonetwo.entity.MetricEntity#setPercentageMajorityClass(F)V6
-<init>()*milestonetwo.entity.MetricEntity#<init>()Vt
-'setFeatureSelection(Ljava/lang/String;)Imilestonetwo.entity.MetricEntity#setFeatureSelection(Ljava/lang/String;)Vl
-#setCompositionDefectiveTraining([I)Emilestonetwo.entity.MetricEntity#setCompositionDefectiveTraining([I)Vf
- setBalancing(Ljava/lang/String;)Bmilestonetwo.entity.MetricEntity#setBalancing(Ljava/lang/String;)Va
-getFeatureSelection()Hmilestonetwo.entity.MetricEntity#getFeatureSelection()Ljava/lang/String;S
-getBalancing()Amilestonetwo.entity.MetricEntity#getBalancing()Ljava/lang/String;j
-"setCompositionDefectiveTesting([I)Dmilestonetwo.entity.MetricEntity#setCompositionDefectiveTesting([I)VW
-getSensitivity()Cmilestonetwo.entity.MetricEntity#getSensitivity()Ljava/lang/String;g
- getCompositionDefectiveTesting()Cmilestonetwo.entity.MetricEntity#getCompositionDefectiveTesting()[Ij
-"setSensitivity(Ljava/lang/String;)Dmilestonetwo.entity.MetricEntity#setSensitivity(Ljava/lang/String;)V
+<init>()*milestonetwo.entity.MetricEntity#<init>()Vf
+ setBalancing(Ljava/lang/String;)Bmilestonetwo.entity.MetricEntity#setBalancing(Ljava/lang/String;)VS
+getBalancing()Amilestonetwo.entity.MetricEntity#getBalancing()Ljava/lang/String;W
+getSensitivity()Cmilestonetwo.entity.MetricEntity#getSensitivity()Ljava/lang/String;z
+*setCompositionDefectiveTrainingToWrite([I)Lmilestonetwo.entity.MetricEntity#setCompositionDefectiveTrainingToWrite([I)Vw
+(getCompositionDefectiveTrainingToWrite()Kmilestonetwo.entity.MetricEntity#getCompositionDefectiveTrainingToWrite()[I

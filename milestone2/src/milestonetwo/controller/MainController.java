@@ -240,7 +240,7 @@ public class MainController{
 		RandomForest randomForest = new RandomForest();
 		
 		MetricController metricController = new MetricController();	
-		int [] compositionDefectiveTraining = compositionDefectiveTraining = metricController.calculateNumDefective(training);
+		int [] compositionDefectiveTraining = metricController.calculateNumDefective(training);
 		metricEntity.setCompositionDefectiveTrainingToWrite(compositionDefectiveTraining);
 
 		//use balancing
