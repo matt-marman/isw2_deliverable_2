@@ -41,7 +41,7 @@ public class MainController{
 	 * true = Syncope project
 	 */
 	
-	private static boolean projectSelection = true;
+	private static boolean projectSelection = false;
 		
 	private static FileWriter csvResult;
 	

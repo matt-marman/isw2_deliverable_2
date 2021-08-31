@@ -262,6 +262,7 @@ public class CSVController {
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+		
 	    for (String line : lines) {
 	    	if (line.contains("@attribute Bugginess {false,true}")) {
 	    		lines.set(lines.indexOf(line), "@attribute bugginess {true,false}");
@@ -269,10 +270,13 @@ public class CSVController {
 	    }
 	    
 	    
+	    
 	    try {
 			Files.write(new File(args[1]).toPath(), lines, StandardCharsets.UTF_8);
 		} catch (IOException e) {
 			e.printStackTrace();
 		}
+	    
+	    
 	  }
 }
