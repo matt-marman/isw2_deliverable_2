@@ -191,6 +191,7 @@ public class JSONController {
 				ticketController.setVersions(ticketEntity, projectEntity);
 
 			}
+			
 		} while (i < total);
 
 		return projectEntity;

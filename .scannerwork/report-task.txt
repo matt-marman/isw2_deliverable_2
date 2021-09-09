@@ -1,7 +1,0 @@
-organization=dibattistamattia
-projectKey=matt-marman_isw2_deliverable_2
-serverUrl=https://sonarcloud.io
-serverVersion=8.0.0.21481
-dashboardUrl=https://sonarcloud.io/dashboard?id=matt-marman_isw2_deliverable_2
-ceTaskId=AXpjJ1TXVqhBpmrueJwW
-ceTaskUrl=https://sonarcloud.io/api/ce/task?id=AXpjJ1TXVqhBpmrueJwW

@@ -165,7 +165,7 @@ public class TicketController {
 	public void getMetrics (CommitEntity commitEntity, DiffEntry entry, DiffFormatter diffFormatter, ProjectEntity projectEntity) throws IOException{
 
 		//first, if version of the file is grater than the half version, ignore this file
-		if (commitEntity.getAppartainVersion() >= projectEntity.getHalfVersion() + 1) return;
+		if (commitEntity.getAppartainVersion() > projectEntity.getHalfVersion()) return;
 				
 		//it updates values of couple (version, file). 
 		FileEntity fileEntity = removeFileEntity(commitEntity.getAppartainVersion(), entry.getNewPath(), projectEntity);
@@ -250,7 +250,7 @@ public class TicketController {
 	 */
 	private FileEntity removeFileEntity(int version, String filename, ProjectEntity projectEntity) {
 
-		for(int k = 0; k < projectEntity.getFileEntityList().size() - 1; k++) {
+		for(int k = 0; k < projectEntity.getFileEntityList().size(); k++) {
 			
 			FileEntity fileEntity = projectEntity.getFileEntityList().get(k);
 			
@@ -275,7 +275,7 @@ public class TicketController {
 	 */
 	public ProjectEntity calculateAverageMetric(ProjectEntity projectEntity) {
 			
-		for(int i = 0; i < projectEntity.getFileEntityList().size() - 1; i++) {
+		for(int i = 0; i < projectEntity.getFileEntityList().size(); i++) {
 			
 			FileEntity currentFileEntity = projectEntity.getFileEntityList().get(i);
 								
@@ -315,7 +315,7 @@ public class TicketController {
 
 		if (commitEntity.getTicketEntityList().isEmpty()) return projectEntity;
 
-		for (int j = 0; j < commitEntity.getTicketEntityList().size() - 1; j++) {
+		for (int j = 0; j < commitEntity.getTicketEntityList().size(); j++) {
 				
 			int iv = commitEntity.getTicketEntityList().get(j).getIvIndex();
 			int fv = commitEntity.getTicketEntityList().get(j).getFvIndex();
@@ -361,7 +361,7 @@ public class TicketController {
 		getResolutionDateFromCommit(ticketEntity, projectEntity);
 		
 		ticketEntity.setOvIndex(getOpeningVersion(ticketEntity.getCreationDate(), projectEntity));
-		ticketEntity.setIvIndex(getAffectedVersion(ticketEntity.getAv(), ticketEntity.getCreationDate(), projectEntity));
+		ticketEntity.setIvIndex(getInjectedVersion(ticketEntity.getAv(), ticketEntity.getCreationDate(), projectEntity));
 		ticketEntity.setFvIndex(getFixedVersion(ticketEntity.getResolutionDate(), projectEntity));
 
 		if (ticketEntity.getIvIndex() == 0) {
@@ -402,8 +402,8 @@ public class TicketController {
 	public void applyEstimateProportion(ProjectEntity projectEntity) {
 
 		int proportion = getEstimateProportion(projectEntity);
-		
-		for(int k = 0; k < projectEntity.getTicketBuggyNoAV().size() - 1; k++) {
+						
+		for(int k = 0; k < projectEntity.getTicketBuggyNoAV().size(); k++) {
 			
 			TicketEntity ticketEntity = projectEntity.getTicketBuggyNoAV().get(k);
 			
@@ -464,11 +464,12 @@ public class TicketController {
 		
 		double sumProportion = 0;
 		int numberTicketBuggyAV = projectEntity.getTicketBuggyAV().size();
-		
-		for(int k = 0; k < numberTicketBuggyAV - 1; k++) {
+	
+		for(int k = 0; k < numberTicketBuggyAV; k++) {
 			
 			TicketEntity currentTicketEntity = projectEntity.getTicketBuggyAV().get(k);
 			int currentP = (int) currentTicketEntity.getProportion();
+						
 			sumProportion += currentP;
 		}
 				
@@ -491,16 +492,14 @@ public class TicketController {
 		int fvIndex = 0;
 		LocalDate resolutionLocalDate = LocalDate.parse(resolutionDate);
 
-		for(int k = 0; k < projectEntity.getVersionEntityList().size() - 1; k++) {
+		for(int k = 0; k < projectEntity.getVersionEntityList().size(); k++) {
 			
 			VersionEntity currentVersionEntity = projectEntity.getVersionEntityList().get(k);
 			LocalDate localDate = currentVersionEntity.getReleaseDate();
 			fvIndex = currentVersionEntity.getIndex();
 			
-			if (localDate.isEqual(resolutionLocalDate) || localDate.isAfter(resolutionLocalDate)) {
-
-				return fvIndex;
-			}
+			if (localDate.isAfter(resolutionLocalDate)) return fvIndex - 1;
+			
 		}
 	
 		return fvIndex;
@@ -519,16 +518,14 @@ public class TicketController {
 		int ovIndex = 0;
 		LocalDate creationLocalDate = LocalDate.parse(creationDate);
 		
-		for(int k = 0; k < projectEntity.getVersionEntityList().size() - 1; k++) {
+		for(int k = 0; k < projectEntity.getVersionEntityList().size(); k++) {
 			
 			VersionEntity currentVersionEntity = projectEntity.getVersionEntityList().get(k);
 			LocalDate localDate = currentVersionEntity.getReleaseDate();
 			ovIndex = currentVersionEntity.getIndex();
 			
-			if (localDate.isEqual(creationLocalDate) || localDate.isAfter(creationLocalDate)) {
-
-				return ovIndex;
-			}
+			if (localDate.isAfter(creationLocalDate)) return ovIndex - 1;
+			
 		}
 
 		return ovIndex;
@@ -542,11 +539,11 @@ public class TicketController {
 	 * @param projectEntity
 	 * @return
 	 */
-	public int getAffectedVersion(List<String> versionList, String creationDate, ProjectEntity projectEntity) {
+	public int getInjectedVersion(List<String> versionList, String creationDate, ProjectEntity projectEntity) {
 
 		int ivVersion = 0;
 
-		for(int k = 0; k < projectEntity.getVersionEntityList().size() - 1; k++) {
+		for(int k = 0; k < projectEntity.getVersionEntityList().size(); k++) {
 			
 			VersionEntity currentVersionEntity = projectEntity.getVersionEntityList().get(k);
 			LocalDate localDate = currentVersionEntity.getReleaseDate();

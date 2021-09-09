@@ -58,9 +58,7 @@ public class CSVController {
 			FileEntity currentFileEntity = projectEntity.getFileEntityList().get(k);
 
 			int index = currentFileEntity.getIndexVersion();
-			
-			if(index < 0 || currentFileEntity.getIndexVersion() > projectEntity.getHalfVersion()) continue;
-					
+								
 			metric.add(projectEntity.getVersion().get(index));
 			metric.add(currentFileEntity.getFileName());
 			

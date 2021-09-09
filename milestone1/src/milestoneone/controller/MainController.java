@@ -77,9 +77,9 @@ public class MainController {
 	
 		ticketController = new TicketController();
 		ticketController.applyEstimateProportion(projectEntity);
-
+		
 		createData();		
-
+		
 		new CSVController(projectEntity);	
 
 	}
@@ -118,12 +118,11 @@ public class MainController {
 			commitEntity.setDate(commitLocalDate);
 			commitEntity.setAppartainVersion(appartainVersion);
 			
-			
 			List<TicketEntity> ticketForCommit = ticketController.getTicketForCommit(commit.getFullMessage(), projectEntity);
 			commitEntity.setTicketEntityList(ticketForCommit);
 
 			iterateOnChange(repository, commit, commitEntity);
-			
+						
 		}
 	}
 	
@@ -137,7 +136,7 @@ public class MainController {
 			
 			filesChanged = differenceBetweenCommits.scan(commit.getParent(0), commit);
 			commitEntity.setFilesChanged(filesChanged);
-			
+						
 			for (DiffEntry singleFileChanged : filesChanged) {
 			
 				if (singleFileChanged.getNewPath().endsWith(".java")) {
